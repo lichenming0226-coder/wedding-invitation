@@ -1,0 +1,19 @@
+{
+  "source": "https://li-gao-wedding-2026.lichenming-0226.chatgpt.site/",
+  "date": "2026-09-20",
+  "changes": [
+    "Removed source hosting provider injected Cloudflare challenge script."
+  ],
+  "sha256": {
+    "index.html": "5564152b5bbf5154416d178ad415701bd5c3f94a49bad0c5ecec4c22e8a265de",
+    "images/balcony.jpeg": "8f43fc9abfa530ca9d74899c050aad7e1d6af6ff5ed1171d36e1beec25f13e4f",
+    "images/cake.jpeg": "c07c2751833974c45784596c5e0b11892a71f664d498ec30313cd0e9437b0b06",
+    "images/curtain.jpeg": "5d8335a754550212ae249856f06f2f9d4761e593e6114592db0d630f799214f4",
+    "images/portrait.jpeg": "dd9862ee56085d15bae70ec53c4c88ad1b6e100fa40554bc3d27556659fe261b",
+    "images/save-date.jpeg": "ca4d192fb05e087f03f6643d6cb6cf1b90c81c3daa8d828bd7701d03a98f155d",
+    "images/selfie.jpeg": "5b3357ab58b186149556205077004c14be4640bbb586014df0f7ca0f561624c0",
+    "images/stairs.jpeg": "a4d07858ddedc5a86fd6e793dc72a2ee6c9c6d08d072004cca1d15b778837b20",
+    "script.js": "7f372a28cd4f461e3f8af55ddefcb4db3ccfc1d299f12b9d10d5037efaa431a6",
+    "styles.css": "c89158809e9fb276f6795a18df84f7ade35fa6b390b9346a9de2caf07b3692cd"
+  }
+}
