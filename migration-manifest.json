@@ -1,14 +1,14 @@
 {
-  "source_revision": "55bcbc0ceff4b3a85fd18396e1e4ef99577ccfa3",
   "date": "2026-09-21",
-  "rollback_commit": "c4cdff3bde3b2ac3dad510a7004e2483f4aba689",
+  "base_revision": "019073c6ef97ada91b278511618b8cd56a7b6273",
+  "rollback_commit": "019073c6ef97ada91b278511618b8cd56a7b6273",
   "changes": [
-    "Publish latest reviewed invitation: envelope photo reveal, white comic couple without blush, falling-and-unfolding poem, fountain with birds and flowing water, lace frame, textured paper, lunar date and Friday, in the ark, six-photo carousel at 4.2 seconds."
+    "Extracted lace envelope, wider fitted postcard, direct-to-line falling letters, compact single-viewport mobile guide, oval lace frame, conventional numerals, #291f20 background and lace side panels."
   ],
   "sha256": {
-    "index.html": "a628aa8e44089efee3d02b9e385d8bf4dd2f27152cfe1ac6168db84da6708ba8",
-    "app.js": "03582b6b58063d7921864ac149cf96b944be5098c0cb50b7a115ca78c8f64b31",
-    "styles.css": "6f52dd1db38b51289ef78fc7a90c1c4ee12f78bd4c60e15f12e461a66d8ba2c5",
+    "index.html": "dd03df0eb627c5fae56517bfb7061763f511aeaa95add570bd07b73a86376971",
+    "app.js": "0d26c30821cf3bcc7a084b078e94e33b238e07106215b423916fdde4a2e69a72",
+    "styles.css": "db0f3b68c99ad58d4349cdbc646e0aaa544a13f7c3c307e47fd1e4de822a3ede",
     "fonts.css": "ee42cfd22c664573b5b42f162d2e64602c3f7dad964c339d44498f29c80d88d4",
     "assets/01.webp": "6ea21d2100921d6cc6ff31f7fa465324a314f3f3fdaa4d8b8f9fa481f70f1d0d",
     "assets/02.webp": "88a9cd2b753604851bef8448f5544d6270b13e2ae76a173e60eb5432b58414b4",
@@ -22,8 +22,10 @@
     "assets/hand-chinese-0.ttf": "179e536d6153176350b087a24a2a475d664f9c991ff014016636ba98704284f0",
     "assets/hand-english-0.ttf": "725a44824e534dfb26af2bf135dd6fab577ec7f0781c5be17bd89e7ce22f035a",
     "assets/imfellenglish-OFL.txt": "2a3ca501fc4d5efcad9798531e3e06962b1e20c60e464f6cbd6c17630112c773",
-    "assets/lace-frame.png": "168f0b16092abcdb060e8562483ede4ce08178e768619f590a4fb8f968070b2c",
+    "assets/lace-envelope.png": "ed5b3c9fa32117c9b8b2150f8fa77ef2e766df26f214757b217e0b84be6ef7ab",
+    "assets/oval-lace.png": "609fc8c0ac53cb66bc0fe835d7688d8b26ee3a0575bcf657608c79d3c6db0cb5",
     "assets/paper-texture.svg": "674f2845ea7f7159b6792bea51b59e0a33064a9097a772d102f78778db5a85aa",
+    "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a"
   }
 }

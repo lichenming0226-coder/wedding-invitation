@@ -38,23 +38,17 @@
       $('poemStage').classList.remove('poem-preparing');
       return;
     }
-    const bounds = document.querySelector('.poem').getBoundingClientRect();
-    const centerX = bounds.left + bounds.width / 2;
-    const centerY = bounds.top + bounds.height * .65;
+    // Each character lands directly in its own line; later letters keep falling.
     poemAnimations = poemLetters.map((letter, index) => {
       const box = letter.getBoundingClientRect();
-      const x = centerX + (index * 43 % 156) - 78 - (box.left + box.width / 2);
-      const y = centerY + (index * 19 % 58) - 29 - (box.top + box.height / 2);
-      const angle = (index * 13 % 43) - 21;
-      const pile = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
+      const drift = (index * 17 % 35) - 17;
+      const angle = (index * 11 % 21) - 10;
       const animation = letter.animate([
-        { offset: 0, opacity: 0, transform: `translate(${x - 20}px, ${-box.bottom - 80}px) rotate(${angle - 28}deg)`, easing: 'cubic-bezier(.4,0,.78,.55)' },
-        { offset: .08, opacity: 1 },
-        { offset: .3, opacity: 1, transform: pile, easing: 'ease-out' },
-        { offset: .36, opacity: 1, transform: `translate(${x}px, ${y + 4}px) rotate(${angle + 3}deg)` },
-        { offset: .52, opacity: 1, transform: pile, easing: 'cubic-bezier(.22,.68,.24,1)' },
+        { offset: 0, opacity: 0, transform: `translate(${drift}px, ${-box.bottom - 30}px) rotate(${angle}deg)`, easing: 'cubic-bezier(.28,.12,.35,1)' },
+        { offset: .14, opacity: 1 },
+        { offset: .85, opacity: 1, transform: 'translate(0, 3px) rotate(0)', easing: 'ease-out' },
         { offset: 1, opacity: 1, transform: 'translate(0, 0) rotate(0)' }
-      ], { duration: 5000, delay: (index % 7) * 55 + Math.floor(index / 7) * 12, fill: 'both' });
+      ], { duration: 1800, delay: index * 64, fill: 'both' });
       animation.id = `poem-letter-${index}`;
       return animation;
     });

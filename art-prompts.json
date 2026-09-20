@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "key": "lace-envelope",
+      "file": "1-照片-1.jpg",
+      "prompt": "Use case: background-extraction. Create a website asset from the reference: ONLY the ivory embroidered French lace envelope, open with triangular flap standing up behind, perfectly front-on symmetrical flat view. Remove photograph, card, spoon, rope, brown background and all lettering. Retain exquisite fine embroidered floral lace and net fabric on the envelope, ivory opaque paper lining beneath the lace, delicate scalloped edges. The empty mouth should be visible with no contents. Transparent background with true alpha, no shadow outside object. Square 1024x1024 canvas. Envelope spans x=50 to 974, bottom at y=955, peak of open flap at y=60. Rectangular lower pocket is x=50..974,y=475..955, with diagonal folded sides descending to a V mouth at center y=700. Asset intended for layered CSS animation with photo inserted later, no photo or text in this output."
+    },
+    {
+      "key": "oval-lace",
+      "file": "2-照片-2.jpg",
+      "prompt": "Use case: background-extraction. Extract/reconstruct ONLY the delicate white oval French lace outline border in this reference as a clean website photo frame. Remove all the center illustrations, candle, ribbon, book, cup, letters, words, screenshot UI, background and watermark. Actual transparent alpha everywhere inside and outside the lace ring. A perfectly regular vertical ellipse, centered, graceful very fine ivory double lace chain with small scalloped pointed loops like the reference. NO large floral ornaments, no bows, no pattern in the center. Portrait 1024x1536 canvas. Overall outer ellipse bounds x=45..979 y=45..1491; inner opening bounds x=85..939 y=85..1451. Thin delicate white hand-drawn lace line, smooth true elliptical inner contour so a photograph fits seamlessly inside. Large empty transparent center."
+    },
+    {
+      "key": "side-lace",
+      "file": "4-照片-4.jpg",
+      "prompt": "Use case: background-extraction. Derive ONLY the floral lace curtain textile texture from the reference. Remove all text, logos, watermarks, white drawings, numerals, phone interface and decorative icons. Full-frame seamless vertical vintage French floral lace textile: taupe-grey delicate mesh, fine embroidered roses and curling stems, slightly irregular vertical curtain folds, muted soft lighting and subtle tactile thread detail. No objects or extra motifs. Portrait 1024x1536. Flat textile texture intended for narrow side gutters of a dark chocolate-brown wedding invitation website. Match reference fabric closely; no stark white stripes, keep low contrast."
+    }
+  ],
+  "frame_refinement": "Remove all glow and background; preserve only sharp ivory lace and genuine alpha transparency."
+}

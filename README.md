@@ -4,12 +4,24 @@
 
 访问：https://lichenming0226-coder.github.io/wedding-invitation/
 
-当前版本：直接打开信封封面，轻触后照片缓缓升起；白色漫画人物与小猫、落字展开的序言、流水喷泉、法式蕾丝相框、纸张纹理及婚礼指南。后续轮播包含六张照片，每张停留 4.2 秒。
+当前版本使用深棕色纸张、两侧蕾丝织物、独立提取的蕾丝信封和椭圆法式蕾丝相框。轻触信封，宽明信片缓缓升起；序言逐字从上方落到各自行内位置。婚礼信息页按手机可用高度缩放照片，保留完整姓名、信息和底部切换按钮。
 
-## 部署
+## 源文件与部署
 
-GitHub Pages 从 `main` 分支根目录发布；`.nojekyll` 保留静态文件原样输出。所有脚本、样式、图片及字体都在仓库中，无需构建或外部字体服务。
+本仓库根目录的 `index.html`、`styles.css`、`app.js`、`fonts.css` 和 `assets/` 是当前维护源。GitHub Pages 从 `main` 根目录发布，`.nojekyll` 保留静态文件原样输出，无需构建。所有运行时资源均为本地相对路径。
 
-`migration-manifest.json` 记录源版本及发布文件的 SHA-256。修改在独立任务分支验证后，以快进方式更新 `main`。上一版为 `c4cdff3bde3b2ac3dad510a7004e2483f4aba689`，可以通过 Git 恢复。
+修改在独立任务分支验证，再快进发布至 `main`。`migration-manifest.json` 记录文件校验值及可恢复的上一版本。旧的本地恢复副本不是这一版本的维护源。
 
-字体：IM Fell English、ZCOOL XiaoWei；授权文件保存在 `assets/`。
+## 本次验证
+
+- 320×568、375×667、390×844 手机布局：一屏展示，底部按钮可见，无横向溢出。
+- 蕾丝信封和宽明信片在小屏正常展开；照片完整保留。
+- 序言字符直接落到最终排版位置，支持减少动态效果设置。
+- 六张轮播照片完整加载，日期、流程、地点可切换，保留 4.2 秒照片停留。
+- JavaScript 语法、相对资源引用、透明边框及字体加载检查通过。
+
+## 美术素材
+
+`assets/lace-envelope.png`、`assets/oval-lace.png`、`assets/side-lace.png` 使用内置 image_gen 根据用户提供参考图提取和重建。仅保留指定蕾丝元素，不包含参考图的人物、文字或其他装饰。提示词记录在 `art-prompts.json`。
+
+字体：IM Fell English、ZCOOL XiaoWei；授权文件在 `assets/`。数字使用系统 Georgia 衬线体。
