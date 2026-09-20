@@ -1,19 +1,19 @@
 {
-  "source": "https://li-gao-wedding-2026.lichenming-0226.chatgpt.site/",
+  "source": "https://li-gao-wedding-invite-1120.lichenming-0226.chatgpt.site/",
   "date": "2026-09-20",
+  "rollback_commit": "fe3aac9084855cd9f116e26c4147f34aee303417",
   "changes": [
     "Removed source hosting provider injected Cloudflare challenge script."
   ],
   "sha256": {
-    "index.html": "5564152b5bbf5154416d178ad415701bd5c3f94a49bad0c5ecec4c22e8a265de",
-    "images/balcony.jpeg": "8f43fc9abfa530ca9d74899c050aad7e1d6af6ff5ed1171d36e1beec25f13e4f",
-    "images/cake.jpeg": "c07c2751833974c45784596c5e0b11892a71f664d498ec30313cd0e9437b0b06",
-    "images/curtain.jpeg": "5d8335a754550212ae249856f06f2f9d4761e593e6114592db0d630f799214f4",
-    "images/portrait.jpeg": "dd9862ee56085d15bae70ec53c4c88ad1b6e100fa40554bc3d27556659fe261b",
-    "images/save-date.jpeg": "ca4d192fb05e087f03f6643d6cb6cf1b90c81c3daa8d828bd7701d03a98f155d",
-    "images/selfie.jpeg": "5b3357ab58b186149556205077004c14be4640bbb586014df0f7ca0f561624c0",
-    "images/stairs.jpeg": "a4d07858ddedc5a86fd6e793dc72a2ee6c9c6d08d072004cca1d15b778837b20",
-    "script.js": "7f372a28cd4f461e3f8af55ddefcb4db3ccfc1d299f12b9d10d5037efaa431a6",
-    "styles.css": "c89158809e9fb276f6795a18df84f7ade35fa6b390b9346a9de2caf07b3692cd"
+    "index.html": "eca1ea90ec1b55ff6a2440c57ffe55d89c4661fb2699acb5cbb6f843c7e2967b",
+    "assets/01.webp": "6ea21d2100921d6cc6ff31f7fa465324a314f3f3fdaa4d8b8f9fa481f70f1d0d",
+    "assets/02.webp": "88a9cd2b753604851bef8448f5544d6270b13e2ae76a173e60eb5432b58414b4",
+    "assets/03.webp": "310e62b910c70b2d669f7f32f47aeca646bca141093106fb59fde445a92ad32a",
+    "assets/04.webp": "6bdd59eb10aa2a0c9937bce7d04ed9e23e7633b2462b0df81aef39673430ba33",
+    "assets/05.webp": "2747f6d1d45e8d0c27681c8b9b9a699f8fc5c350e770f716deec5090b0682603",
+    "assets/06.webp": "d4ff5318378178b09215dddb6fb5f565ec4774b62e149f45ffc4351ac9bce525",
+    "assets/07.webp": "91d9947a61c62a1cc2607fc909b25e63044f6bba01fec43637632b0c4bb1364b",
+    "assets/cat-balloons.png": "db73271e3c2f1f6655b499d09c7706f699a296892d6b16a992eef4779f48aad8"
   }
 }
