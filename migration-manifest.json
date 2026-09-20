@@ -1,19 +1,29 @@
 {
-  "source": "https://li-gao-wedding-invite-1120.lichenming-0226.chatgpt.site/",
-  "date": "2026-09-20",
-  "rollback_commit": "fe3aac9084855cd9f116e26c4147f34aee303417",
+  "source_revision": "55bcbc0ceff4b3a85fd18396e1e4ef99577ccfa3",
+  "date": "2026-09-21",
+  "rollback_commit": "c4cdff3bde3b2ac3dad510a7004e2483f4aba689",
   "changes": [
-    "Removed source hosting provider injected Cloudflare challenge script."
+    "Publish latest reviewed invitation: envelope photo reveal, white comic couple without blush, falling-and-unfolding poem, fountain with birds and flowing water, lace frame, textured paper, lunar date and Friday, in the ark, six-photo carousel at 4.2 seconds."
   ],
   "sha256": {
-    "index.html": "eca1ea90ec1b55ff6a2440c57ffe55d89c4661fb2699acb5cbb6f843c7e2967b",
+    "index.html": "a628aa8e44089efee3d02b9e385d8bf4dd2f27152cfe1ac6168db84da6708ba8",
+    "app.js": "03582b6b58063d7921864ac149cf96b944be5098c0cb50b7a115ca78c8f64b31",
+    "styles.css": "6f52dd1db38b51289ef78fc7a90c1c4ee12f78bd4c60e15f12e461a66d8ba2c5",
+    "fonts.css": "ee42cfd22c664573b5b42f162d2e64602c3f7dad964c339d44498f29c80d88d4",
     "assets/01.webp": "6ea21d2100921d6cc6ff31f7fa465324a314f3f3fdaa4d8b8f9fa481f70f1d0d",
     "assets/02.webp": "88a9cd2b753604851bef8448f5544d6270b13e2ae76a173e60eb5432b58414b4",
-    "assets/03.webp": "310e62b910c70b2d669f7f32f47aeca646bca141093106fb59fde445a92ad32a",
     "assets/04.webp": "6bdd59eb10aa2a0c9937bce7d04ed9e23e7633b2462b0df81aef39673430ba33",
     "assets/05.webp": "2747f6d1d45e8d0c27681c8b9b9a699f8fc5c350e770f716deec5090b0682603",
     "assets/06.webp": "d4ff5318378178b09215dddb6fb5f565ec4774b62e149f45ffc4351ac9bce525",
     "assets/07.webp": "91d9947a61c62a1cc2607fc909b25e63044f6bba01fec43637632b0c4bb1364b",
-    "assets/cat-balloons.png": "db73271e3c2f1f6655b499d09c7706f699a296892d6b16a992eef4779f48aad8"
+    "assets/couple-comic.png": "055f63790bda87a8aad69dbcba47d7112a9bee7476e3cdcddc88a8bf3141d440",
+    "assets/envelope-photo.jpg": "5c7569df728f08c0493f7087d8ffd9e73c27ae8f855e0bb7937bd6a6de73b124",
+    "assets/fountain-birds.png": "50404644c86a0e4e8715172c4d6933c702c1d5aa38dbf483a7471b5eb1e8b8ea",
+    "assets/hand-chinese-0.ttf": "179e536d6153176350b087a24a2a475d664f9c991ff014016636ba98704284f0",
+    "assets/hand-english-0.ttf": "725a44824e534dfb26af2bf135dd6fab577ec7f0781c5be17bd89e7ce22f035a",
+    "assets/imfellenglish-OFL.txt": "2a3ca501fc4d5efcad9798531e3e06962b1e20c60e464f6cbd6c17630112c773",
+    "assets/lace-frame.png": "168f0b16092abcdb060e8562483ede4ce08178e768619f590a4fb8f968070b2c",
+    "assets/paper-texture.svg": "674f2845ea7f7159b6792bea51b59e0a33064a9097a772d102f78778db5a85aa",
+    "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a"
   }
 }
