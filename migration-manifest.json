@@ -1,17 +1,15 @@
 {
   "date": "2026-09-21",
-  "base_revision": "df8003b1e98e895158eacc11ec7ba100a2153d13",
-  "rollback_commit": "df8003b1e98e895158eacc11ec7ba100a2153d13",
+  "base_revision": "105167b56f2c49406e55e09f266ca7b983fc3473",
+  "rollback_commit": "105167b56f2c49406e55e09f266ca7b983fc3473",
   "changes": [
-    "Closed lace envelope with LG wax seal, compact Polaroid reveal, clearer clickable prompts, independently flying birds, new oval fabric lace frame, centered timeline and English labels, wider lace sides, smooth opaque slide transitions."
+    "Centered larger closed envelope, partially tucked Polaroid reveal, unboxed prompts with blinking dots, minimal English information tabs, and verified user-provided AMap venue link and full address."
   ],
-  "pending": [
-    "Exact AMap venue link or street address is required to add direct navigation."
-  ],
+  "pending": [],
   "sha256": {
-    "index.html": "0061b6cbb00526444b49d33c9c0a01bfba28fe7d45412fb55e51990d0176d6f0",
+    "index.html": "4bfa3e8f7cdf6c537db0f3943f184a30560c7d46c4e5beff19fb47c8b4abecf2",
     "app.js": "4eb88d873c96d0f3285421c92d6a7842bffe7b5937a1133192d9dd930869adf8",
-    "styles.css": "c1581133120f02a2ab927821473815c934cf0edbb764e29bbec61020dae99ef4",
+    "styles.css": "4b44f0d9bcda2790ec59a2223a3209663edc56bbec167351baa7632f069e92b1",
     "fonts.css": "ee42cfd22c664573b5b42f162d2e64602c3f7dad964c339d44498f29c80d88d4",
     "assets/01.webp": "6ea21d2100921d6cc6ff31f7fa465324a314f3f3fdaa4d8b8f9fa481f70f1d0d",
     "assets/02.webp": "88a9cd2b753604851bef8448f5544d6270b13e2ae76a173e60eb5432b58414b4",
@@ -31,5 +29,11 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a"
+  },
+  "venue": {
+    "name": "In The Ark在方舟礼堂",
+    "address": "葭沚街道一江山大道7888号心海天地5号街区4幢103、203号",
+    "share_url": "https://surl.amap.com/2GpW2KO1tfrK",
+    "verified_poi_id": "B0L13D6H5I"
   }
 }
