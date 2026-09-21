@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#291f20">
   <meta name="description" content="李晨鸣与高雅婷的婚礼邀请函｜2026年11月20日">
   <title>李晨鸣 &amp; 高雅婷｜婚礼邀请函</title>
-  <link rel="stylesheet" href="fonts.css?v=lace-20260921">
-  <link rel="stylesheet" href="styles.css?v=lace-20260921">
+  <link rel="stylesheet" href="fonts.css?v=seal-20260921">
+  <link rel="stylesheet" href="styles.css?v=seal-20260921">
 </head>
 <body>
 <main class="invitation" aria-label="李晨鸣与高雅婷的婚礼邀请函">
@@ -21,12 +21,15 @@
         <div class="letter-slot">
           <figure class="letter-card" id="letterCard" aria-hidden="true">
             <img src="assets/envelope-photo.jpg" width="1280" height="1920" alt="我们在树下举着 Save the Date 婚礼日期牌的照片" fetchpriority="high">
+            <figcaption>Li &amp; Gao</figcaption>
           </figure>
         </div>
         <img class="envelope-pocket" src="assets/lace-envelope.png" alt="" aria-hidden="true" width="1254" height="1254">
-        <button class="envelope-trigger" id="openEnvelope" type="button" aria-label="打开婚礼邀请信" aria-expanded="false" aria-controls="letterCard"></button>
+        <img class="envelope-flap" src="assets/lace-envelope.png" alt="" aria-hidden="true" width="1254" height="1254">
+        <img class="wax-seal" src="assets/seal-lg.png" alt="" aria-hidden="true" width="1024" height="1024">
+        <button class="envelope-trigger" id="openEnvelope" type="button" aria-label="点击 LG 火漆章，打开婚礼邀请信" aria-expanded="false" aria-controls="letterCard"></button>
       </div>
-      <p class="envelope-hint" id="envelopeHint" aria-live="polite">轻触，开启我们的邀请</p>
+      <button class="envelope-hint tap-prompt" id="envelopeHint" type="button" aria-controls="letterCard"><span class="tap-dot" aria-hidden="true"></span>点击火漆章，开启请柬<span aria-hidden="true">↑</span></button>
       <img class="couple-doodle" src="assets/couple-comic.png" alt="手绘的我们和小猫" width="1536" height="1024">
       <button class="letter-continue guide-cta" id="readInvitation" type="button" hidden>婚礼指南 <span aria-hidden="true">→</span></button>
     </div>
@@ -38,7 +41,9 @@
       <p>我们带着各自的认知地图</p><p>试图抵达彼此心灵的彼岸</p><p>越过高山　森林</p><p>听见虫鸣　鸟叫</p><p>和彼此心跳的声音</p><p>山川远阔</p><p>世界就在你我眼前</p>
     </div>
     <div class="fountain" role="img" aria-label="白色线描的法式喷泉，细细的水流落入池中">
-      <img src="assets/fountain-birds.png" alt="" width="1024" height="1024">
+      <img class="fountain-base" src="assets/fountain-birds.png" alt="" width="1024" height="1024">
+      <img class="fountain-bird bird-left" src="assets/fountain-birds.png" alt="" aria-hidden="true" width="1024" height="1024">
+      <img class="fountain-bird bird-right" src="assets/fountain-birds.png" alt="" aria-hidden="true" width="1024" height="1024">
       <svg class="fountain-water" viewBox="0 0 1000 1000" aria-hidden="true"><g class="streams"><path d="M438 196 Q431 247 430 300"/><path d="M552 196 Q563 244 564 302"/><path d="M354 343 Q346 410 344 485"/><path d="M629 350 Q645 414 648 487"/><path d="M264 549 Q242 639 241 742"/><path d="M326 578 Q313 660 313 778"/><path d="M677 567 Q700 663 708 777"/><path d="M735 548 Q762 649 770 751"/></g><g class="ripples"><ellipse cx="313" cy="778" rx="30" ry="6"/><ellipse cx="708" cy="777" rx="30" ry="6"/></g></svg>
     </div>
     <button class="guide-cta" id="openGuide" type="button">婚礼指南 <span aria-hidden="true">→</span></button>
@@ -54,17 +59,17 @@
         <img src="assets/06.webp" alt="新人婚纱照 6" hidden decoding="async">
         <img src="assets/07.webp" alt="新人婚纱照 7" hidden decoding="async">
       </div></div>
-      <img class="french-frame" src="assets/oval-lace.png" alt="" aria-hidden="true">
+      <img class="french-frame" src="assets/oval-lace-v2.png" alt="" aria-hidden="true">
     </figure>
     <div class="couple"><h1>李晨鸣 <span>&amp;</span> 高雅婷</h1></div>
     <div class="information">
       <div class="info-panel" id="datePanel" role="tabpanel" aria-labelledby="dateTab"><p class="date"><span>2026</span>11 <i>·</i> 20</p><p class="lunar-date">农历十月十二 <span aria-hidden="true">·</span> 星期五</p></div>
       <div class="info-panel" id="schedulePanel" role="tabpanel" aria-labelledby="scheduleTab" hidden><ol class="timeline"><li><i class="dot yellow"></i><time>14:18</time><span>迎宾签到</span></li><li><i class="dot red"></i><time>15:38</time><span>婚礼仪式</span></li><li><i class="dot blue"></i><time>18:08</time><span>婚礼晚宴</span></li><li><i class="dot green"></i><time>19:38</time><span>Afterparty</span></li></ol></div>
-      <div class="info-panel" id="locationPanel" role="tabpanel" aria-labelledby="locationTab" hidden><p class="location-label">WEDDING LOCATION</p><p class="venue">在方舟 <span lang="en">in the ark</span></p><p class="location-caption">台州市椒江区</p></div>
+      <div class="info-panel" id="locationPanel" role="tabpanel" aria-labelledby="locationTab" hidden><p class="venue">在方舟 <span lang="en">in the ark</span></p><p class="location-caption">台州市椒江区</p></div>
     </div>
-    <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel">日期</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1">流程</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1">地点</button></nav>
+    <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel" lang="en">DATE</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1" lang="en">TIMELINE</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1" lang="en">ADDRESS</button></nav>
   </section>
 </main>
-<script src="app.js?v=lace-20260921"></script>
+<script src="app.js?v=seal-20260921"></script>
 </body>
 </html>

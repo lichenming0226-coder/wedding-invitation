@@ -68,20 +68,22 @@
       if (id === 'guide') { tabs[panelIndex].focus({ preventScroll: true }); startRotation(); }
     }, duration(240));
   }
-  $('openEnvelope').addEventListener('click', () => {
+  function openEnvelope() {
     if (phase !== 'intro') return;
     phase = 'opening';
     $('intro').classList.add('opening');
     $('openEnvelope').disabled = true;
     $('openEnvelope').setAttribute('aria-expanded', 'true');
     $('letterCard').setAttribute('aria-hidden', 'false');
-    $('envelopeHint').textContent = '';
+    $('envelopeHint').disabled = true;
     later(() => {
       phase = 'letter';
       $('readInvitation').hidden = false;
       $('readInvitation').focus({ preventScroll: true });
-    }, duration(3600));
-  });
+    }, duration(3800));
+  }
+  $('openEnvelope').addEventListener('click', openEnvelope);
+  $('envelopeHint').addEventListener('click', openEnvelope);
   $('readInvitation').addEventListener('click', () => { if (phase === 'letter') showScene('poemStage'); });
   $('openGuide').addEventListener('click', () => { if (phase === 'poemStage') showScene('guide'); });
 
@@ -92,15 +94,20 @@
     try { await next.decode(); } catch { schedulePhoto(); return; }
     if (phase !== 'guide' || paused || document.hidden) return;
     const old = slides[photoIndex];
+    // Adjacent opaque slides move together, avoiding ghosted faces and blank frames.
+    next.hidden = false;
+    next.classList.add('entering');
+    void next.offsetWidth;
     old.classList.remove('active');
+    old.classList.add('exiting');
+    next.classList.remove('entering');
+    next.classList.add('active');
+    photoIndex = nextIndex;
     later(() => {
       old.hidden = true;
-      next.hidden = false;
-      photoIndex = nextIndex;
-      void next.offsetWidth;
-      next.classList.add('active');
+      old.classList.remove('exiting');
       schedulePhoto();
-    }, duration(310));
+    }, duration(950));
   }
   function schedulePhoto() { cancel(photoTimer); if (!paused && phase === 'guide' && !document.hidden) photoTimer = later(changePhoto, 4200); }
   function schedulePanel() { cancel(panelTimer); if (!paused && !infoSelected && phase === 'guide' && !document.hidden) panelTimer = later(() => changePanel((panelIndex + 1) % panels.length), 7000); }

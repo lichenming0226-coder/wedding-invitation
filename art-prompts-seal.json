@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "key": "seal-lg",
+      "file": "1-照片-1.jpg",
+      "prompt": "Use case: background-extraction and precise-object-edit. Extract ONLY the dark chocolate wax seal on the envelope in the reference screenshot, reconstruct as a high quality isolated front-on circular wax seal. Replace its existing initials with exactly 'LG', two elegant intertwined calligraphic serif capital letters, readable but artistic, debossed into wax with delicate subtle highlights. Keep handmade irregular rounded wax rim, raised double oval rim, matte dark cacao chocolate wax, soft natural relief. No envelope, no screenshot, no background, no other text, no symbols. Real transparent alpha background. Square asset, centered seal occupies 85 percent of width. Wedding website clickable seal asset.",
+      "output": "assets/seal-lg.png"
+    },
+    {
+      "key": "oval-lace-v2",
+      "file": "2-照片-2.jpg",
+      "prompt": "Use case: background-extraction. Extract ONLY the white oval French lace frame from this reference. Remove all paper filling, center writing, background, watermark and text. Real alpha transparency in entire center and outside. Preserve delicate soft fabric mesh lace, tiny floral embroidery, narrow inner stitched oval rim, softly scalloped outer edge as reference. A symmetric classic elongated VERTICAL ELLIPSE, not pointed, not egg-shaped, not circle. The photo aperture should be a mathematically regular ellipse. Canvas 1024x1536. Outer ring bounds x=105..919,y=48..1488; inner clear elliptical aperture x=155..869,y=115..1421. Lace thickness around 40px. No glow, no shadow, no opaque center. Ivory-white fine fabric threads rather than vector zigzag line. No additional bow or ornaments.",
+      "output": "assets/oval-lace-v2.png"
+    }
+  ]
+}
