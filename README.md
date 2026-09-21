@@ -4,7 +4,7 @@
 
 访问：https://lichenming0226-coder.github.io/wedding-invitation/
 
-当前版本使用深棕色纸张和加宽的两侧蕾丝。封面为轮廓更柔和的闭合蕾丝信封，带艺术 LG 火漆章；轻触后封口掀开，拍立得只从信封口向上出现，运动中不会穿出信封底部。右上角音乐按钮控制陶喆《就是爱你》的 Apple Music 官方试听片段：页面会在封面加载时尝试自动播放，受浏览器策略拦截时则在第一次轻触页面时播放。两只鸟独立飞动，织物感椭圆蕾丝相框配合平滑的照片进退场。信息标签为 DATE、TIMELINE、ADDRESS，时间线居中。
+当前版本使用半透明深棕色纸张，透出参考图重建的灰色蕾丝与四组无文字白色装饰图案。封面为轮廓柔和的闭合蕾丝信封，带艺术 LG 火漆章；轻触后封口掀开，拍立得只从信封口向上出现。封面与照片页的英文标题使用本地 Italianno 婚礼手写体。右上角音乐按钮控制陶喆《就是爱你》的 Apple Music 官方试听片段。两只鸟独立飞动，织物感椭圆蕾丝相框配合平滑的照片进退场。信息标签为 DATE、TIMELINE、ADDRESS，时间线居中。
 
 ## 源文件与部署
 
@@ -16,18 +16,19 @@
 
 - 320×568、390×844 手机布局：一屏展示，底部按钮可见，无横向溢出。
 - 闭合信封与「轻触信封」均可开封；上升动画中照片不会从信封底部穿出，最终仍有一部分留在信封内。
-- 序言字符直接落到最终排版位置，支持减少动态效果设置。
+- 新序言共十一行，整体居中并在一屏内呈现；字符直接落到最终排版位置，支持减少动态效果设置。
 - 二十张用户原始 JPEG 逐字节复制并完整加载，不做压缩或转码；每张约展示 3 秒，保留 0.9 秒平滑横向进退场。
-- ADDRESS 页面显示场地名、地区小字「台州市椒江区」和带定位图标的「前往导航」；既有时间线与飞鸟动画保留。
+- ADDRESS 页面显示场地名、地区小字「台州市椒江区」和带定位图标的「前往导航」；导航文字明确使用与正文一致的中文字体。
+- 半透明棕色内容层可见下方蕾丝和白色装饰图案，参考图中的文字、编号、标志和水印均未保留。
 - 音乐在封面加载时尝试自动播放；浏览器拦截有声自动播放时，第一次轻触页面即启动。右上角按钮可暂停、继续，播放器状态与无障碍标签同步。
 - 「轻触信封」「婚礼指南」「前往导航」从首次呈现起均使用金色。
 - JavaScript 语法、相对资源引用、透明边框及字体加载检查通过。
 
 ## 美术素材
 
-`assets/lace-envelope.png`、`assets/lace-envelope-v2.png`、`assets/oval-lace-v2.png`、`assets/side-lace.png`、`assets/seal-lg.png` 使用内置 image_gen 根据用户提供参考图提取、重建或调整。新版信封只改变外轮廓和比例，保留原有蕾丝材质与花纹。提示词记录在 `art-prompts.json`、`art-prompts-seal.json` 和 `art-prompts-envelope-v2.json`。
+`assets/lace-envelope.png`、`assets/lace-envelope-v2.png`、`assets/oval-lace-v2.png`、`assets/side-lace.png`、`assets/seal-lg.png` 和 `assets/lace-ornament-bg-v2.png` 使用内置 image_gen 根据用户提供参考图提取、重建或调整。新版背景保留蕾丝织物和白色装饰轮廓，并清除参考图中的所有文字、编号、标志与水印。提示词记录在 `art-prompts.json`、`art-prompts-seal.json`、`art-prompts-envelope-v2.json` 和 `art-prompts-background-v2.json`。
 
-字体：IM Fell English、ZCOOL XiaoWei；授权文件在 `assets/`。数字使用系统 Georgia 衬线体。
+字体：IM Fell English、ZCOOL XiaoWei、Italianno；授权文件在 `assets/`。Wedding Invitation 与 Welcome to our wedding 使用 Italianno，数字使用系统 Georgia 衬线体。
 
 ## 场地与高德地图
 

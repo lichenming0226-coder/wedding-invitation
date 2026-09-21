@@ -12,3 +12,10 @@
   font-display: swap;
   src: url(assets/hand-chinese-0.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Italianno';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/italianno-regular.ttf) format('truetype');
+}

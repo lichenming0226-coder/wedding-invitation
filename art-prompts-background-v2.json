@@ -1,0 +1,7 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "precise-object-edit",
+  "source": "user reference photo 1, 2026-09-21",
+  "output": "assets/lace-ornament-bg-v2.png",
+  "prompt": "Edit the supplied reference image by removing every piece of text, every letter, every number, every logo, and every watermark. Preserve the gray floral lace curtain texture and preserve the four white decorative object silhouettes: the small hanging door or cabinet, hand mirror, arched window or door, and ornate pendant. Remove the lettering inside and around those white motifs too, leaving clean purely ornamental white shapes with no characters. Keep the original portrait composition, approximate locations and scale of the motifs, muted warm gray lace, soft white ornaments, low contrast, and no new objects."
+}

@@ -1,16 +1,19 @@
 {
   "date": "2026-09-21",
-  "base_revision": "63f83868c7829dd9490e4a2343daf4507140154f",
-  "rollback_commit": "63f83868c7829dd9490e4a2343daf4507140154f",
+  "base_revision": "1ce9b48a638734085cef4e3ac85a01fea2e338b2",
+  "rollback_commit": "1ce9b48a638734085cef4e3ac85a01fea2e338b2",
   "changes": [
-    "Best-effort cover autoplay with first-touch fallback, gold interaction prompts, Taizhou Jiaojiang venue subtitle, and twenty original-quality gallery photos rotating about every three seconds."
+    "Translucent brown content over a text-free ornamental lace background, local wedding-script titles, a centered eleven-line invitation passage, and matching Chinese typography for venue navigation."
   ],
   "pending": [],
   "sha256": {
-    "index.html": "7a1ef49272db4225124a9d7264fb3ddf5fbbe255739469e37f4318c92b95cc58",
-    "app.js": "eb7c78fea76d52b311ac58cee664f27a512aa7fb39360a44f7d25eb00af17a0a",
-    "styles.css": "70a69a8e41a152a8e4b0064177d665f659f24482a59c405e82e03d51cc5b49c8",
-    "fonts.css": "ee42cfd22c664573b5b42f162d2e64602c3f7dad964c339d44498f29c80d88d4",
+    "index.html": "3e3a697851a301bf2fa21fda308ae82141d7f3fff6975ac6d93f80b9243e0923",
+    "app.js": "55f81c06697012d4925d96de154d7379aa78ca50ed73ec4fea0c42f1be27963d",
+    "styles.css": "fcaeb0420ca15276e64c3069d26bbc0a7a9c57e13a282f592b6b7b15cee678d1",
+    "fonts.css": "37bb2fb211f187fca9a685074d23e557daf4c90df62988715a6ae594fd820a66",
+    "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
+    "assets/italianno-OFL.txt": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
+    "assets/lace-ornament-bg-v2.png": "2cfb023416c3d388d39b8191c6206cafe7d4ca126126385b6a6d34af1b30ff8b",
     "assets/gallery-01.jpg": "93067b876bd4ba5287efda9f4a8b8f1ccecb9121761e6f6c9e2ecf50ffeb702a",
     "assets/gallery-02.jpg": "782c49e36b2736e8369eda390a673bc96395992567a4e2f476264be47ae67a88",
     "assets/gallery-03.jpg": "20bab00309db95b4a43d643f784d1384ed13ad23495a0b488fa35916fc90abc4",

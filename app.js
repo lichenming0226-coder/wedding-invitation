@@ -71,7 +71,7 @@
         { offset: .14, opacity: 1 },
         { offset: .85, opacity: 1, transform: 'translate(0, 3px) rotate(0)', easing: 'ease-out' },
         { offset: 1, opacity: 1, transform: 'translate(0, 0) rotate(0)' }
-      ], { duration: 1800, delay: index * 64, fill: 'both' });
+      ], { duration: 1500, delay: index * 38, fill: 'both' });
       animation.id = `poem-letter-${index}`;
       return animation;
     });
