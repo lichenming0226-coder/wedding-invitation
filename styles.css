@@ -43,7 +43,7 @@ p,h1,figure { margin:0 }
 .envelope-stage::after { content:""; position:absolute; z-index:3; inset:0; background:#eee3d2; clip-path:polygon(1% 43%,5% 44%,38% 65.5%,62% 65.5%,95% 44%,99% 43%,99% 88%,95% 97%,89% 100%,11% 100%,5% 97%,1% 88%); -webkit-mask:url("assets/lace-envelope-v2.png") left bottom/100% auto no-repeat; mask:url("assets/lace-envelope-v2.png") left bottom/100% auto no-repeat; pointer-events:none }
 .envelope-pocket { z-index:4; clip-path:polygon(1% 43%,5% 44%,38% 65.5%,62% 65.5%,95% 44%,99% 43%,99% 88%,95% 97%,89% 100%,11% 100%,5% 97%,1% 88%) }
 .envelope-trigger { position:absolute; inset:0; width:100%; height:100%; border:0; background:transparent; z-index:6; border-radius:3px }
-.envelope-hint { display:flex; align-items:center; justify-content:center; gap:9px; width:100%; margin-top:10px; min-height:44px; padding:9px 4px; border:0; background:transparent; font-size:.79rem; letter-spacing:.025em; color:var(--ivory); transition:opacity .5s ease }
+.envelope-hint { display:flex; align-items:center; justify-content:center; gap:9px; width:100%; margin-top:10px; min-height:44px; padding:9px 4px; border:0; background:transparent; font-size:.79rem; letter-spacing:.025em; color:var(--yellow); transition:opacity .5s ease }
 .couple-doodle { display:block; width:60%; max-width:190px; height:auto; margin:5px auto 0; transform-origin:center 75%; animation:doodleSway 4.8s ease-in-out infinite alternate; transition:opacity .7s ease; filter:url(#inkAlpha) }
 @keyframes doodleSway { from { transform:translateX(-3px) rotate(-1.5deg) } to { transform:translateX(3px) rotate(1.5deg) } }
 .letter-slot { position:absolute; z-index:2; left:1%; right:1%; bottom:10%; height:350%; overflow:hidden; pointer-events:none }
@@ -70,7 +70,7 @@ p,h1,figure { margin:0 }
 .ripples ellipse:nth-child(2) { animation-delay:-1.1s }
 @keyframes waterFlow { to { stroke-dashoffset:-108 } }
 @keyframes ripple { from { opacity:.7; transform:scale(.4) } to { opacity:0; transform:scale(1.8) } }
-.guide-cta { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; min-width:164px; padding:10px 16px; border:0; background:transparent; color:var(--ivory); letter-spacing:.12em; font-size:.84rem }
+.guide-cta { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; min-width:164px; padding:10px 16px; border:0; background:transparent; color:var(--yellow); letter-spacing:.12em; font-size:.84rem }
 .guide-cta .cta-arrow { margin-left:8px }
 .guide-cta:hover,.map-link:hover { color:var(--yellow) }
 /* Photo receives only the space remaining after readable information and controls. */
@@ -107,9 +107,10 @@ p,h1,figure { margin:0 }
 .dot { display:inline-block; width:4px; height:4px; border-radius:50%; vertical-align:middle }
 .red { background:#dca29d }.yellow { background:#e7c985 }.blue { background:#a7c0d2 }.green { background:#b9cbb1 }
 .location-label { font:400 .86rem/1.5 var(--serif); letter-spacing:.08em; color:var(--muted) }
-.venue { font-size:1.12rem; line-height:1.5; letter-spacing:.02em; margin-bottom:8px }
+.venue { font-size:1.12rem; line-height:1.5; letter-spacing:.02em; margin-bottom:2px }
 .venue span { display:inline-block; vertical-align:baseline; margin-right:3px; font:400 1.05rem/1.6 var(--serif); letter-spacing:.025em }
-.map-link { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; color:var(--ivory); font-size:.78rem; letter-spacing:.08em; text-decoration:none; touch-action:manipulation }
+.location-region { font-size:.7rem; line-height:1.5; color:var(--muted); letter-spacing:.12em }
+.map-link { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; color:var(--yellow); font-size:.78rem; letter-spacing:.08em; text-decoration:none; touch-action:manipulation }
 .map-link svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round }
 .info-tabs { display:flex; align-items:center; justify-content:center; gap:6px; border-top:1px solid #fff8e931; width:min(100%,252px); height:45px }
 .info-tabs button { position:relative; min-height:44px; min-width:0; flex:1; border:0; background:transparent; color:var(--muted); font:400 .71rem/1.2 var(--numerals); letter-spacing:.035em; padding:8px 4px }
@@ -133,7 +134,7 @@ p,h1,figure { margin:0 }
 .intro.opening .envelope-flap { transform:rotateX(0); z-index:1 }
 .intro.opening .wax-seal { opacity:0; transform:translate(-50%,-50%) scale(.82) }
 .letter-card figcaption { margin-top:9px; color:#634741; font:400 .92rem/1.1 var(--serif); letter-spacing:.03em }
-.tap-dot { display:inline-block; flex-shrink:0; width:6px; height:6px; border-radius:50%; background:#e9d4b1; box-shadow:0 0 0 4px #ead1aa15; animation:tapPulse 1.8s ease-in-out infinite }
+.tap-dot { display:inline-block; flex-shrink:0; width:6px; height:6px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 4px #ead1aa15; animation:tapPulse 1.8s ease-in-out infinite }
 @keyframes tapPulse { 50% { box-shadow:0 0 0 7px #ead1aa08; opacity:.55 } }
 .fountain-base { clip-path:polygon(32% 0,100% 0,100% 53%,79% 53%,79% 75%,100% 75%,100% 100%,0 100%,0 35%,32% 35%) }
 .fountain-bird { pointer-events:none }

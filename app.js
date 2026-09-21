@@ -22,7 +22,7 @@
     musicToggle.setAttribute('aria-label', `${playing ? '关闭' : '播放'}背景音乐：陶喆《就是爱你》`);
   }
   async function playMusic() {
-    try { await music.play(); } catch { musicPreference = 'off'; }
+    try { await music.play(); } catch { /* Browsers may require the first user gesture. */ }
     syncMusicButton();
   }
   musicToggle.addEventListener('click', () => {
@@ -31,6 +31,10 @@
   });
   music.addEventListener('play', syncMusicButton);
   music.addEventListener('pause', syncMusicButton);
+  playMusic();
+  document.addEventListener('pointerdown', event => {
+    if (musicPreference === 'auto' && music.paused && !musicToggle.contains(event.target)) playMusic();
+  }, { capture: true, once: true });
 
   const poemLetters = [];
   document.querySelectorAll('.poem p').forEach(line => {
@@ -129,7 +133,7 @@
       schedulePhoto();
     }, duration(950));
   }
-  function schedulePhoto() { cancel(photoTimer); if (!paused && phase === 'guide' && !document.hidden) photoTimer = later(changePhoto, 4200); }
+  function schedulePhoto() { cancel(photoTimer); if (!paused && phase === 'guide' && !document.hidden) photoTimer = later(changePhoto, 2050); }
   function schedulePanel() { cancel(panelTimer); if (!paused && !infoSelected && phase === 'guide' && !document.hidden) panelTimer = later(() => changePanel((panelIndex + 1) % panels.length), 7000); }
   function changePanel(index, manual = false) {
     if (manual) { infoSelected = true; cancel(panelTimer); }

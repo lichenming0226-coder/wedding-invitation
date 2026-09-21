@@ -1,22 +1,36 @@
 {
   "date": "2026-09-21",
-  "base_revision": "013285017c953c7903e6f2be96135c91964ead12",
-  "rollback_commit": "013285017c953c7903e6f2be96135c91964ead12",
+  "base_revision": "63f83868c7829dd9490e4a2343daf4507140154f",
+  "rollback_commit": "63f83868c7829dd9490e4a2343daf4507140154f",
   "changes": [
-    "Softer lace-envelope silhouette, fully masked Polaroid rise, compact venue navigation with location icon, and a top-right toggle for the official Apple Music preview of David Tao's Just Love."
+    "Best-effort cover autoplay with first-touch fallback, gold interaction prompts, Taizhou Jiaojiang venue subtitle, and twenty original-quality gallery photos rotating about every three seconds."
   ],
   "pending": [],
   "sha256": {
-    "index.html": "9e29213813512df760034d7cfcbc1ae8cb53a4f3b242a3eef46feee08a12a66b",
-    "app.js": "8960a94d0396dc9686762656c0d3d544a11e0878cc5df1ca12be53a266e1497c",
-    "styles.css": "de3d14ce2101fea9994c8b6e3fa05708d474a0fd352fc5fb6977371d452f1e69",
+    "index.html": "7a1ef49272db4225124a9d7264fb3ddf5fbbe255739469e37f4318c92b95cc58",
+    "app.js": "eb7c78fea76d52b311ac58cee664f27a512aa7fb39360a44f7d25eb00af17a0a",
+    "styles.css": "70a69a8e41a152a8e4b0064177d665f659f24482a59c405e82e03d51cc5b49c8",
     "fonts.css": "ee42cfd22c664573b5b42f162d2e64602c3f7dad964c339d44498f29c80d88d4",
-    "assets/01.webp": "6ea21d2100921d6cc6ff31f7fa465324a314f3f3fdaa4d8b8f9fa481f70f1d0d",
-    "assets/02.webp": "88a9cd2b753604851bef8448f5544d6270b13e2ae76a173e60eb5432b58414b4",
-    "assets/04.webp": "6bdd59eb10aa2a0c9937bce7d04ed9e23e7633b2462b0df81aef39673430ba33",
-    "assets/05.webp": "2747f6d1d45e8d0c27681c8b9b9a699f8fc5c350e770f716deec5090b0682603",
-    "assets/06.webp": "d4ff5318378178b09215dddb6fb5f565ec4774b62e149f45ffc4351ac9bce525",
-    "assets/07.webp": "91d9947a61c62a1cc2607fc909b25e63044f6bba01fec43637632b0c4bb1364b",
+    "assets/gallery-01.jpg": "93067b876bd4ba5287efda9f4a8b8f1ccecb9121761e6f6c9e2ecf50ffeb702a",
+    "assets/gallery-02.jpg": "782c49e36b2736e8369eda390a673bc96395992567a4e2f476264be47ae67a88",
+    "assets/gallery-03.jpg": "20bab00309db95b4a43d643f784d1384ed13ad23495a0b488fa35916fc90abc4",
+    "assets/gallery-04.jpg": "8588ea590a93d9c0311ae6296d2e14e346edeb0c35370389b517bd8256bf28a8",
+    "assets/gallery-05.jpg": "62eefdaf6da0e44d4c9af1dc9cdb8751818d2b79986915f750e8157633dc05d8",
+    "assets/gallery-06.jpg": "ba053d142db0d815288f51da03958c29296888ec7066ba54ef2d78ec728333a6",
+    "assets/gallery-07.jpg": "76af125e114e4a216dd3e2cc5bcd8533f33b2386e20ed66fd2a4317b1f03aa39",
+    "assets/gallery-08.jpg": "085f33949bc6311bb0b029a475b6308b8969819b972504a9b2c3101389386cb6",
+    "assets/gallery-09.jpg": "22e9d10e0cff385035e8916344195437f73072778bbb05878d00f71c130bf427",
+    "assets/gallery-10.jpg": "30aed683d7053463ba9d469f7f0f10786afccd0bc181123dcc7fba1768c9a92a",
+    "assets/gallery-11.jpg": "4e4c48d7f5e910fb7d128cf42f2b263bbda7295622c428df95a3b3f9813d514c",
+    "assets/gallery-12.jpg": "6b64638bc6592fd2d5c7901d550b9d5e7aa79a394e1a8292ae6560c88ef0aacc",
+    "assets/gallery-13.jpg": "780bd40729f777ec7685578fc61dd25ab53f871664cc7b046d55cbe916e47a44",
+    "assets/gallery-14.jpg": "b561067d72025c881562a54b06e4d25f5a5eda0c646b129085ac24c5b9572cfa",
+    "assets/gallery-15.jpg": "8e8122e6a822b335060107797f81ef7c6b5cddcab26daf012a8c51fb3c12be7a",
+    "assets/gallery-16.jpg": "c964bcca87566895a349e6b1846d947dba5456c1fd9469ac85da93ed7230a8ae",
+    "assets/gallery-17.jpg": "a2ee59d16662b3c50935eac84e752706f7d4ee6bf798c0e53db5431595cbc3f8",
+    "assets/gallery-18.jpg": "98bb9d2c5bbd5074e5758839b8e66789aec11c01e1b3e68d1611acd07acba94c",
+    "assets/gallery-19.jpg": "b001b7f92b0e449143b6017c73ad31dc31e424830503f1570405d128ab6a9399",
+    "assets/gallery-20.jpg": "8a804fe04498dcc59abfdd92b759f3a903b09783e9b5a54b23801671f9c11bc2",
     "assets/couple-comic.png": "055f63790bda87a8aad69dbcba47d7112a9bee7476e3cdcddc88a8bf3141d440",
     "assets/envelope-photo.jpg": "5c7569df728f08c0493f7087d8ffd9e73c27ae8f855e0bb7937bd6a6de73b124",
     "assets/fountain-birds.png": "50404644c86a0e4e8715172c4d6933c702c1d5aa38dbf483a7471b5eb1e8b8ea",
@@ -33,8 +47,15 @@
   },
   "venue": {
     "name": "In The Ark在方舟礼堂",
-    "address": "葭沚街道一江山大道7888号心海天地5号街区4幢103、203号",
+    "region": "台州市椒江区",
     "share_url": "https://surl.amap.com/2GpW2KO1tfrK",
     "verified_poi_id": "B0L13D6H5I"
+  },
+  "music": {
+    "title": "就是爱你 (Love Can)",
+    "artist": "陶喆",
+    "netease_share_url": "https://163cn.tv/bgOWYThL",
+    "netease_song_id": "150430",
+    "stream_note": "The NetEase share URL is an HTML song page, not a direct audio stream; the official Apple preview remains the playable source."
   }
 }
