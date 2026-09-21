@@ -1,0 +1,7 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "source": "assets/lace-envelope.png",
+  "output": "assets/lace-envelope-v2.png",
+  "prompt": "Adjust only the envelope silhouette so the closed lower envelope feels softer, more elegant, and less boxy. Make it slightly taller and less wide, with gently curved side edges and rounded lower corners, while keeping the opening, flap, front pocket geometry, ivory French lace material, embroidery motifs, thread texture, warmth, and tonal shading. Centered, symmetric, true transparent background. No text, seal, photo, ribbon, new ornament, background, or external shadow."
+}

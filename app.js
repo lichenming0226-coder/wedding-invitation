@@ -6,12 +6,31 @@
   const tabs = [...document.querySelectorAll('[role="tab"]')];
   const panels = tabs.map(tab => $(tab.dataset.panel));
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const music = $('bgMusic');
+  const musicToggle = $('musicToggle');
   const timers = new Set();
   let phase = 'intro', photoIndex = 0, panelIndex = 0;
   let paused = motion.matches, infoSelected = false, photoTimer, panelTimer, switchingPanel = false;
+  let musicPreference = 'auto';
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
   const cancel = id => { clearTimeout(id); timers.delete(id); };
   const duration = ms => motion.matches ? 0 : ms;
+
+  function syncMusicButton() {
+    const playing = !music.paused;
+    musicToggle.setAttribute('aria-pressed', String(playing));
+    musicToggle.setAttribute('aria-label', `${playing ? '关闭' : '播放'}背景音乐：陶喆《就是爱你》`);
+  }
+  async function playMusic() {
+    try { await music.play(); } catch { musicPreference = 'off'; }
+    syncMusicButton();
+  }
+  musicToggle.addEventListener('click', () => {
+    if (music.paused) { musicPreference = 'on'; playMusic(); }
+    else { musicPreference = 'off'; music.pause(); }
+  });
+  music.addEventListener('play', syncMusicButton);
+  music.addEventListener('pause', syncMusicButton);
 
   const poemLetters = [];
   document.querySelectorAll('.poem p').forEach(line => {
@@ -70,6 +89,7 @@
   }
   function openEnvelope() {
     if (phase !== 'intro') return;
+    if (musicPreference !== 'off' && music.paused) playMusic();
     phase = 'opening';
     $('intro').classList.add('opening');
     $('openEnvelope').disabled = true;

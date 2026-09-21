@@ -6,26 +6,33 @@
   <meta name="theme-color" content="#291f20">
   <meta name="description" content="李晨鸣与高雅婷的婚礼邀请函｜2026年11月20日">
   <title>李晨鸣 &amp; 高雅婷｜婚礼邀请函</title>
-  <link rel="stylesheet" href="fonts.css?v=ark-20260921">
-  <link rel="stylesheet" href="styles.css?v=ark-20260921">
+  <link rel="stylesheet" href="fonts.css?v=music-20260921">
+  <link rel="stylesheet" href="styles.css?v=music-20260921">
 </head>
 <body>
 <main class="invitation" aria-label="李晨鸣与高雅婷的婚礼邀请函">
   <div class="grain" aria-hidden="true"></div>
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="播放背景音乐：陶喆《就是爱你》" aria-pressed="false">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 22.5V9.2l12-2.6v13.2M12 13l12-2.6"/><ellipse cx="8.8" cy="23.3" rx="3.8" ry="3"/><ellipse cx="20.8" cy="20.6" rx="3.8" ry="3"/></svg>
+    <span class="music-wave" aria-hidden="true"></span>
+  </button>
+  <audio id="bgMusic" preload="none" loop>
+    <source src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ba/48/bc/ba48bc57-3dff-1670-c025-b0f751dcb4ee/mzaf_5332294480655763216.plus.aac.p.m4a" type="audio/mp4">
+  </audio>
   <svg class="render-filters" aria-hidden="true" width="0" height="0"><defs><filter id="inkAlpha" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="linear" slope="7" intercept="-5"/></feComponentTransfer></filter></defs></svg>
   <section class="scene intro" id="intro" aria-label="开启婚礼邀请">
     <div class="intro-heading"><p class="invitation-title">Wedding invitation</p><p class="handwriting">Li <span class="ampersand">&amp;</span> Gao</p></div>
     <div class="envelope-wrap" id="envelopeWrap">
       <div class="envelope-stage">
-        <img class="envelope-back" src="assets/lace-envelope.png" alt="" aria-hidden="true" width="1254" height="1254">
+        <img class="envelope-back" src="assets/lace-envelope-v2.png" alt="" aria-hidden="true" width="1254" height="1254">
         <div class="letter-slot">
           <figure class="letter-card" id="letterCard" aria-hidden="true">
             <img src="assets/envelope-photo.jpg" width="1280" height="1920" alt="我们在树下举着 Save the Date 婚礼日期牌的照片" fetchpriority="high">
             <figcaption>Li &amp; Gao</figcaption>
           </figure>
         </div>
-        <img class="envelope-pocket" src="assets/lace-envelope.png" alt="" aria-hidden="true" width="1254" height="1254">
-        <img class="envelope-flap" src="assets/lace-envelope.png" alt="" aria-hidden="true" width="1254" height="1254">
+        <img class="envelope-pocket" src="assets/lace-envelope-v2.png" alt="" aria-hidden="true" width="1254" height="1254">
+        <img class="envelope-flap" src="assets/lace-envelope-v2.png" alt="" aria-hidden="true" width="1254" height="1254">
         <img class="wax-seal" src="assets/seal-lg.png" alt="" aria-hidden="true" width="1024" height="1024">
         <button class="envelope-trigger" id="openEnvelope" type="button" aria-label="轻触信封，打开婚礼邀请信" aria-expanded="false" aria-controls="letterCard"></button>
       </div>
@@ -65,11 +72,11 @@
     <div class="information">
       <div class="info-panel" id="datePanel" role="tabpanel" aria-labelledby="dateTab"><p class="date"><span>2026</span>11 <i>·</i> 20</p><p class="lunar-date">农历十月十二 <span aria-hidden="true">·</span> 星期五</p></div>
       <div class="info-panel" id="schedulePanel" role="tabpanel" aria-labelledby="scheduleTab" hidden><ol class="timeline"><li><i class="dot yellow"></i><time>14:18</time><span>迎宾签到</span></li><li><i class="dot red"></i><time>15:38</time><span>婚礼仪式</span></li><li><i class="dot blue"></i><time>18:08</time><span>婚礼晚宴</span></li><li><i class="dot green"></i><time>19:38</time><span>Afterparty</span></li></ol></div>
-      <div class="info-panel" id="locationPanel" role="tabpanel" aria-labelledby="locationTab" hidden><p class="venue"><span lang="en">In The Ark</span> 在方舟礼堂</p><p class="location-caption">葭沚街道一江山大道7888号<br>心海天地5号街区4幢103、203号</p><a class="map-link" href="https://surl.amap.com/2GpW2KO1tfrK" target="_blank" rel="noopener noreferrer" aria-label="在高德地图打开 In The Ark 在方舟礼堂，前往导航">高德地图 · 前往导航 <span aria-hidden="true">↗</span></a></div>
+      <div class="info-panel" id="locationPanel" role="tabpanel" aria-labelledby="locationTab" hidden><p class="venue"><span lang="en">In The Ark</span> 在方舟礼堂</p><a class="map-link" href="https://surl.amap.com/2GpW2KO1tfrK" target="_blank" rel="noopener noreferrer" aria-label="打开 In The Ark 在方舟礼堂导航"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.7 6-11a6 6 0 1 0-12 0c0 5.3 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span>前往导航</span></a></div>
     </div>
     <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel" lang="en">DATE</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1" lang="en">TIMELINE</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1" lang="en">ADDRESS</button></nav>
   </section>
 </main>
-<script src="app.js?v=ark-20260921"></script>
+<script src="app.js?v=music-20260921"></script>
 </body>
 </html>

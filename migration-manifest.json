@@ -1,15 +1,15 @@
 {
   "date": "2026-09-21",
-  "base_revision": "105167b56f2c49406e55e09f266ca7b983fc3473",
-  "rollback_commit": "105167b56f2c49406e55e09f266ca7b983fc3473",
+  "base_revision": "013285017c953c7903e6f2be96135c91964ead12",
+  "rollback_commit": "013285017c953c7903e6f2be96135c91964ead12",
   "changes": [
-    "Centered larger closed envelope, partially tucked Polaroid reveal, unboxed prompts with blinking dots, minimal English information tabs, and verified user-provided AMap venue link and full address."
+    "Softer lace-envelope silhouette, fully masked Polaroid rise, compact venue navigation with location icon, and a top-right toggle for the official Apple Music preview of David Tao's Just Love."
   ],
   "pending": [],
   "sha256": {
-    "index.html": "4bfa3e8f7cdf6c537db0f3943f184a30560c7d46c4e5beff19fb47c8b4abecf2",
-    "app.js": "4eb88d873c96d0f3285421c92d6a7842bffe7b5937a1133192d9dd930869adf8",
-    "styles.css": "4b44f0d9bcda2790ec59a2223a3209663edc56bbec167351baa7632f069e92b1",
+    "index.html": "9e29213813512df760034d7cfcbc1ae8cb53a4f3b242a3eef46feee08a12a66b",
+    "app.js": "8960a94d0396dc9686762656c0d3d544a11e0878cc5df1ca12be53a266e1497c",
+    "styles.css": "de3d14ce2101fea9994c8b6e3fa05708d474a0fd352fc5fb6977371d452f1e69",
     "fonts.css": "ee42cfd22c664573b5b42f162d2e64602c3f7dad964c339d44498f29c80d88d4",
     "assets/01.webp": "6ea21d2100921d6cc6ff31f7fa465324a314f3f3fdaa4d8b8f9fa481f70f1d0d",
     "assets/02.webp": "88a9cd2b753604851bef8448f5544d6270b13e2ae76a173e60eb5432b58414b4",
@@ -24,6 +24,7 @@
     "assets/hand-english-0.ttf": "725a44824e534dfb26af2bf135dd6fab577ec7f0781c5be17bd89e7ce22f035a",
     "assets/imfellenglish-OFL.txt": "2a3ca501fc4d5efcad9798531e3e06962b1e20c60e464f6cbd6c17630112c773",
     "assets/lace-envelope.png": "ed5b3c9fa32117c9b8b2150f8fa77ef2e766df26f214757b217e0b84be6ef7ab",
+    "assets/lace-envelope-v2.png": "90a02692fa11bf1b6ade0106acd6301c3e5027ef8241c0e069e9737d6b9b942b",
     "assets/oval-lace-v2.png": "18993587c5ce3999f55763cbdd63cd93e49c4829fa0b3eaf4fa1ad875f70dfb0",
     "assets/paper-texture.svg": "674f2845ea7f7159b6792bea51b59e0a33064a9097a772d102f78778db5a85aa",
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
