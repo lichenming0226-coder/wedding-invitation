@@ -3,26 +3,26 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(assets/hand-english-20260925.woff2) format('woff2');
+  src: url(assets/assets/hand-english-20260925.woff2) format('woff2');
 }
 @font-face {
   font-family: 'ZCOOL XiaoWei';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(assets/hand-chinese-20260925.woff2) format('woff2');
+  src: url(assets/assets/hand-chinese-20260925.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Italianno';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(assets/italianno-20260925.woff2) format('woff2');
+  src: url(assets/assets/italianno-20260925.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Italianno Journey';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(assets/italianno-journey-20260925.woff2) format('woff2');
+  src: url(assets/assets/italianno-journey-20260925.woff2) format('woff2');
 }

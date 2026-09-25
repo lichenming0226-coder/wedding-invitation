@@ -1,23 +1,24 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260925-v11';
+const CACHE = 'wedding-invitation-20260926-v12';
+const NAVIGATION_FALLBACK = './index.html';
 const CORE = [
-  './?v=loading-hearts-v2-20260925',
+  NAVIGATION_FALLBACK,
   './fonts.css?v=thin-tagline-20260925',
   './styles.css?v=loading-hearts-v2-20260925',
   './app.js?v=loading-hearts-v2-20260925',
-  './assets/paper-texture.svg',
-  './assets/hand-chinese-20260925.woff2',
-  './assets/hand-english-20260925.woff2',
-  './assets/italianno-20260925.woff2',
-  './assets/italianno-journey-20260925.woff2',
-  './assets/lace-ornament-bg-20260925.webp',
-  './assets/lace-envelope-20260925.webp',
-  './assets/seal-20260925.webp',
-  './assets/couple-comic-20260925.webp',
-  './assets/envelope-photo-20260925.webp',
-  './assets/share-thumbnail-original-20260925.jpg',
-  './assets/favicon-20260925.png',
+  './assets/assets/paper-texture.svg',
+  './assets/assets/hand-chinese-20260925.woff2',
+  './assets/assets/hand-english-20260925.woff2',
+  './assets/assets/italianno-20260925.woff2',
+  './assets/assets/italianno-journey-20260925.woff2',
+  './assets/assets/lace-ornament-bg-20260925.webp',
+  './assets/assets/lace-envelope-20260925.webp',
+  './assets/assets/seal-20260925.webp',
+  './assets/assets/couple-comic-20260925.webp',
+  './assets/assets/envelope-photo-20260925.webp',
+  './assets/assets/share-thumbnail-original-20260925.jpg',
+  './assets/assets/favicon-20260925.png',
 ];
 
 self.addEventListener('install', event => {
@@ -50,11 +51,11 @@ self.addEventListener('fetch', event => {
         .then(response => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE).then(cache => cache.put('./?v=loading-hearts-v2-20260925', copy));
+            caches.open(CACHE).then(cache => cache.put(NAVIGATION_FALLBACK, copy));
           }
           return response;
         })
-        .catch(() => caches.match('./?v=loading-hearts-v2-20260925')),
+        .catch(() => caches.match(NAVIGATION_FALLBACK)),
     );
     return;
   }

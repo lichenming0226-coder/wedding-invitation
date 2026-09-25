@@ -8,7 +8,7 @@
 * { box-sizing:border-box }
 html { min-height:100%; background:var(--brown) }
 body { margin:0; color:var(--ivory); font-family:var(--chinese); font-weight:400; -webkit-font-smoothing:antialiased }
-body::before { content:""; position:fixed; inset:0; z-index:-1; background:linear-gradient(#291f2018,#291f2018),url("assets/lace-ornament-bg-20260925.webp") center/auto 100% repeat-x; pointer-events:none }
+body::before { content:""; position:fixed; inset:0; z-index:-1; background:linear-gradient(#291f2018,#291f2018),url("assets/assets/lace-ornament-bg-20260925.webp") center/auto 100% repeat-x; pointer-events:none }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation }
 button:disabled { cursor:default }
 button:focus-visible,a:focus-visible { outline:1px solid var(--ivory); outline-offset:5px }
@@ -17,7 +17,7 @@ p,h1,figure { margin:0 }
 .share-thumbnail { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap }
 .invitation { position:relative; isolation:isolate; width:min(calc(100% - 52px),520px); min-height:100svh; margin:auto; overflow:hidden; background:rgb(41 31 32 / 84%); box-shadow:0 0 32px #160f1050; backdrop-filter:blur(.35px) }
 .invitation::before { content:""; position:absolute; z-index:0; inset:10px; border:1px solid #fff7e914; pointer-events:none }
-.grain { position:absolute; z-index:0; inset:0; pointer-events:none; opacity:.13; background:url("assets/paper-texture.svg") 0 0/240px 240px; mix-blend-mode:soft-light }
+.grain { position:absolute; z-index:0; inset:0; pointer-events:none; opacity:.13; background:url("assets/assets/paper-texture.svg") 0 0/240px 240px; mix-blend-mode:soft-light }
 .music-toggle { position:fixed; z-index:20; top:max(17px,env(safe-area-inset-top)); left:calc(50% + min(calc((100vw - 52px)/2),260px) - 47px); display:grid; place-items:center; width:38px; height:38px; padding:7px; border:0; border-radius:50%; background:#291f20a8; color:var(--ivory); backdrop-filter:blur(4px) }
 .music-toggle svg { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round }
 .music-wave { position:absolute; inset:3px; border:1px solid #fff8ed38; border-radius:50%; opacity:0 }
@@ -41,7 +41,7 @@ p,h1,figure { margin:0 }
 .envelope-stage { position:relative; width:96%; margin-inline:auto; aspect-ratio:1/.59; isolation:isolate; transition:transform 1.5s cubic-bezier(.22,.65,.25,1) }
 .envelope-back,.envelope-pocket,.envelope-flap { display:block; position:absolute; left:0; bottom:0; width:100%; height:auto; pointer-events:none }
 .envelope-back { z-index:1; clip-path:polygon(4% 43%,96% 43%,99% 47%,99% 88%,95% 97%,89% 100%,11% 100%,5% 97%,1% 88%,1% 47%) }
-.envelope-stage::after { content:""; position:absolute; z-index:3; inset:0; background:#eee3d2; clip-path:polygon(1% 43%,5% 44%,38% 65.5%,62% 65.5%,95% 44%,99% 43%,99% 88%,95% 97%,89% 100%,11% 100%,5% 97%,1% 88%); -webkit-mask:url("assets/lace-envelope-20260925.webp") left bottom/100% auto no-repeat; mask:url("assets/lace-envelope-20260925.webp") left bottom/100% auto no-repeat; pointer-events:none }
+.envelope-stage::after { content:""; position:absolute; z-index:3; inset:0; background:#eee3d2; clip-path:polygon(1% 43%,5% 44%,38% 65.5%,62% 65.5%,95% 44%,99% 43%,99% 88%,95% 97%,89% 100%,11% 100%,5% 97%,1% 88%); -webkit-mask:url("assets/assets/lace-envelope-20260925.webp") left bottom/100% auto no-repeat; mask:url("assets/assets/lace-envelope-20260925.webp") left bottom/100% auto no-repeat; pointer-events:none }
 .envelope-pocket { z-index:4; clip-path:polygon(1% 43%,5% 44%,38% 65.5%,62% 65.5%,95% 44%,99% 43%,99% 88%,95% 97%,89% 100%,11% 100%,5% 97%,1% 88%) }
 .envelope-trigger { position:absolute; inset:0; width:100%; height:100%; border:0; background:transparent; z-index:6; border-radius:3px }
 .envelope-hint { display:flex; align-items:center; justify-content:center; gap:9px; width:100%; margin-top:10px; min-height:44px; padding:9px 4px; border:0; background:transparent; font-size:.79rem; letter-spacing:.025em; color:var(--yellow); transition:opacity .5s ease }
