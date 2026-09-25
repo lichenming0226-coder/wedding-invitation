@@ -14,6 +14,8 @@
 
 注意：微信是否显示外链安全提示由微信的链接风控、域名信誉、备案和公众号配置共同决定，网页前端代码不能关闭或绕过该提示。若需要可控的微信自定义分享卡片与更高的中国大陆可用性，应使用自有已备案域名、认证公众号的 JS 接口安全域名，以及可在中国大陆稳定访问的 CDN/对象存储；这属于后续域名与平台配置，不由当前 GitHub Pages 静态页单独完成。
 
+仓库根目录包含微信要求的站点校验文件 `c90bc8a611d176d0a69aa5b0dcf7337b.txt`。在当前 GitHub Project Pages 部署结构中，其公网地址为 `https://lichenming0226-coder.github.io/wedding-invitation/c90bc8a611d176d0a69aa5b0dcf7337b.txt`。该文件完成的是站点所有权校验材料发布，微信是否解除安全提示以及生效时间仍由微信侧审核和缓存决定。
+
 ## 源文件与部署
 
 本仓库根目录的 `index.html`、`styles.css`、`app.js`、`fonts.css` 和 `assets/` 是当前维护源。GitHub Pages 从 `main` 根目录发布，`.nojekyll` 保留静态文件原样输出，无需构建。除 Apple 官方音乐试听外，页面资源均为同源相对路径。

@@ -1,13 +1,13 @@
 {
   "date": "2026-09-25",
-  "base_revision": "8c53c64f70a393e5ae5c557cfc8181fb7cadecff",
-  "rollback_commit": "8c53c64f70a393e5ae5c557cfc8181fb7cadecff",
+  "base_revision": "21913eb86361656648b7851cb430c429841cb4fe",
+  "rollback_commit": "21913eb86361656648b7851cb430c429841cb4fe",
   "changes": [
-    "Replaced the intro footer text 20 NOVEMBER 2026 with Love begins our journey.",
-    "Added a local OFL-licensed Pacifico WOFF2 subset to match the reference image bold rounded connected-script style without changing other headings.",
-    "Bumped the service-worker cache to v3 and precached the new font and versioned stylesheet."
+    "Added the requested WeChat site-verification TXT file at the published wedding-invitation site root."
   ],
-  "pending": [],
+  "pending": [
+    "The verification file proves control only at the published project path; WeChat still controls review timing, cache refresh, and whether an external-link warning is removed."
+  ],
   "sha256": {
     "index.html": "a3c4a7267d5872bcbf8b26b46149b88ac08a06a99f72f802d7f923e881ccf7a4",
     "app.js": "c6b512a004449d4be6ee0f9d72ab68afa71c4ebae0b451addcc336382522a9a9",
@@ -49,7 +49,7 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "fc4d6ee04efd585be5fa426b03aa34e4da2f85a438e70138a49c2c4966698a5f",
+    "README.md": "375ba4e167cb27d723f32d3149b95eaccfc189f2a45c0137265a0ea73bc507cc",
     "service-worker.js": "8fa652be22ea02214422c032dfaa732989c21607a547666a58476bd8c89571ca",
     "scripts/optimize-assets.mjs": "124182a6057e9e72a773aab89e3cfe00f55f39ad6e5c8518bf36f37bc23ea972",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
@@ -86,7 +86,8 @@
     "assets/share-preview-20260925.jpg": "cc6ed0e24c8f70cbacc4c926c46a369e087fea2c699468bcc2fc7ac49fe3fb3c",
     "assets/share-thumbnail-20260925.jpg": "3bdf3955e5ffd1fd658402863a798cc2a85be9936fcb395cd6e842373ac3d8ad",
     "assets/pacifico-journey-20260925.woff2": "3932da27c4a9f1f1b4b3b69e3d7c50dbd23866d80275b1bd64f4a281fa1b081a",
-    "assets/pacifico-OFL.txt": "e1b964e3f56697598c46363a8864f0a7b883c86a0c01a9a6a4e90e6949d60ba2"
+    "assets/pacifico-OFL.txt": "e1b964e3f56697598c46363a8864f0a7b883c86a0c01a9a6a4e90e6949d60ba2",
+    "c90bc8a611d176d0a69aa5b0dcf7337b.txt": "3f6566bf0ce55b79644afdc745c563ac796db34c1f0e7e448cd43140208b02b0"
   },
   "venue": {
     "name": "In The Ark在方舟礼堂",
