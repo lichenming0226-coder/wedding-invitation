@@ -73,4 +73,4 @@ In The Ark 在方舟礼堂，页面补充地区小字「台州市椒江区」。
 
 ## 背景音乐
 
-用户提供的源文件为 `/Users/lichenming/Downloads/04 - 就是爱你.flac`。源文件是可完整解码的 44.1 kHz、16-bit、双声道 FLAC，时长 261.906667 秒，元数据为陶喆《就是爱你》、专辑《太平盛世》。网页使用由该文件转码得到的 `assets/love-can-full-20260925.m4a`：AAC-LC 160 kbps、44.1 kHz、双声道、faststart，时长 261.906009 秒、大小约 5.1 MB。音频不加入 Service Worker 预缓存，浏览器通过普通 HTTP/Range 渐进加载。页面进入时立即尝试播放；浏览器拦截有声自动播放时，微信桥接器就绪或首次轻触页面会重试。
+用户提供的源文件为 `/Users/lichenming/Downloads/04 - 就是爱你.flac`。源文件是可完整解码的 44.1 kHz、16-bit、双声道 FLAC，时长 261.906667 秒，元数据为陶喆《就是爱你》、专辑《太平盛世》。网页使用由该文件转码得到的 `assets/love-can-full-20260925.m4a`：AAC-LC 160 kbps、44.1 kHz、双声道、faststart，时长 261.906009 秒、大小约 5.1 MB。音频不加入 Service Worker 预缓存，浏览器通过普通 HTTP/Range 渐进加载。页面进入时立即尝试播放；浏览器拦截有声自动播放时，会持续监听首次 `touchstart`、`pointerdown`、`click` 或 `keydown`，直到真正播放成功后才解除监听。微信桥接器无论在脚本前后就绪都会触发重试，页面恢复和音频 metadata 就绪时也会补充重试。

@@ -47,6 +47,10 @@
     musicToggle.setAttribute('aria-label', `${playing ? '关闭' : '播放'}背景音乐：陶喆《就是爱你》`);
   }
   async function playMusic() {
+    if (musicPreference === 'off' || !music.paused) {
+      syncMusicButton();
+      return;
+    }
     if (!music.src && music.dataset.src) {
       music.src = music.dataset.src;
       delete music.dataset.src;
@@ -61,13 +65,33 @@
   });
   music.addEventListener('play', syncMusicButton);
   music.addEventListener('pause', syncMusicButton);
+  const unlockEvents = ['touchstart', 'pointerdown', 'click', 'keydown'];
+  const removeMusicUnlockListeners = () => {
+    unlockEvents.forEach(type => document.removeEventListener(type, unlockMusic, true));
+  };
+  function unlockMusic(event) {
+    if (musicPreference !== 'auto' || !music.paused || musicToggle.contains(event.target)) return;
+    playMusic();
+  }
+  unlockEvents.forEach(type => document.addEventListener(type, unlockMusic, { capture: true, passive: true }));
+  music.addEventListener('play', removeMusicUnlockListeners, { once: true });
   playMusic();
-  document.addEventListener('WeixinJSBridgeReady', () => {
+  const playThroughWeixinBridge = () => {
+    if (musicPreference !== 'auto' || !music.paused) return;
+    if (window.WeixinJSBridge?.invoke) {
+      window.WeixinJSBridge.invoke('getNetworkType', {}, playMusic);
+    } else {
+      playMusic();
+    }
+  };
+  document.addEventListener('WeixinJSBridgeReady', playThroughWeixinBridge, { once: true });
+  if (window.WeixinJSBridge) playThroughWeixinBridge();
+  music.addEventListener('loadedmetadata', () => {
     if (musicPreference === 'auto' && music.paused) playMusic();
   }, { once: true });
-  document.addEventListener('pointerdown', event => {
-    if (musicPreference === 'auto' && music.paused && !musicToggle.contains(event.target)) playMusic();
-  }, { capture: true, once: true });
+  window.addEventListener('pageshow', () => {
+    if (musicPreference === 'auto' && music.paused) playMusic();
+  });
   runWhenIdle(() => decodeImage(document.querySelector('.letter-card img')));
 
   const poemLetters = [];
