@@ -36,7 +36,7 @@ p,h1,figure { margin:0 }
 .invitation-title { font:400 clamp(2rem,8.2vw,2.85rem)/1.05 var(--script); letter-spacing:.01em }
 .handwriting { font:400 2.1rem/1.3 var(--serif); margin-top:10px; letter-spacing:.035em }
 .ampersand { display:inline-block; font:400 .68em/1 Georgia,serif; margin:0 .12em; vertical-align:.08em }
-.intro-tagline { position:absolute; bottom:max(20px,env(safe-area-inset-bottom)); left:0; width:100%; padding:0 12px; font:400 clamp(1rem,5.7vw,1.65rem)/1.35 "Pacifico","Brush Script MT",cursive; letter-spacing:0; color:var(--muted); white-space:nowrap }
+.intro-tagline { position:absolute; bottom:max(24px,env(safe-area-inset-bottom)); left:0; width:100%; padding:0 12px; font:400 clamp(.9rem,4.2vw,1.08rem)/1.25 "Italianno Journey","Italianno","Snell Roundhand",cursive; font-kerning:normal; font-synthesis:none; letter-spacing:0; color:var(--muted); white-space:nowrap }
 .envelope-wrap { position:absolute; top:50%; left:50%; transform:translate(-50%,calc(var(--env-size)*-.28)); width:var(--env-size); text-align:center }
 .envelope-stage { position:relative; width:96%; margin-inline:auto; aspect-ratio:1/.59; isolation:isolate; transition:transform 1.5s cubic-bezier(.22,.65,.25,1) }
 .envelope-back,.envelope-pocket,.envelope-flap { display:block; position:absolute; left:0; bottom:0; width:100%; height:auto; pointer-events:none }

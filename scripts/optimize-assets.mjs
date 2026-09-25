@@ -88,9 +88,8 @@ await sharp(shareBackground)
 
 const squarePhoto = await sharp(path.join(assets, 'gallery-01.jpg'))
   .rotate()
-  .extract({ left: 0, top: 140, width: 760, height: 760 })
+  .extract({ left: 0, top: 150, width: 720, height: 720 })
   .resize({ width: 600, height: 600, fit: 'fill' })
-  .modulate({ saturation: 0.92 })
   .toBuffer();
 
 const squareBorder = Buffer.from(`
@@ -101,8 +100,8 @@ const squareBorder = Buffer.from(`
 
 await sharp(squarePhoto)
   .composite([{ input: squareBorder, left: 0, top: 0 }])
-  .jpeg({ quality: 88, progressive: true, mozjpeg: true })
-  .toFile(path.join(assets, `share-thumbnail-clean-${version}.jpg`));
+  .jpeg({ quality: 95, progressive: true, mozjpeg: true })
+  .toFile(path.join(assets, `share-thumbnail-original-${version}.jpg`));
 
 await sharp(path.join(assets, 'seal-lg.png'))
   .resize({ width: 96, height: 96, fit: 'inside' })

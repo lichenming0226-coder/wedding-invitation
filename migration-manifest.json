@@ -1,20 +1,20 @@
 {
   "date": "2026-09-25",
-  "base_revision": "a01641d9cf78408a7ae062237defefd2793e33fe",
-  "rollback_commit": "a01641d9cf78408a7ae062237defefd2793e33fe",
+  "base_revision": "ea99ea7a82ec875c8a8150294f47534e508f62d1",
+  "rollback_commit": "ea99ea7a82ec875c8a8150294f47534e508f62d1",
   "changes": [
-    "Replaced the square share image with a text-free deterministic crop from the original gallery photo.",
-    "Reframed the crop so the couple face group is closer to the square visual center while preserving identity, facial detail, clothing, lighting, and the thin ivory border.",
-    "Changed all share-image metadata and cache references to a new URL to avoid stale platform previews, and updated the asset generator to reproduce the clean image without text."
+    "Replaced the bold Pacifico intro tagline with a smaller and thinner local Italianno subset.",
+    "Rebuilt the square share image exclusively from the original gallery-01.jpg crop with no generative editing, color modulation, skin retouching, or face reconstruction.",
+    "Versioned the share image URL and bumped the service-worker cache to v5 so platforms and returning visitors fetch the corrected assets."
   ],
   "pending": [
-    "Previously shared messages may retain the old thumbnail in WeChat cache; use the new clean-share URL for a fresh preview."
+    "The current Apple Music source is a 30.004-second official preview. NetEase returns fee=1, url=null, and code=-110 for song 150430, so a complete replacement still requires a user-supplied licensed MP3/M4A file or authorized direct stream."
   ],
   "sha256": {
-    "index.html": "6ddd310af2d45511eca7ba1c4e849911caf8358f077a901269fab8fa15cb8013",
+    "index.html": "f87e193eacab46da46bfbc8f1f67fe23fe59875f75e042e08f721972a277ebbc",
     "app.js": "c6b512a004449d4be6ee0f9d72ab68afa71c4ebae0b451addcc336382522a9a9",
-    "styles.css": "512055b0168d2721b057f31c2bba7af15f814423338da64b4b5c4a9bd2be9c30",
-    "fonts.css": "3b7aaa7d1c233293ce4a2ff989644ad60388c42063f6f8be5bef621dbbaff2a3",
+    "styles.css": "de7a02be027168247c557832174357a8608b3e14ef6c3fdc82279a464f87971e",
+    "fonts.css": "3a47f40ebee80d72f1dd95c1073af1d47656882eb5a3361c97c1adbc6a868e3c",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
     "assets/italianno-OFL.txt": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
     "assets/lace-ornament-bg-v2.png": "2cfb023416c3d388d39b8191c6206cafe7d4ca126126385b6a6d34af1b30ff8b",
@@ -51,9 +51,9 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "34cb3e64275aa94a2d1258c1c0ea858f32a7a6208c8cb10947df368e3ffe0856",
-    "service-worker.js": "4e9cbdb6fdf3507664a59c10422e126f42df1da76112d03bc1a81991805e859b",
-    "scripts/optimize-assets.mjs": "81ed5b9c33ae49a080d9aa3fb3fd65b4d2c26f6248e2605c8813c9a72619a9b0",
+    "README.md": "24499344264a454f3b0216bc42cf3ba47cb4a4447a7049e746e63682c222e686",
+    "service-worker.js": "49d691cf717cc795f9ad4dec9ebe38d2972091ad5701678824c9521236d26914",
+    "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
     "assets/favicon-20260925.png": "f1989dcfef51c6cb30a26eb6d7dff18480c26938bcd889076656d4374a21de92",
@@ -90,7 +90,9 @@
     "assets/pacifico-journey-20260925.woff2": "3932da27c4a9f1f1b4b3b69e3d7c50dbd23866d80275b1bd64f4a281fa1b081a",
     "assets/pacifico-OFL.txt": "e1b964e3f56697598c46363a8864f0a7b883c86a0c01a9a6a4e90e6949d60ba2",
     "c90bc8a611d176d0a69aa5b0dcf7337b.txt": "3f6566bf0ce55b79644afdc745c563ac796db34c1f0e7e448cd43140208b02b0",
-    "assets/share-thumbnail-clean-20260925.jpg": "d1aa14c3fa0c7a3888fc3ee52f73ebf35be47f71b414cc08edc39691e1fc0d8a"
+    "assets/share-thumbnail-clean-20260925.jpg": "d1aa14c3fa0c7a3888fc3ee52f73ebf35be47f71b414cc08edc39691e1fc0d8a",
+    "assets/italianno-journey-20260925.woff2": "54b2a58ca08a9c310c84cddbd40df6af797354edbe133ff3f75a646b2a71bc38",
+    "assets/share-thumbnail-original-20260925.jpg": "7e03e92eac9333fcde5f7ea72be372dc1d920fec90ab9160d4e7c7dc6a89f945"
   },
   "venue": {
     "name": "In The Ark在方舟礼堂",
@@ -103,17 +105,23 @@
     "artist": "陶喆",
     "netease_share_url": "https://163cn.tv/bgOWYThL",
     "netease_song_id": "150430",
-    "stream_note": "The NetEase share URL is an HTML song page, not a direct audio stream; the official Apple preview remains the playable source."
+    "stream_note": "The NetEase share URL is an HTML song page, not a direct audio stream; the official Apple preview remains the playable source.",
+    "duration_seconds": 30.003991,
+    "netease_entitlement": {
+      "fee": 1,
+      "url": null,
+      "code": -110
+    }
   },
   "share": {
     "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
-    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=clean-share-20260925",
-    "open_graph_image": "assets/share-thumbnail-clean-20260925.jpg",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=original-share-20260925",
+    "open_graph_image": "assets/share-thumbnail-original-20260925.jpg",
     "open_graph_dimensions": [
       600,
       600
     ],
-    "square_thumbnail": "assets/share-thumbnail-clean-20260925.jpg",
+    "square_thumbnail": "assets/share-thumbnail-original-20260925.jpg",
     "square_dimensions": [
       600,
       600
@@ -122,10 +130,12 @@
     "source_asset": "assets/gallery-01.jpg",
     "crop": {
       "left": 0,
-      "top": 140,
-      "width": 760,
-      "height": 760
-    }
+      "top": 150,
+      "width": 720,
+      "height": 720
+    },
+    "generative_editing": false,
+    "color_modulation": false
   },
   "performance": {
     "live_baseline_same_origin_known_bytes": 16901266,
@@ -134,7 +144,7 @@
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
     "optimized_cold_audio_requests": 1,
-    "cache_name": "wedding-invitation-20260925-v4"
+    "cache_name": "wedding-invitation-20260925-v5"
   },
   "release_verification": {
     "feature_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
@@ -159,11 +169,12 @@
     "console_errors": 0
   },
   "typography": {
-    "reference_image": "codex-clipboard-47f338e7-49f9-4cea-920e-ed094948f223.jpg",
-    "matched_family": "Pacifico",
     "scope": "intro footer tagline only",
     "text": "Love begins our journey",
-    "font_file": "assets/pacifico-journey-20260925.woff2",
-    "license_file": "assets/pacifico-OFL.txt"
+    "family": "Italianno Journey",
+    "font_file": "assets/italianno-journey-20260925.woff2",
+    "size_rule": "clamp(.9rem,4.2vw,1.08rem)",
+    "measured_320x568_px": 14.4,
+    "measured_390x844_px": 16.38
   }
 }

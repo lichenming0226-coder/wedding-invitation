@@ -4,11 +4,11 @@
 
 访问：https://lichenming0226-coder.github.io/wedding-invitation/
 
-当前版本使用半透明深棕色纸张，透出参考图重建的灰色蕾丝与四组无文字白色装饰图案。封面为轮廓柔和的闭合蕾丝信封，带艺术 LG 火漆章；轻触后封口掀开，拍立得只从信封口向上出现。封面与照片页的英文标题使用本地 Italianno 婚礼手写体；封面底部的 “Love begins our journey” 使用参考图风格的本地 Pacifico 粗圆连笔体。右上角音乐按钮控制陶喆《就是爱你》的 Apple Music 官方试听片段。两只鸟独立飞动，织物感椭圆蕾丝相框配合平滑的照片进退场。信息标签为 DATE、TIMELINE、ADDRESS，时间线居中。
+当前版本使用半透明深棕色纸张，透出参考图重建的灰色蕾丝与四组无文字白色装饰图案。封面为轮廓柔和的闭合蕾丝信封，带艺术 LG 火漆章；轻触后封口掀开，拍立得只从信封口向上出现。封面与照片页的英文标题使用本地 Italianno 婚礼手写体；封面底部的 “Love begins our journey” 使用更细、更小的本地 Italianno 专用子集。右上角音乐按钮控制陶喆《就是爱你》的 Apple Music 官方试听片段。两只鸟独立飞动，织物感椭圆蕾丝相框配合平滑的照片进退场。信息标签为 DATE、TIMELINE、ADDRESS，时间线居中。
 
 ## 分享预览与加载策略
 
-页面提供完整的 Open Graph、Twitter Card、`image_src` 与 canonical 元数据。主分享封面是 `assets/share-thumbnail-clean-20260925.jpg`（600×600 JPEG，公开绝对 HTTPS URL）：从无字原始婚纱照确定性裁切，移除全部姓名、日期与邀请函文字，保留细边框，并让两张脸的共同视觉中心更靠近画面中央。
+页面提供完整的 Open Graph、Twitter Card、`image_src` 与 canonical 元数据。主分享封面是 `assets/share-thumbnail-original-20260925.jpg`（600×600 JPEG，公开绝对 HTTPS URL）：仅从仓库原始 `gallery-01.jpg` 固定裁切、缩放并叠加细边框，不使用生成式重绘、磨皮、补脸或色彩调制。
 
 首屏视觉使用按展示尺寸重采样的 WebP；序言、相框和二十张相册图改为进入相应阶段前再加载。背景音乐在页面进入时立即发起官方试听音源的加载与播放，并在微信桥接器就绪或首次触摸时重试；浏览器或微信仍可能依据自己的自动播放策略拦截首次有声播放。`service-worker.js` 会缓存同源核心资源和已访问的后续资源，降低重复打开时对 GitHub Pages 边缘缓存与网络状态的依赖。
 
@@ -22,7 +22,7 @@
 
 修改在独立任务分支验证，再快进发布至 `main`。`migration-manifest.json` 记录文件校验值及可恢复的上一版本。旧的本地恢复副本不是这一版本的维护源。
 
-优化图与分享封面由 `scripts/optimize-assets.mjs` 使用 Sharp 0.35.4 从仓库内的原始素材确定性生成。方形分享图直接从无字 `gallery-01.jpg` 固定裁切，不使用生成式人脸重绘。执行时需让 Node.js 能解析 `sharp`（例如设置包含 Sharp 的 `NODE_PATH`）。该脚本只用于素材更新时重建；运行时不依赖 Node.js。
+优化图与分享封面由 `scripts/optimize-assets.mjs` 使用 Sharp 0.35.4 从仓库内的原始素材确定性生成。方形分享图直接从无字 `gallery-01.jpg` 固定裁切，不使用生成式人脸重绘，也不改变色彩。执行时需让 Node.js 能解析 `sharp`（例如设置包含 Sharp 的 `NODE_PATH`）。该脚本只用于素材更新时重建；运行时不依赖 Node.js。
 
 每次修改 precache 清单或核心资源时都要同步更新 `service-worker.js` 的 `CACHE` 名称，避免已安装客户端长期沿用旧壳。页面导航采用联网优先，断网时才回退到缓存壳，确保新分享元数据和样式及时生效。
 
@@ -36,10 +36,10 @@
 - 半透明棕色内容层可见下方蕾丝和白色装饰图案，参考图中的文字、编号、标志和水印均未保留。
 - 音乐在页面进入时立即预加载并尝试播放；若浏览器拦截，则在微信桥接器就绪、第一次轻触页面或点击音乐按钮时重试。右上角按钮可暂停、继续，播放器状态与无障碍标签同步。
 - 喷泉插画在常规手机上放大至约 203px、短屏上约 131px，并与上方文字分别保留约 35px 和 15px 间距；两个尺寸下按钮仍完整位于首屏。
-- 封面底部原日期文案替换为 “Love begins our journey”；320×568 与 390×844 下均保持单行，Pacifico 字体加载成功且页面无溢出。
+- 封面底部文案 “Love begins our journey” 改用更细的 Italianno 专用子集，并缩小约 20%；320×568 与 390×844 下均保持单行且页面无溢出。
 - 「轻触信封」「婚礼指南」「前往导航」从首次呈现起均使用金色。
 - 分享图尺寸、Open Graph 字段、JavaScript 语法、相对资源引用、透明边框及字体加载检查通过。
-- 方形分享图不含任何文字；人物面部保持原始照片细节，两张脸的共同视觉中心更靠近方图中央。
+- 方形分享图不含任何文字；从原始 `gallery-01.jpg` 裁切，不做 AI 重绘或色彩美化，人物面部保持原始照片像素特征。
 - 原始线上冷开基线为 37 个响应、约 16.9 MB 同源资源、提前请求全部 20 张相册图；图片优化后首屏仍低于 0.7 MB 且不请求相册或序言图。当前按本次要求会立即请求音乐，但不会让后续图片与它争抢带宽。
 - 320×568 与 390×844 均无横向或纵向溢出；Service Worker 安装、控制、缓存命中和离线首屏恢复通过。
 
@@ -61,7 +61,7 @@
 
 `assets/lace-envelope.png`、`assets/lace-envelope-v2.png`、`assets/oval-lace-v2.png`、`assets/side-lace.png`、`assets/seal-lg.png` 和 `assets/lace-ornament-bg-v2.png` 使用内置 image_gen 根据用户提供参考图提取、重建或调整。新版背景保留蕾丝织物和白色装饰轮廓，并清除参考图中的所有文字、编号、标志与水印。提示词记录在 `art-prompts.json`、`art-prompts-seal.json`、`art-prompts-envelope-v2.json` 和 `art-prompts-background-v2.json`。
 
-字体：IM Fell English、ZCOOL XiaoWei、Italianno、Pacifico；授权文件在 `assets/`。Wedding Invitation 与 Welcome to our wedding 使用 Italianno；Love begins our journey 使用仅保留所需字符的 Pacifico WOFF2 子集，许可证为 SIL Open Font License。
+字体：IM Fell English、ZCOOL XiaoWei、Italianno；授权文件在 `assets/`。Wedding Invitation 与 Welcome to our wedding 使用 Italianno；Love begins our journey 使用仅保留所需字符的更细 Italianno WOFF2 子集。
 
 ## 场地与高德地图
 
@@ -71,4 +71,4 @@ In The Ark 在方舟礼堂，页面补充地区小字「台州市椒江区」。
 
 ## 背景音乐
 
-用户提供的网易云分享链接为 https://163cn.tv/bgOWYThL ，对应歌曲 ID 150430。已核对网易云官方外链播放器，但它在当前浏览器环境中仍要求用户触发播放，并且不能作为本站自定义按钮可控的同源背景音频。仓库未下载、复制或盗链未经授权的完整歌曲；在没有用户提供的授权音频文件或合法可直连完整音源前，页面继续使用 Apple Music/iTunes Search API 返回的陶喆《就是爱你》官方试听音源。其可用性取决于访问设备的网络、浏览器自动播放策略与 Apple 服务。
+用户提供的网易云分享链接为 https://163cn.tv/bgOWYThL ，对应歌曲 ID 150430。线上复核显示当前 Apple 官方试听源时长为 30.004 秒；网易云官方播放接口对该歌曲返回 `fee=1`、`url=null`、`code=-110`，仓库中也没有完整授权音频文件。仓库不会下载、复制或盗链未经授权的完整歌曲；完整替换需要用户提供有使用权的 MP3/M4A 文件或合法直连音源。当前仍保留 Apple 官方试听源，其可用性取决于访问设备网络、浏览器自动播放策略与 Apple 服务。
