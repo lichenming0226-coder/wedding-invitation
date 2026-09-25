@@ -1,11 +1,11 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260925-v10';
+const CACHE = 'wedding-invitation-20260925-v11';
 const CORE = [
-  './?v=full-bgm-20260925',
+  './?v=loading-hearts-v2-20260925',
   './fonts.css?v=thin-tagline-20260925',
-  './styles.css?v=loading-20260925',
-  './app.js?v=loading-20260925',
+  './styles.css?v=loading-hearts-v2-20260925',
+  './app.js?v=loading-hearts-v2-20260925',
   './assets/paper-texture.svg',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-english-20260925.woff2',
@@ -50,11 +50,11 @@ self.addEventListener('fetch', event => {
         .then(response => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE).then(cache => cache.put('./?v=full-bgm-20260925', copy));
+            caches.open(CACHE).then(cache => cache.put('./?v=loading-hearts-v2-20260925', copy));
           }
           return response;
         })
-        .catch(() => caches.match('./?v=full-bgm-20260925')),
+        .catch(() => caches.match('./?v=loading-hearts-v2-20260925')),
     );
     return;
   }

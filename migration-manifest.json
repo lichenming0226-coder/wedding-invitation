@@ -5,12 +5,12 @@
   "changes": [
     "Added a bounded first-load transition that waits only for critical above-the-fold images and fonts, never the complete BGM.",
     "Replaced the initial spinner, loading copy, and couple doodle with two offset overlapping hearts that swap ivory and wedding-gold colors over a 2-second cycle.",
-    "Added reduced-motion and no-JavaScript fallbacks and bumped the service-worker cache to v10."
+    "Guaranteed one complete 2-second heart color cycle before fade-out, retained reduced-motion and no-JavaScript fallbacks, and bumped the service-worker cache to v11."
   ],
   "pending": [],
   "sha256": {
-    "index.html": "ae6fbfc1625035b83293342038d62fdec98bc55c135136a96e71f774cf736a91",
-    "app.js": "39131a9cf687cdda27fc53f2b6bc6a78c038ae86f4ab2d1497740f5682aa172c",
+    "index.html": "bfaa187a1e3411e3a2f417f198b6bdedbbd91957653194723986ad3a30f2126b",
+    "app.js": "64813d5297bfe2e87c1e8b0312182f02d03f5677b9f6cfc1e08d9e233d195093",
     "styles.css": "de7a02be027168247c557832174357a8608b3e14ef6c3fdc82279a464f87971e",
     "fonts.css": "3a47f40ebee80d72f1dd95c1073af1d47656882eb5a3361c97c1adbc6a868e3c",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
@@ -49,8 +49,8 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "8ec67a76d56d86e53e840414712e15c0e94b67d93f62feba1b8956cac27655d3",
-    "service-worker.js": "aac815e1311e7c5882c666d528004021f516bcac3c43db4b76defda67f70da74",
+    "README.md": "be3d447b951a96d0db3e2be33d882f81c52e0b699401e2cdb7e00ec95bc988d5",
+    "service-worker.js": "93eb3ba54a5d598065a94ab73d8da41a01ae3f8b53dd5348b94b4277397a4d46",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
@@ -135,7 +135,7 @@
   },
   "share": {
     "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
-    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=full-bgm-20260925",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=loading-hearts-v2-20260925",
     "open_graph_image": "assets/share-thumbnail-original-20260925.jpg",
     "open_graph_dimensions": [
       600,
@@ -156,8 +156,8 @@
     },
     "generative_editing": false,
     "color_modulation": false,
-    "description": "2026年11月20日｜台州 In The Ark 在方舟礼堂",
-    "twitter_description": "2026年11月20日｜台州"
+    "description": "Save the Date\nNov 20, 2026",
+    "twitter_description": "Save the Date\nNov 20, 2026"
   },
   "performance": {
     "live_baseline_same_origin_known_bytes": 16901266,
@@ -166,7 +166,7 @@
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
     "optimized_cold_audio_requests": 1,
-    "cache_name": "wedding-invitation-20260925-v10"
+    "cache_name": "wedding-invitation-20260925-v11"
   },
   "release_verification": {
     "feature_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
@@ -200,13 +200,13 @@
     "measured_390x844_px": 16.38
   },
   "loading": {
-    "minimum_duration_ms": 1200,
-    "maximum_resource_wait_ms": 1600,
+    "minimum_duration_ms": 2000,
+    "maximum_resource_wait_ms": 2000,
     "fade_duration_ms": 400,
     "animation_cycle_ms": 2000,
     "visual": "two offset overlapping hearts",
     "colors": [
-      "#fff8ed",
+      "#ffffff",
       "#d8c49d"
     ],
     "visible_text": false,
@@ -218,11 +218,13 @@
       "couple-comic-20260925.webp",
       "intro fonts"
     ],
+    "measured_normal_fade_start_ms": 2001,
     "measured_normal_detach_ms_range": [
-      1745,
-      1876
+      2463,
+      2464
     ],
-    "measured_slow_critical_detach_ms": 2022,
+    "measured_slow_critical_fade_start_ms": 2002,
+    "measured_slow_critical_detach_ms": 2464,
     "reduced_motion": "static two-color hearts",
     "no_javascript_fallback_ms": 2000
   }

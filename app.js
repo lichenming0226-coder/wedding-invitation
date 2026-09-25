@@ -19,8 +19,8 @@
   const cancel = id => { clearTimeout(id); timers.delete(id); };
   const duration = ms => motion.matches ? 0 : ms;
   const loadingStarted = window.__invitationLoadingStarted || performance.now();
-  const loadingMinDuration = 1200;
-  const loadingMaxDuration = 1600;
+  const loadingMinDuration = 2000;
+  const loadingMaxDuration = 2000;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
   const waitForImage = image => {
     if (!image) return Promise.resolve();
