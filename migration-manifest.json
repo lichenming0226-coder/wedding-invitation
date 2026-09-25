@@ -49,7 +49,7 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "be3d447b951a96d0db3e2be33d882f81c52e0b699401e2cdb7e00ec95bc988d5",
+    "README.md": "42093984c3487b514f4032122fbe90e553cf0ac155681e7537b9cf276bab3f94",
     "service-worker.js": "93eb3ba54a5d598065a94ab73d8da41a01ae3f8b53dd5348b94b4277397a4d46",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
@@ -169,11 +169,11 @@
     "cache_name": "wedding-invitation-20260925-v11"
   },
   "release_verification": {
-    "feature_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
-    "final_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
-    "pages_run_id": 36101975386,
+    "feature_commit": "c606c09a4dca365a3d26d9033f61410a59cf670a",
+    "final_commit": "c606c09a4dca365a3d26d9033f61410a59cf670a",
+    "pages_run_id": 36112929671,
     "pages_conclusion": "success",
-    "live_share_image": "assets/share-thumbnail-clean-20260925.jpg",
+    "live_share_image": "assets/share-thumbnail-original-20260925.jpg",
     "live_share_dimensions": [
       600,
       600
@@ -186,9 +186,24 @@
       "text_gap_px": 35.4375,
       "scroll_height_px": 844
     },
-    "live_share_image_bytes": 40796,
+    "live_share_image_bytes": 47973,
     "old_share_image_requests": 0,
-    "console_errors": 0
+    "console_errors": 0,
+    "loading_live_320x568": {
+      "fade_start_ms": 2002,
+      "detach_ms": 2463,
+      "horizontal_overflow_px": 0,
+      "vertical_overflow_px": 0
+    },
+    "loading_live_390x844": {
+      "fade_start_ms": 2002,
+      "detach_ms": 2465,
+      "horizontal_overflow_px": 0,
+      "vertical_overflow_px": 0
+    },
+    "service_worker_cache": "wedding-invitation-20260925-v11",
+    "audio_cached_by_service_worker": false,
+    "live_audio_duration_seconds": 261.906009
   },
   "typography": {
     "scope": "intro footer tagline only",

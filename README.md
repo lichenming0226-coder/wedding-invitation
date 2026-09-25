@@ -61,6 +61,10 @@
 - 无字居中分享图提交：`0940f6ca9b600046daaff4df5a6f024078601089`
 - 无字分享图 GitHub Pages 运行：[36101975386](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36101975386)，结论 `success`
 - 线上新图为 600×600 JPEG、40,796 字节，SHA-256 与本地一致；浏览器只请求新无字文件，旧带字图请求为 0
+- 双爱心 Loading 最终功能提交：`c606c09a4dca365a3d26d9033f61410a59cf670a`
+- GitHub Pages 运行：[36112929671](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36112929671)，结论 `success`
+- 线上 320×568 与 390×844 均在约 2.002 秒开始淡出、约 2.463–2.465 秒移除；完整完成金/白到白/金再复原的一次换色，页面无溢出、无控制台错误
+- 线上 `index.html`、`app.js` 与 `service-worker.js` 的 SHA-256 均与提交一致；仅安装 `wedding-invitation-20260925-v11` 缓存，完整 BGM 未写入 Cache Storage
 
 ## 美术素材
 
