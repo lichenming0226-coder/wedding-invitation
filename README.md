@@ -46,6 +46,9 @@
 - 上一性能版本线上冷开：16 个响应、约 0.67 MB 同源资源、0 张相册预载、0 个音频请求；当前版本额外恢复 1 个立即发起的官方音频请求
 - 线上完整路径：开信封、序言、相册轮播、ADDRESS 导航、Service Worker 控制与离线回访均通过，控制台无错误
 - 线上 `index.html`、分享横图、分享方图与 Service Worker 的 SHA-256 均与提交内容一致
+- 方图、音乐启动与喷泉调整提交：`9ed5fd67fc163bc8cfa4f2b218b2eccfa5b2afb4`；缓存刷新提交：`57e8e8e49bb3bc531b3213058385292aac00ef58`
+- 最终 GitHub Pages 运行：[36099664083](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36099664083)，结论 `success`
+- 线上方图为 600×600 JPEG；自动播放允许时进入即播放，默认策略下首次触摸恢复；390×844 喷泉约 203px、文字间距约 35px，均无控制台错误
 
 ## 美术素材
 
