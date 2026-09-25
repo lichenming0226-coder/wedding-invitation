@@ -1,16 +1,20 @@
 {
-  "date": "2026-09-21",
-  "base_revision": "1ce9b48a638734085cef4e3ac85a01fea2e338b2",
-  "rollback_commit": "1ce9b48a638734085cef4e3ac85a01fea2e338b2",
+  "date": "2026-09-25",
+  "base_revision": "773621bbc8b218b37a20a7f87f26f510c194226f",
+  "rollback_commit": "773621bbc8b218b37a20a7f87f26f510c194226f",
   "changes": [
-    "Translucent brown content over a text-free ornamental lace background, local wedding-script titles, a centered eleven-line invitation passage, and matching Chinese typography for venue navigation."
+    "Added 1200x630 and 600x600 wedding share images plus Open Graph, Twitter Card, image_src, canonical, icon, and thumbnail metadata.",
+    "Reduced cold-page payload by replacing oversized runtime images with versioned WebP derivatives, subsetting fonts to WOFF2, deferring gallery and scene assets, and loading cross-origin music only after interaction.",
+    "Added an origin-scoped service worker that precaches the invitation shell and caches visited same-origin assets for stable repeat opens and offline shell recovery."
   ],
-  "pending": [],
+  "pending": [
+    "WeChat external-link safety prompts cannot be disabled by page code. Removing the platform warning requires a suitable owned domain and WeChat-side compliance/reputation configuration; custom JS-SDK sharing additionally requires a verified official account, JS interface security domain, and signature backend."
+  ],
   "sha256": {
-    "index.html": "3e3a697851a301bf2fa21fda308ae82141d7f3fff6975ac6d93f80b9243e0923",
-    "app.js": "55f81c06697012d4925d96de154d7379aa78ca50ed73ec4fea0c42f1be27963d",
-    "styles.css": "fcaeb0420ca15276e64c3069d26bbc0a7a9c57e13a282f592b6b7b15cee678d1",
-    "fonts.css": "37bb2fb211f187fca9a685074d23e557daf4c90df62988715a6ae594fd820a66",
+    "index.html": "bac9ce8657a057a9505a03c7c363609a3f64eeec40c86d601458d7588c4b7111",
+    "app.js": "558c38b51325f1999a9c90793bf5cf20dfd04b9e282da9354a00ff566957f067",
+    "styles.css": "3c6d0a45f52f2a7541dd83814ad65923bede4b30ddcf3fd92e52a7f885266dd7",
+    "fonts.css": "20cc49cf2c9eb41d72e2280a1d81ad0fed21026049c0f7ff3a69851ea27dd341",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
     "assets/italianno-OFL.txt": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
     "assets/lace-ornament-bg-v2.png": "2cfb023416c3d388d39b8191c6206cafe7d4ca126126385b6a6d34af1b30ff8b",
@@ -46,7 +50,43 @@
     "assets/paper-texture.svg": "674f2845ea7f7159b6792bea51b59e0a33064a9097a772d102f78778db5a85aa",
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
-    "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a"
+    "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
+    "README.md": "57c9beeb59543fe2855fb2ba2dbad46f4e312746da16a1d6195a5b0a1915d990",
+    "service-worker.js": "5dfef467e695615cc71121aae7c7b2cb56d12911b1b537eb580ea2b8d1f81c4b",
+    "scripts/optimize-assets.mjs": "124182a6057e9e72a773aab89e3cfe00f55f39ad6e5c8518bf36f37bc23ea972",
+    "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
+    "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
+    "assets/favicon-20260925.png": "f1989dcfef51c6cb30a26eb6d7dff18480c26938bcd889076656d4374a21de92",
+    "assets/fountain-birds-20260925.webp": "d9b9fafe0656c51cf71acdf44c20b2afa771b8d2370ca493515655b381f61057",
+    "assets/gallery-01-20260925.webp": "8cbfaa5b33239b203024f2a6f098741562ff8edb30c03352ff6eeac119c51f9c",
+    "assets/gallery-02-20260925.webp": "d13027cfa9ebe2fa1ec3f43befefbef8e105f7779f492491787644e3f11c06fa",
+    "assets/gallery-03-20260925.webp": "3301b2194cb2979daba724aa06cea411ec55e2b9cad4ce17f900af340eab621f",
+    "assets/gallery-04-20260925.webp": "2e9d47c84c55ccfa3c1f8b9c2f8356543b9c82536f8761f0c0afbd6e8bbc8502",
+    "assets/gallery-05-20260925.webp": "455ad806ffe8151a08d94075eb1999be62e86a0a7fbfdb064b08d6d3e7abf8ee",
+    "assets/gallery-06-20260925.webp": "1a63d8e8780f48bca7762f8a4f30b1fbc5fcaa2c341d63ba380d5fb2e74836d4",
+    "assets/gallery-07-20260925.webp": "90f6628341e0a66304084b96372edfa72323e1a506b0e65dd15f66a7014ed750",
+    "assets/gallery-08-20260925.webp": "a3aaeb68089bec9cf9ddfea5358101101a7626a276b31072031cce2d859fd1ea",
+    "assets/gallery-09-20260925.webp": "9d429c6e82d4e9e9832fbdda1460c8ea91b63f2bc18379a103c0277e2fadf6a0",
+    "assets/gallery-10-20260925.webp": "02b2adbdd90d7b03441fceca435aa419a821f26e29f2fc4afb8cd9a348eaeed8",
+    "assets/gallery-11-20260925.webp": "aa18c5549a9350866860f9ec452e87fcaf1682ebd6271c956d167671eacb5a49",
+    "assets/gallery-12-20260925.webp": "590a16d7447d390dda53b07342faed57427d383bd1d19f74c2c822d0a8282a1c",
+    "assets/gallery-13-20260925.webp": "e530a78e1c25c7908d54d9765bf90cbfa766b19a22918ebcdd1a12b7409da0e3",
+    "assets/gallery-14-20260925.webp": "b81148d1272cc30d035a56f0134cd5f76cbfd9c53239a735a46dafa1e48be188",
+    "assets/gallery-15-20260925.webp": "dc475ec1b1705ab11759ac7701b45d2cf056d0fa62294f00def1591919bc6378",
+    "assets/gallery-16-20260925.webp": "7d0bdb7b6fa6a452e6aa797b91654c39b0661098f0fe2b244c2c4afa2d384df7",
+    "assets/gallery-17-20260925.webp": "dbf8698007465eb11751c243506927b5a8237854f4cc452173ecbd57b949f1fd",
+    "assets/gallery-18-20260925.webp": "4f8c67afe4e54c1a9815972b4071e6d1e9b56d1a3a8472a932b4e280fce7cf54",
+    "assets/gallery-19-20260925.webp": "61d263842bb59ce0cc9264f6f7cc68a943e71c443688bdd70a3e7bdd0a192d98",
+    "assets/gallery-20-20260925.webp": "648d32e5b1742912a0dbe2528383b837213e5d04052c1dd850d749d579839c96",
+    "assets/hand-chinese-20260925.woff2": "f79ad0c9946a6c824b81d00c770bb7e8c50cabf1d67f9a1801cfa67622f957f3",
+    "assets/hand-english-20260925.woff2": "7b38d6272de8b161da9fbb009b2446c0c8caa7837be5c94ff7e9ab8f03e11d96",
+    "assets/italianno-20260925.woff2": "d54c7beba1065e4410bd35bf2efa690afa357c67a302f3061ee2f19ad0ab881d",
+    "assets/lace-envelope-20260925.webp": "bad149912781d0a0b08b530722c5e7a88b720d1ecde9f39c61dc447bba031639",
+    "assets/lace-ornament-bg-20260925.webp": "473464d02e40641759f9095c39a2f8f3e143990f110fc6ca9e9cc24e522514e8",
+    "assets/oval-lace-20260925.webp": "199e93067e9c7e32e1072cbf4fc39eeba560d0e0b8296427c9890bc853d0ccc7",
+    "assets/seal-20260925.webp": "367578987f60c21ad091fc2930f2ccaa1ba8187c0ff356b6ba247e3c7a737364",
+    "assets/share-preview-20260925.jpg": "cc6ed0e24c8f70cbacc4c926c46a369e087fea2c699468bcc2fc7ac49fe3fb3c",
+    "assets/share-thumbnail-20260925.jpg": "3bdf3955e5ffd1fd658402863a798cc2a85be9936fcb395cd6e842373ac3d8ad"
   },
   "venue": {
     "name": "In The Ark在方舟礼堂",
@@ -60,5 +100,28 @@
     "netease_share_url": "https://163cn.tv/bgOWYThL",
     "netease_song_id": "150430",
     "stream_note": "The NetEase share URL is an HTML song page, not a direct audio stream; the official Apple preview remains the playable source."
+  },
+  "share": {
+    "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=share-20260925",
+    "open_graph_image": "assets/share-preview-20260925.jpg",
+    "open_graph_dimensions": [
+      1200,
+      630
+    ],
+    "square_thumbnail": "assets/share-thumbnail-20260925.jpg",
+    "square_dimensions": [
+      600,
+      600
+    ]
+  },
+  "performance": {
+    "live_baseline_same_origin_known_bytes": 16901266,
+    "live_baseline_response_count": 37,
+    "live_baseline_eager_gallery_requests": 20,
+    "optimized_local_cold_known_bytes_upper_bound": 700000,
+    "optimized_cold_gallery_requests": 0,
+    "optimized_cold_audio_requests": 0,
+    "cache_name": "wedding-invitation-20260925-v1"
   }
 }

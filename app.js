@@ -12,9 +12,34 @@
   let phase = 'intro', photoIndex = 0, panelIndex = 0;
   let paused = motion.matches, infoSelected = false, photoTimer, panelTimer, switchingPanel = false;
   let musicPreference = 'auto';
+  let guideAssetsPromise;
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
   const cancel = id => { clearTimeout(id); timers.delete(id); };
   const duration = ms => motion.matches ? 0 : ms;
+  const activateImage = image => {
+    if (!image.src && image.dataset.src) {
+      image.src = image.dataset.src;
+      delete image.dataset.src;
+    }
+    return image;
+  };
+  const decodeImage = async image => {
+    activateImage(image);
+    try { await image.decode(); } catch { /* Keep the layout usable if a nonessential image fails. */ }
+    return image;
+  };
+  const loadSceneImages = scene => Promise.all([...scene.querySelectorAll('img[data-src]')].map(decodeImage));
+  const prepareGuideAssets = () => {
+    if (!guideAssetsPromise) guideAssetsPromise = Promise.all([
+      decodeImage(slides[0]),
+      decodeImage(document.querySelector('.french-frame')),
+    ]);
+    return guideAssetsPromise;
+  };
+  const runWhenIdle = callback => {
+    if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
+    else later(callback, 700);
+  };
 
   function syncMusicButton() {
     const playing = !music.paused;
@@ -22,6 +47,11 @@
     musicToggle.setAttribute('aria-label', `${playing ? '关闭' : '播放'}背景音乐：陶喆《就是爱你》`);
   }
   async function playMusic() {
+    if (!music.src && music.dataset.src) {
+      music.src = music.dataset.src;
+      delete music.dataset.src;
+      music.load();
+    }
     try { await music.play(); } catch { /* Browsers may require the first user gesture. */ }
     syncMusicButton();
   }
@@ -31,10 +61,10 @@
   });
   music.addEventListener('play', syncMusicButton);
   music.addEventListener('pause', syncMusicButton);
-  playMusic();
   document.addEventListener('pointerdown', event => {
     if (musicPreference === 'auto' && music.paused && !musicToggle.contains(event.target)) playMusic();
   }, { capture: true, once: true });
+  runWhenIdle(() => decodeImage(document.querySelector('.letter-card img')));
 
   const poemLetters = [];
   document.querySelectorAll('.poem p').forEach(line => {
@@ -87,7 +117,12 @@
       $(id).classList.add('arriving');
       phase = id;
       window.scrollTo({ top: 0, behavior: 'instant' });
-      if (id === 'poemStage') { animatePoem(); $('openGuide').focus({ preventScroll: true }); }
+      if (id === 'poemStage') {
+        loadSceneImages($('poemStage'));
+        prepareGuideAssets();
+        animatePoem();
+        $('openGuide').focus({ preventScroll: true });
+      }
       if (id === 'guide') { tabs[panelIndex].focus({ preventScroll: true }); startRotation(); }
     }, duration(240));
   }
@@ -109,13 +144,17 @@
   $('openEnvelope').addEventListener('click', openEnvelope);
   $('envelopeHint').addEventListener('click', openEnvelope);
   $('readInvitation').addEventListener('click', () => { if (phase === 'letter') showScene('poemStage'); });
-  $('openGuide').addEventListener('click', () => { if (phase === 'poemStage') showScene('guide'); });
+  $('openGuide').addEventListener('click', async () => {
+    if (phase !== 'poemStage') return;
+    await prepareGuideAssets();
+    if (phase === 'poemStage') showScene('guide');
+  });
 
   async function changePhoto() {
     if (phase !== 'guide' || paused || document.hidden) return;
     const nextIndex = (photoIndex + 1) % slides.length;
     const next = slides[nextIndex];
-    try { await next.decode(); } catch { schedulePhoto(); return; }
+    await decodeImage(next);
     if (phase !== 'guide' || paused || document.hidden) return;
     const old = slides[photoIndex];
     // Adjacent opaque slides move together, avoiding ghosted faces and blank frames.
@@ -164,4 +203,8 @@
   });
   document.addEventListener('visibilitychange', () => { cancel(photoTimer); cancel(panelTimer); if (!document.hidden && phase === 'guide') startRotation(); });
   motion.addEventListener('change', () => { paused = motion.matches; if (paused) { cancel(photoTimer); cancel(panelTimer); poemAnimations.forEach(animation => animation.cancel()); $('poemStage').classList.remove('poem-preparing'); } else if (phase === 'guide') startRotation(); });
+  const canUseServiceWorker = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+  if ('serviceWorker' in navigator && canUseServiceWorker) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}), { once: true });
+  }
 })();
