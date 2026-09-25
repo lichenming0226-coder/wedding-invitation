@@ -44,16 +44,15 @@ self.addEventListener('fetch', event => {
 
   if (request.mode === 'navigate') {
     event.respondWith(
-      caches.match('./?v=square-20260925').then(cached => {
-        const fresh = fetch(request).then(response => {
+      fetch(request)
+        .then(response => {
           if (response.ok) {
             const copy = response.clone();
             caches.open(CACHE).then(cache => cache.put('./?v=square-20260925', copy));
           }
           return response;
-        }).catch(() => cached);
-        return cached || fresh;
-      }),
+        })
+        .catch(() => caches.match('./?v=square-20260925')),
     );
     return;
   }

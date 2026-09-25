@@ -22,7 +22,7 @@
 
 优化图与分享封面由 `scripts/optimize-assets.mjs` 使用 Sharp 0.35.4 从仓库内的原始素材确定性生成。执行时需让 Node.js 能解析 `sharp`（例如设置包含 Sharp 的 `NODE_PATH`）。该脚本只用于素材更新时重建；运行时不依赖 Node.js。
 
-每次修改 precache 清单或核心资源时都要同步更新 `service-worker.js` 的 `CACHE` 名称，避免已安装客户端长期沿用旧壳。
+每次修改 precache 清单或核心资源时都要同步更新 `service-worker.js` 的 `CACHE` 名称，避免已安装客户端长期沿用旧壳。页面导航采用联网优先，断网时才回退到缓存壳，确保新分享元数据和样式及时生效。
 
 ## 本次验证
 
