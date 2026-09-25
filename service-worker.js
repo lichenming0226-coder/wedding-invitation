@@ -1,15 +1,16 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260925-v2';
+const CACHE = 'wedding-invitation-20260925-v3';
 const CORE = [
   './?v=square-20260925',
-  './fonts.css?v=performance-20260925',
-  './styles.css?v=square-20260925',
+  './fonts.css?v=journey-20260925',
+  './styles.css?v=journey-20260925',
   './app.js?v=autoplay-20260925',
   './assets/paper-texture.svg',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-english-20260925.woff2',
   './assets/italianno-20260925.woff2',
+  './assets/pacifico-journey-20260925.woff2',
   './assets/lace-ornament-bg-20260925.webp',
   './assets/lace-envelope-20260925.webp',
   './assets/seal-20260925.webp',

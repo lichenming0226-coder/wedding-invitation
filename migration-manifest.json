@@ -1,22 +1,18 @@
 {
   "date": "2026-09-25",
-  "base_revision": "65c2be1015f4197e2de403ef1a3c6c7a72798f31",
-  "rollback_commit": "65c2be1015f4197e2de403ef1a3c6c7a72798f31",
+  "base_revision": "8c53c64f70a393e5ae5c557cfc8181fb7cadecff",
+  "rollback_commit": "8c53c64f70a393e5ae5c557cfc8181fb7cadecff",
   "changes": [
-    "Switched the primary Open Graph and Twitter share image to the 600x600 square wedding thumbnail and versioned the share URL.",
-    "Restored best-effort immediate playback of the official Apple Music preview, with retry on WeixinJSBridgeReady and the first user gesture when platform autoplay policy blocks sound.",
-    "Enlarged the fountain illustration and added explicit spacing below the poem while preserving one-screen layouts at 320x568 and 390x844.",
-    "Bumped the service-worker cache to v2 and updated precache URLs for the new stylesheet, script, and versioned navigation shell."
+    "Replaced the intro footer text 20 NOVEMBER 2026 with Love begins our journey.",
+    "Added a local OFL-licensed Pacifico WOFF2 subset to match the reference image bold rounded connected-script style without changing other headings.",
+    "Bumped the service-worker cache to v3 and precached the new font and versioned stylesheet."
   ],
-  "pending": [
-    "A full copyrighted recording was not downloaded, copied, or hotlinked. Replacing the official preview requires a user-supplied licensed audio file or an authorized direct streaming source.",
-    "Audible autoplay remains controlled by each browser and WeChat. Page load attempts playback immediately, then retries after WeChat bridge readiness or the first user gesture."
-  ],
+  "pending": [],
   "sha256": {
-    "index.html": "2abdf5dd37da1ab8aa8e4c51b83819717a6f60cff0d40528ccc5ffd9f966448f",
+    "index.html": "a3c4a7267d5872bcbf8b26b46149b88ac08a06a99f72f802d7f923e881ccf7a4",
     "app.js": "c6b512a004449d4be6ee0f9d72ab68afa71c4ebae0b451addcc336382522a9a9",
-    "styles.css": "b78cabbb8181cc68e7b371db07b319f427edec41b80fbf1328ca4501c9985c00",
-    "fonts.css": "20cc49cf2c9eb41d72e2280a1d81ad0fed21026049c0f7ff3a69851ea27dd341",
+    "styles.css": "512055b0168d2721b057f31c2bba7af15f814423338da64b4b5c4a9bd2be9c30",
+    "fonts.css": "3b7aaa7d1c233293ce4a2ff989644ad60388c42063f6f8be5bef621dbbaff2a3",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
     "assets/italianno-OFL.txt": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
     "assets/lace-ornament-bg-v2.png": "2cfb023416c3d388d39b8191c6206cafe7d4ca126126385b6a6d34af1b30ff8b",
@@ -53,8 +49,8 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "6d64c738b142b98806c584e1e9f44bc3a97c6301568c963872cb6f4cae09c0c0",
-    "service-worker.js": "32a0d13299a2e90ea6a7d89734346dac01c9fadbde253b5b71ad0d018626cb8f",
+    "README.md": "fc4d6ee04efd585be5fa426b03aa34e4da2f85a438e70138a49c2c4966698a5f",
+    "service-worker.js": "8fa652be22ea02214422c032dfaa732989c21607a547666a58476bd8c89571ca",
     "scripts/optimize-assets.mjs": "124182a6057e9e72a773aab89e3cfe00f55f39ad6e5c8518bf36f37bc23ea972",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
@@ -88,7 +84,9 @@
     "assets/oval-lace-20260925.webp": "199e93067e9c7e32e1072cbf4fc39eeba560d0e0b8296427c9890bc853d0ccc7",
     "assets/seal-20260925.webp": "367578987f60c21ad091fc2930f2ccaa1ba8187c0ff356b6ba247e3c7a737364",
     "assets/share-preview-20260925.jpg": "cc6ed0e24c8f70cbacc4c926c46a369e087fea2c699468bcc2fc7ac49fe3fb3c",
-    "assets/share-thumbnail-20260925.jpg": "3bdf3955e5ffd1fd658402863a798cc2a85be9936fcb395cd6e842373ac3d8ad"
+    "assets/share-thumbnail-20260925.jpg": "3bdf3955e5ffd1fd658402863a798cc2a85be9936fcb395cd6e842373ac3d8ad",
+    "assets/pacifico-journey-20260925.woff2": "3932da27c4a9f1f1b4b3b69e3d7c50dbd23866d80275b1bd64f4a281fa1b081a",
+    "assets/pacifico-OFL.txt": "e1b964e3f56697598c46363a8864f0a7b883c86a0c01a9a6a4e90e6949d60ba2"
   },
   "venue": {
     "name": "In The Ark在方舟礼堂",
@@ -124,7 +122,7 @@
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
     "optimized_cold_audio_requests": 1,
-    "cache_name": "wedding-invitation-20260925-v2"
+    "cache_name": "wedding-invitation-20260925-v3"
   },
   "release_verification": {
     "feature_commit": "9ed5fd67fc163bc8cfa4f2b218b2eccfa5b2afb4",
@@ -145,5 +143,13 @@
       "scroll_height_px": 844
     },
     "console_errors": 0
+  },
+  "typography": {
+    "reference_image": "codex-clipboard-47f338e7-49f9-4cea-920e-ed094948f223.jpg",
+    "matched_family": "Pacifico",
+    "scope": "intro footer tagline only",
+    "text": "Love begins our journey",
+    "font_file": "assets/pacifico-journey-20260925.woff2",
+    "license_file": "assets/pacifico-OFL.txt"
   }
 }
