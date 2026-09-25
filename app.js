@@ -12,6 +12,7 @@
   let phase = 'intro', photoIndex = 0, panelIndex = 0;
   let paused = motion.matches, infoSelected = false, photoTimer, panelTimer, switchingPanel = false;
   let musicPreference = 'auto';
+  let musicEverPlayed = false;
   let guideAssetsPromise;
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
   const cancel = id => { clearTimeout(id); timers.delete(id); };
@@ -56,7 +57,10 @@
       delete music.dataset.src;
       music.load();
     }
-    try { await music.play(); } catch { /* Browsers may require the first user gesture. */ }
+    try {
+      await music.play();
+      musicEverPlayed = true;
+    } catch { /* Browsers may require the first user gesture. */ }
     syncMusicButton();
   }
   musicToggle.addEventListener('click', () => {
@@ -74,7 +78,11 @@
     playMusic();
   }
   unlockEvents.forEach(type => document.addEventListener(type, unlockMusic, { capture: true, passive: true }));
-  music.addEventListener('play', removeMusicUnlockListeners, { once: true });
+  music.addEventListener('playing', () => {
+    musicEverPlayed = true;
+    removeMusicUnlockListeners();
+    syncMusicButton();
+  }, { once: true });
   playMusic();
   const playThroughWeixinBridge = () => {
     if (musicPreference !== 'auto' || !music.paused) return;
@@ -89,8 +97,11 @@
   music.addEventListener('loadedmetadata', () => {
     if (musicPreference === 'auto' && music.paused) playMusic();
   }, { once: true });
-  window.addEventListener('pageshow', () => {
-    if (musicPreference === 'auto' && music.paused) playMusic();
+  window.addEventListener('pageshow', event => {
+    if (musicPreference === 'auto' && music.paused) {
+      if (event.persisted && musicEverPlayed) music.currentTime = 0;
+      playMusic();
+    }
   });
   runWhenIdle(() => decodeImage(document.querySelector('.letter-card img')));
 
