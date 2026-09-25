@@ -4,7 +4,7 @@
 
 访问：https://lichenming0226-coder.github.io/wedding-invitation/
 
-当前版本使用半透明深棕色纸张，透出参考图重建的灰色蕾丝与四组无文字白色装饰图案。封面为轮廓柔和的闭合蕾丝信封，带艺术 LG 火漆章；轻触后封口掀开，拍立得只从信封口向上出现。封面与照片页的英文标题使用本地 Italianno 婚礼手写体；封面底部的 “Love begins our journey” 使用更细、更小的本地 Italianno 专用子集。右上角音乐按钮控制陶喆《就是爱你》的 Apple Music 官方试听片段。两只鸟独立飞动，织物感椭圆蕾丝相框配合平滑的照片进退场。信息标签为 DATE、TIMELINE、ADDRESS，时间线居中。
+当前版本使用半透明深棕色纸张，透出参考图重建的灰色蕾丝与四组无文字白色装饰图案。封面为轮廓柔和的闭合蕾丝信封，带艺术 LG 火漆章；轻触后封口掀开，拍立得只从信封口向上出现。封面与照片页的英文标题使用本地 Italianno 婚礼手写体；封面底部的 “Love begins our journey” 使用更细、更小的本地 Italianno 专用子集。右上角音乐按钮控制陶喆《就是爱你》的本地完整 AAC/M4A 音源。两只鸟独立飞动，织物感椭圆蕾丝相框配合平滑的照片进退场。信息标签为 DATE、TIMELINE、ADDRESS，时间线居中。
 
 ## 分享预览与加载策略
 
@@ -20,7 +20,7 @@
 
 ## 源文件与部署
 
-本仓库根目录的 `index.html`、`styles.css`、`app.js`、`fonts.css` 和 `assets/` 是当前维护源。GitHub Pages 从 `main` 根目录发布，`.nojekyll` 保留静态文件原样输出，无需构建。除 Apple 官方音乐试听外，页面资源均为同源相对路径。
+本仓库根目录的 `index.html`、`styles.css`、`app.js`、`fonts.css` 和 `assets/` 是当前维护源。GitHub Pages 从 `main` 根目录发布，`.nojekyll` 保留静态文件原样输出，无需构建。页面资源均为同源相对路径。
 
 修改在独立任务分支验证，再快进发布至 `main`。`migration-manifest.json` 记录文件校验值及可恢复的上一版本。旧的本地恢复副本不是这一版本的维护源。
 
@@ -73,4 +73,4 @@ In The Ark 在方舟礼堂，页面补充地区小字「台州市椒江区」。
 
 ## 背景音乐
 
-用户提供的网易云分享链接为 https://163cn.tv/bgOWYThL ，对应歌曲 ID 150430。线上复核显示当前 Apple 官方试听源时长为 30.004 秒；网易云官方播放接口对该歌曲返回 `fee=1`、`url=null`、`code=-110`，仓库中也没有完整授权音频文件。仓库不会下载、复制或盗链未经授权的完整歌曲；完整替换需要用户提供有使用权的 MP3/M4A 文件或合法直连音源。当前仍保留 Apple 官方试听源，其可用性取决于访问设备网络、浏览器自动播放策略与 Apple 服务。
+用户提供的源文件为 `/Users/lichenming/Downloads/04 - 就是爱你.flac`。源文件是可完整解码的 44.1 kHz、16-bit、双声道 FLAC，时长 261.906667 秒，元数据为陶喆《就是爱你》、专辑《太平盛世》。网页使用由该文件转码得到的 `assets/love-can-full-20260925.m4a`：AAC-LC 160 kbps、44.1 kHz、双声道、faststart，时长 261.906009 秒、大小约 5.1 MB。音频不加入 Service Worker 预缓存，浏览器通过普通 HTTP/Range 渐进加载。页面进入时立即尝试播放；浏览器拦截有声自动播放时，微信桥接器就绪或首次轻触页面会重试。
