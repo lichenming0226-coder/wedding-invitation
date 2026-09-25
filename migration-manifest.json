@@ -1,18 +1,16 @@
 {
   "date": "2026-09-25",
-  "base_revision": "bcb63449d66140a9da28bab2e9b0bb2c85edc13f",
-  "rollback_commit": "bcb63449d66140a9da28bab2e9b0bb2c85edc13f",
+  "base_revision": "af07c775b686f871ae0896a1caa854fa043c6f79",
+  "rollback_commit": "af07c775b686f871ae0896a1caa854fa043c6f79",
   "changes": [
-    "Replaced the 30-second Apple preview with a complete local AAC/M4A encode created from the user-provided FLAC file.",
-    "Kept immediate playback, WeixinJSBridgeReady retry, first-gesture fallback, looping, and the existing pause/resume control.",
-    "Changed preload to metadata and intentionally excluded the 5.1 MB audio from service-worker precache so it can load progressively."
+    "Added a bounded first-load transition that waits only for critical above-the-fold images and fonts, never the complete BGM.",
+    "Replaced the initial spinner, loading copy, and couple doodle with two offset overlapping hearts that swap ivory and wedding-gold colors over a 2-second cycle.",
+    "Added reduced-motion and no-JavaScript fallbacks and bumped the service-worker cache to v10."
   ],
-  "pending": [
-    "Audible autoplay remains controlled by each browser and WeChat; if blocked on initial entry, playback starts on the first user gesture."
-  ],
+  "pending": [],
   "sha256": {
-    "index.html": "c0c7655fdf0f46bd90f3a6c2da75851e468f91a3638e15b370a0a7ea4edb9719",
-    "app.js": "c6b512a004449d4be6ee0f9d72ab68afa71c4ebae0b451addcc336382522a9a9",
+    "index.html": "ae6fbfc1625035b83293342038d62fdec98bc55c135136a96e71f774cf736a91",
+    "app.js": "39131a9cf687cdda27fc53f2b6bc6a78c038ae86f4ab2d1497740f5682aa172c",
     "styles.css": "de7a02be027168247c557832174357a8608b3e14ef6c3fdc82279a464f87971e",
     "fonts.css": "3a47f40ebee80d72f1dd95c1073af1d47656882eb5a3361c97c1adbc6a868e3c",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
@@ -51,8 +49,8 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "68156ad6b3a214e79699bb376da94895ef48dcaaf3cdbb00d99cbdd8e795be2a",
-    "service-worker.js": "8cb4a46dea925f5089581f47e281ad7dee2d26d334cac9c5c0ff2650a3babb68",
+    "README.md": "8ec67a76d56d86e53e840414712e15c0e94b67d93f62feba1b8956cac27655d3",
+    "service-worker.js": "aac815e1311e7c5882c666d528004021f516bcac3c43db4b76defda67f70da74",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
@@ -168,7 +166,7 @@
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
     "optimized_cold_audio_requests": 1,
-    "cache_name": "wedding-invitation-20260925-v7"
+    "cache_name": "wedding-invitation-20260925-v10"
   },
   "release_verification": {
     "feature_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
@@ -200,5 +198,32 @@
     "size_rule": "clamp(.9rem,4.2vw,1.08rem)",
     "measured_320x568_px": 14.4,
     "measured_390x844_px": 16.38
+  },
+  "loading": {
+    "minimum_duration_ms": 1200,
+    "maximum_resource_wait_ms": 1600,
+    "fade_duration_ms": 400,
+    "animation_cycle_ms": 2000,
+    "visual": "two offset overlapping hearts",
+    "colors": [
+      "#fff8ed",
+      "#d8c49d"
+    ],
+    "visible_text": false,
+    "image_assets": false,
+    "waits_for_bgm": false,
+    "critical_resources": [
+      "lace-envelope-20260925.webp",
+      "seal-20260925.webp",
+      "couple-comic-20260925.webp",
+      "intro fonts"
+    ],
+    "measured_normal_detach_ms_range": [
+      1745,
+      1876
+    ],
+    "measured_slow_critical_detach_ms": 2022,
+    "reduced_motion": "static two-color hearts",
+    "no_javascript_fallback_ms": 2400
   }
 }

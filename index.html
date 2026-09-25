@@ -29,11 +29,34 @@
   <meta name="twitter:description" content="2026年11月20日｜台州">
   <meta name="twitter:image" content="https://lichenming0226-coder.github.io/wedding-invitation/assets/share-thumbnail-original-20260925.jpg">
   <link rel="preload" href="assets/lace-ornament-bg-20260925.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/lace-envelope-20260925.webp" as="image" type="image/webp">
   <title>李晨鸣 &amp; 高雅婷｜婚礼邀请函</title>
+  <script>window.__invitationLoadingStarted=performance.now()</script>
+  <style>
+    .site-loader{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;background:#291f20;transition:opacity .4s ease,visibility .4s ease}
+    .site-loader__hearts{position:relative;width:76px;height:60px;transform:translateY(-1.5vh)}
+    .site-loader__heart{position:absolute;display:block;filter:drop-shadow(0 5px 14px rgba(12,7,8,.16));animation:siteLoaderHeartFront 2s ease-in-out infinite}
+    .site-loader__heart svg{display:block;width:100%;height:100%;fill:currentColor}
+    .site-loader__heart--back{top:2px;left:4px;width:48px;height:44px;color:#d8c49d;animation-name:siteLoaderHeartBack}
+    .site-loader__heart--front{right:2px;bottom:0;width:43px;height:40px;color:#fff}
+    .site-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+    body.is-loading{overflow:hidden}
+    body.is-loading>.invitation{visibility:hidden}
+    @keyframes siteLoaderHeartBack{0%,45%,100%{color:#d8c49d}55%,95%{color:#fff}}
+    @keyframes siteLoaderHeartFront{0%,45%,100%{color:#fff}55%,95%{color:#d8c49d}}
+    @media(prefers-reduced-motion:reduce){.site-loader__heart{animation:none}}
+  </style>
   <link rel="stylesheet" href="fonts.css?v=thin-tagline-20260925">
-  <link rel="stylesheet" href="styles.css?v=thin-tagline-20260925">
+  <link rel="stylesheet" href="styles.css?v=loading-20260925">
 </head>
-<body>
+<body class="is-loading">
+<div class="site-loader" id="siteLoader" role="status" aria-live="polite" aria-label="婚礼邀请函加载中">
+  <div class="site-loader__hearts" aria-hidden="true">
+    <span class="site-loader__heart site-loader__heart--back"><svg viewBox="0 0 48 44"><path d="M24 42C20.4 37.8 4 27.2 4 15.2 4 7.9 9.1 3 15.8 3c3.8 0 6.6 1.9 8.2 4.5C25.6 4.9 28.4 3 32.2 3 38.9 3 44 7.9 44 15.2 44 27.2 27.6 37.8 24 42Z"/></svg></span>
+    <span class="site-loader__heart site-loader__heart--front"><svg viewBox="0 0 48 44"><path d="M24 42C20.4 37.8 4 27.2 4 15.2 4 7.9 9.1 3 15.8 3c3.8 0 6.6 1.9 8.2 4.5C25.6 4.9 28.4 3 32.2 3 38.9 3 44 7.9 44 15.2 44 27.2 27.6 37.8 24 42Z"/></svg></span>
+  </div>
+</div>
+<noscript><style>body.is-loading{overflow:auto}body.is-loading>.invitation{visibility:visible}.site-loader{animation:siteLoaderFallback .4s 1.6s ease forwards;pointer-events:none}@keyframes siteLoaderFallback{to{opacity:0;visibility:hidden}}</style></noscript>
 <img class="share-thumbnail" src="assets/share-thumbnail-original-20260925.jpg" width="600" height="600" alt="" aria-hidden="true" fetchpriority="low">
 <main class="invitation" aria-label="李晨鸣与高雅婷的婚礼邀请函">
   <div class="grain" aria-hidden="true"></div>
@@ -123,6 +146,6 @@
     <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel" lang="en">DATE</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1" lang="en">TIMELINE</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1" lang="en">ADDRESS</button></nav>
   </section>
 </main>
-<script src="app.js?v=music-unlock-v2-20260925"></script>
+<script src="app.js?v=loading-20260925"></script>
 </body>
 </html>

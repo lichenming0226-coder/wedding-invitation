@@ -8,6 +8,7 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const music = $('bgMusic');
   const musicToggle = $('musicToggle');
+  const siteLoader = $('siteLoader');
   const timers = new Set();
   let phase = 'intro', photoIndex = 0, panelIndex = 0;
   let paused = motion.matches, infoSelected = false, photoTimer, panelTimer, switchingPanel = false;
@@ -17,6 +18,45 @@
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
   const cancel = id => { clearTimeout(id); timers.delete(id); };
   const duration = ms => motion.matches ? 0 : ms;
+  const loadingStarted = window.__invitationLoadingStarted || performance.now();
+  const loadingMinDuration = 1200;
+  const loadingMaxDuration = 1600;
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
+  const waitForImage = image => {
+    if (!image) return Promise.resolve();
+    if (image.complete && image.naturalWidth) return Promise.resolve();
+    return new Promise(resolve => {
+      image.addEventListener('load', resolve, { once: true });
+      image.addEventListener('error', resolve, { once: true });
+    });
+  };
+  async function finishLoading() {
+    const criticalImages = [
+      document.querySelector('.envelope-back'),
+      document.querySelector('.wax-seal'),
+      document.querySelector('.couple-doodle'),
+    ];
+    const criticalFonts = document.fonts ? Promise.allSettled([
+      document.fonts.load('28px "Italianno"'),
+      document.fonts.load('20px "IM Fell English"'),
+      document.fonts.load('16px "ZCOOL XiaoWei"'),
+      document.fonts.load('16px "Italianno Journey"'),
+    ]) : Promise.resolve();
+    const ready = Promise.allSettled([
+      ...criticalImages.map(waitForImage),
+      criticalFonts,
+    ]);
+    await Promise.race([
+      ready,
+      sleep(loadingMaxDuration - (performance.now() - loadingStarted)),
+    ]);
+    await sleep(loadingMinDuration - (performance.now() - loadingStarted));
+    siteLoader.classList.add('is-leaving');
+    document.body.classList.remove('is-loading');
+    siteLoader.setAttribute('aria-hidden', 'true');
+    later(() => siteLoader.remove(), 460);
+  }
+  finishLoading();
   const activateImage = image => {
     if (!image.src && image.dataset.src) {
       image.src = image.dataset.src;
