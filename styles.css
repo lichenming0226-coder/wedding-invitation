@@ -57,12 +57,12 @@ p,h1,figure { margin:0 }
 .intro.opening .envelope-hint,.intro.opening .couple-doodle { opacity:0; pointer-events:none }
 .intro.opening .envelope-trigger { pointer-events:none }
 .poem-stage { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:26px 12px 18px; gap:clamp(6px,1.2svh,12px) }
-.poem { display:grid; gap:0; width:100%; text-align:center; margin:0 }
+.poem { display:grid; gap:0; width:100%; text-align:center; margin:0 0 clamp(18px,3svh,30px) }
 .poem p { font:400 clamp(.72rem,3.25vw,.98rem)/1.58 var(--chinese); letter-spacing:.045em; white-space:nowrap }
 .poem p.poem-break { margin-top:clamp(8px,1.5svh,14px) }
 .poem-letter { display:inline-block; white-space:pre; transform-origin:center; will-change:transform,opacity }
 .poem-preparing .poem-letter { opacity:0 }
-.fountain { position:relative; width:min(42vw,172px,19svh); aspect-ratio:1; margin:-4px 0; opacity:.78; flex-shrink:0 }
+.fountain { position:relative; width:min(54vw,220px,24svh); aspect-ratio:1; margin:0; opacity:.78; flex-shrink:0 }
 .fountain>img,.fountain-water { position:absolute; inset:0; width:100%; height:100%; object-fit:contain }
 .fountain-water { fill:none; stroke:#fff8ed; stroke-width:3.7; stroke-linecap:round }
 .streams path { stroke-dasharray:12 17 4 21; animation:waterFlow 1.45s linear infinite; opacity:.8 }
@@ -124,8 +124,9 @@ p,h1,figure { margin:0 }
  .information { height:116px }.date { font-size:2.3rem }.timeline { gap:5px }
  .intro-heading { top:58px }.handwriting { font-size:1.8rem; margin-top:6px }
  .poem-stage { padding-top:18px; padding-bottom:14px; gap:5px }
+ .poem { margin-bottom:10px }
  .poem p { font-size:.7rem; line-height:1.48 }.poem p.poem-break { margin-top:6px }
- .fountain { width:min(37vw,132px,17svh) }
+ .fountain { width:min(46vw,154px,23svh) }
 }
 @media(min-width:700px) { .invitation { width:520px }.guide { padding-left:28px; padding-right:28px } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important }.ripples { display:none } }

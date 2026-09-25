@@ -1,19 +1,21 @@
 {
   "date": "2026-09-25",
-  "base_revision": "773621bbc8b218b37a20a7f87f26f510c194226f",
-  "rollback_commit": "773621bbc8b218b37a20a7f87f26f510c194226f",
+  "base_revision": "65c2be1015f4197e2de403ef1a3c6c7a72798f31",
+  "rollback_commit": "65c2be1015f4197e2de403ef1a3c6c7a72798f31",
   "changes": [
-    "Added 1200x630 and 600x600 wedding share images plus Open Graph, Twitter Card, image_src, canonical, icon, and thumbnail metadata.",
-    "Reduced cold-page payload by replacing oversized runtime images with versioned WebP derivatives, subsetting fonts to WOFF2, deferring gallery and scene assets, and loading cross-origin music only after interaction.",
-    "Added an origin-scoped service worker that precaches the invitation shell and caches visited same-origin assets for stable repeat opens and offline shell recovery."
+    "Switched the primary Open Graph and Twitter share image to the 600x600 square wedding thumbnail and versioned the share URL.",
+    "Restored best-effort immediate playback of the official Apple Music preview, with retry on WeixinJSBridgeReady and the first user gesture when platform autoplay policy blocks sound.",
+    "Enlarged the fountain illustration and added explicit spacing below the poem while preserving one-screen layouts at 320x568 and 390x844.",
+    "Bumped the service-worker cache to v2 and updated precache URLs for the new stylesheet, script, and versioned navigation shell."
   ],
   "pending": [
-    "WeChat external-link safety prompts cannot be disabled by page code. Removing the platform warning requires a suitable owned domain and WeChat-side compliance/reputation configuration; custom JS-SDK sharing additionally requires a verified official account, JS interface security domain, and signature backend."
+    "A full copyrighted recording was not downloaded, copied, or hotlinked. Replacing the official preview requires a user-supplied licensed audio file or an authorized direct streaming source.",
+    "Audible autoplay remains controlled by each browser and WeChat. Page load attempts playback immediately, then retries after WeChat bridge readiness or the first user gesture."
   ],
   "sha256": {
-    "index.html": "bac9ce8657a057a9505a03c7c363609a3f64eeec40c86d601458d7588c4b7111",
-    "app.js": "558c38b51325f1999a9c90793bf5cf20dfd04b9e282da9354a00ff566957f067",
-    "styles.css": "3c6d0a45f52f2a7541dd83814ad65923bede4b30ddcf3fd92e52a7f885266dd7",
+    "index.html": "2abdf5dd37da1ab8aa8e4c51b83819717a6f60cff0d40528ccc5ffd9f966448f",
+    "app.js": "c6b512a004449d4be6ee0f9d72ab68afa71c4ebae0b451addcc336382522a9a9",
+    "styles.css": "b78cabbb8181cc68e7b371db07b319f427edec41b80fbf1328ca4501c9985c00",
     "fonts.css": "20cc49cf2c9eb41d72e2280a1d81ad0fed21026049c0f7ff3a69851ea27dd341",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
     "assets/italianno-OFL.txt": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
@@ -51,8 +53,8 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "b29880ec9fdcfdda76ac82910ba09fde907e12a7d09bc5f8b16ef549f692583a",
-    "service-worker.js": "5dfef467e695615cc71121aae7c7b2cb56d12911b1b537eb580ea2b8d1f81c4b",
+    "README.md": "9d8d82fc3c9a056cce7f52a735da3d090a3d3cf1f24bbe237039506e1a9c5408",
+    "service-worker.js": "8d519402b31ac43ac46aa42070adb15b9971aea144c3cc4ecf01bdd19d5c4844",
     "scripts/optimize-assets.mjs": "124182a6057e9e72a773aab89e3cfe00f55f39ad6e5c8518bf36f37bc23ea972",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
@@ -103,11 +105,11 @@
   },
   "share": {
     "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
-    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=share-20260925",
-    "open_graph_image": "assets/share-preview-20260925.jpg",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=square-20260925",
+    "open_graph_image": "assets/share-thumbnail-20260925.jpg",
     "open_graph_dimensions": [
-      1200,
-      630
+      600,
+      600
     ],
     "square_thumbnail": "assets/share-thumbnail-20260925.jpg",
     "square_dimensions": [
@@ -121,7 +123,7 @@
     "live_baseline_eager_gallery_requests": 20,
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
-    "optimized_cold_audio_requests": 0,
-    "cache_name": "wedding-invitation-20260925-v1"
+    "optimized_cold_audio_requests": 1,
+    "cache_name": "wedding-invitation-20260925-v2"
   }
 }

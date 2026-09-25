@@ -61,6 +61,10 @@
   });
   music.addEventListener('play', syncMusicButton);
   music.addEventListener('pause', syncMusicButton);
+  playMusic();
+  document.addEventListener('WeixinJSBridgeReady', () => {
+    if (musicPreference === 'auto' && music.paused) playMusic();
+  }, { once: true });
   document.addEventListener('pointerdown', event => {
     if (musicPreference === 'auto' && music.paused && !musicToggle.contains(event.target)) playMusic();
   }, { capture: true, once: true });

@@ -1,12 +1,11 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260925-v1';
+const CACHE = 'wedding-invitation-20260925-v2';
 const CORE = [
-  './',
-  './index.html',
+  './?v=square-20260925',
   './fonts.css?v=performance-20260925',
-  './styles.css?v=performance-20260925',
-  './app.js?v=performance-20260925',
+  './styles.css?v=square-20260925',
+  './app.js?v=autoplay-20260925',
   './assets/paper-texture.svg',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-english-20260925.woff2',
@@ -45,11 +44,11 @@ self.addEventListener('fetch', event => {
 
   if (request.mode === 'navigate') {
     event.respondWith(
-      caches.match('./index.html').then(cached => {
+      caches.match('./?v=square-20260925').then(cached => {
         const fresh = fetch(request).then(response => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE).then(cache => cache.put('./index.html', copy));
+            caches.open(CACHE).then(cache => cache.put('./?v=square-20260925', copy));
           }
           return response;
         }).catch(() => cached);
