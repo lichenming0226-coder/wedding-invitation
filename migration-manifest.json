@@ -51,7 +51,7 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "def2483d156cb9987744cf649464eb5c9d402d82e8b883a88208d02131756ffb",
+    "README.md": "34cb3e64275aa94a2d1258c1c0ea858f32a7a6208c8cb10947df368e3ffe0856",
     "service-worker.js": "4e9cbdb6fdf3507664a59c10422e126f42df1da76112d03bc1a81991805e859b",
     "scripts/optimize-assets.mjs": "81ed5b9c33ae49a080d9aa3fb3fd65b4d2c26f6248e2605c8813c9a72619a9b0",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
@@ -137,11 +137,11 @@
     "cache_name": "wedding-invitation-20260925-v4"
   },
   "release_verification": {
-    "feature_commit": "9ed5fd67fc163bc8cfa4f2b218b2eccfa5b2afb4",
-    "final_commit": "57e8e8e49bb3bc531b3213058385292aac00ef58",
-    "pages_run_id": 36099664083,
+    "feature_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
+    "final_commit": "0940f6ca9b600046daaff4df5a6f024078601089",
+    "pages_run_id": 36101975386,
     "pages_conclusion": "success",
-    "live_share_image": "assets/share-thumbnail-20260925.jpg",
+    "live_share_image": "assets/share-thumbnail-clean-20260925.jpg",
     "live_share_dimensions": [
       600,
       600
@@ -154,6 +154,8 @@
       "text_gap_px": 35.4375,
       "scroll_height_px": 844
     },
+    "live_share_image_bytes": 40796,
+    "old_share_image_requests": 0,
     "console_errors": 0
   },
   "typography": {

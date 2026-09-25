@@ -53,6 +53,9 @@
 - 方图、音乐启动与喷泉调整提交：`9ed5fd67fc163bc8cfa4f2b218b2eccfa5b2afb4`；缓存刷新提交：`57e8e8e49bb3bc531b3213058385292aac00ef58`
 - 最终 GitHub Pages 运行：[36099664083](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36099664083)，结论 `success`
 - 线上方图为 600×600 JPEG；自动播放允许时进入即播放，默认策略下首次触摸恢复；390×844 喷泉约 203px、文字间距约 35px，均无控制台错误
+- 无字居中分享图提交：`0940f6ca9b600046daaff4df5a6f024078601089`
+- 无字分享图 GitHub Pages 运行：[36101975386](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36101975386)，结论 `success`
+- 线上新图为 600×600 JPEG、40,796 字节，SHA-256 与本地一致；浏览器只请求新无字文件，旧带字图请求为 0
 
 ## 美术素材
 
