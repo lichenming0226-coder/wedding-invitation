@@ -38,6 +38,14 @@
 - 线上旧版冷开基线为 37 个响应、约 16.9 MB 同源资源、提前请求全部 20 张相册图；优化版本地冷开首屏低于 0.7 MB，同一阶段不请求相册、序言图或跨域音频。
 - 320×568 与 390×844 均无横向或纵向溢出；Service Worker 安装、控制、缓存命中和离线首屏恢复通过。
 
+## 发布记录
+
+- 功能提交：`61520f36619d98a82d716266eb2116d928e66371`
+- GitHub Pages 运行：[36097953892](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36097953892)，结论 `success`
+- 线上冷开：16 个响应、约 0.67 MB 同源资源、0 张相册预载、0 个音频请求
+- 线上完整路径：开信封、序言、相册轮播、ADDRESS 导航、Service Worker 控制与离线回访均通过，控制台无错误
+- 线上 `index.html`、分享横图、分享方图与 Service Worker 的 SHA-256 均与提交内容一致
+
 ## 美术素材
 
 `assets/lace-envelope.png`、`assets/lace-envelope-v2.png`、`assets/oval-lace-v2.png`、`assets/side-lace.png`、`assets/seal-lg.png` 和 `assets/lace-ornament-bg-v2.png` 使用内置 image_gen 根据用户提供参考图提取、重建或调整。新版背景保留蕾丝织物和白色装饰轮廓，并清除参考图中的所有文字、编号、标志与水印。提示词记录在 `art-prompts.json`、`art-prompts-seal.json`、`art-prompts-envelope-v2.json` 和 `art-prompts-background-v2.json`。
