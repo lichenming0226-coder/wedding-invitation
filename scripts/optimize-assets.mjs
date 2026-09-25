@@ -88,32 +88,21 @@ await sharp(shareBackground)
 
 const squarePhoto = await sharp(path.join(assets, 'gallery-01.jpg'))
   .rotate()
-  .resize({ width: 600, height: 600, fit: 'cover', position: 'attention' })
-  .modulate({ saturation: 0.9 })
+  .extract({ left: 0, top: 140, width: 760, height: 760 })
+  .resize({ width: 600, height: 600, fit: 'fill' })
+  .modulate({ saturation: 0.92 })
   .toBuffer();
 
-const squareTextLayer = Buffer.from(`
+const squareBorder = Buffer.from(`
   <svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset=".35" stop-color="#291f20" stop-opacity=".02"/>
-        <stop offset="1" stop-color="#291f20" stop-opacity=".94"/>
-      </linearGradient>
-    </defs>
-    <rect width="600" height="600" fill="url(#shade)"/>
-    <rect x="14" y="14" width="572" height="572" fill="none" stroke="#fff8ed" stroke-opacity=".7" stroke-width="2"/>
-    <g fill="#fff8ed" text-anchor="middle">
-      <text x="300" y="474" font-family="Songti SC, STSong, serif" font-size="50" letter-spacing="5">李晨鸣 &amp; 高雅婷</text>
-      <text x="300" y="533" font-family="Georgia, serif" font-size="27" letter-spacing="5">2026.11.20</text>
-      <text x="300" y="565" font-family="PingFang SC, sans-serif" font-size="17" letter-spacing="3">WEDDING INVITATION</text>
-    </g>
+    <rect x="14" y="14" width="572" height="572" fill="none" stroke="#fff8ed" stroke-opacity=".72" stroke-width="2"/>
   </svg>
 `);
 
 await sharp(squarePhoto)
-  .composite([{ input: squareTextLayer, left: 0, top: 0 }])
-  .jpeg({ quality: 87, progressive: true, mozjpeg: true })
-  .toFile(path.join(assets, `share-thumbnail-${version}.jpg`));
+  .composite([{ input: squareBorder, left: 0, top: 0 }])
+  .jpeg({ quality: 88, progressive: true, mozjpeg: true })
+  .toFile(path.join(assets, `share-thumbnail-clean-${version}.jpg`));
 
 await sharp(path.join(assets, 'seal-lg.png'))
   .resize({ width: 96, height: 96, fit: 'inside' })

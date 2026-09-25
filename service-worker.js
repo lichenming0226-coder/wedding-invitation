@@ -1,8 +1,8 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260925-v3';
+const CACHE = 'wedding-invitation-20260925-v4';
 const CORE = [
-  './?v=square-20260925',
+  './?v=clean-share-20260925',
   './fonts.css?v=journey-20260925',
   './styles.css?v=journey-20260925',
   './app.js?v=autoplay-20260925',
@@ -16,7 +16,7 @@ const CORE = [
   './assets/seal-20260925.webp',
   './assets/couple-comic-20260925.webp',
   './assets/envelope-photo-20260925.webp',
-  './assets/share-thumbnail-20260925.jpg',
+  './assets/share-thumbnail-clean-20260925.jpg',
   './assets/favicon-20260925.png',
 ];
 
@@ -49,11 +49,11 @@ self.addEventListener('fetch', event => {
         .then(response => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE).then(cache => cache.put('./?v=square-20260925', copy));
+            caches.open(CACHE).then(cache => cache.put('./?v=clean-share-20260925', copy));
           }
           return response;
         })
-        .catch(() => caches.match('./?v=square-20260925')),
+        .catch(() => caches.match('./?v=clean-share-20260925')),
     );
     return;
   }
