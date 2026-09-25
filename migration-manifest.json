@@ -1,17 +1,16 @@
 {
   "date": "2026-09-25",
-  "base_revision": "ea99ea7a82ec875c8a8150294f47534e508f62d1",
-  "rollback_commit": "ea99ea7a82ec875c8a8150294f47534e508f62d1",
+  "base_revision": "867ee82a408e8b1dbb390d32e166eec3e171f808",
+  "rollback_commit": "867ee82a408e8b1dbb390d32e166eec3e171f808",
   "changes": [
-    "Replaced the bold Pacifico intro tagline with a smaller and thinner local Italianno subset.",
-    "Rebuilt the square share image exclusively from the original gallery-01.jpg crop with no generative editing, color modulation, skin retouching, or face reconstruction.",
-    "Versioned the share image URL and bumped the service-worker cache to v5 so platforms and returning visitors fetch the corrected assets."
+    "Removed 诚邀您见证我们的婚礼 from the Open Graph and Twitter share descriptions.",
+    "Versioned the share URL and bumped the service-worker cache to v6 so social crawlers and returning browsers can fetch the shorter copy."
   ],
   "pending": [
-    "The current Apple Music source is a 30.004-second official preview. NetEase returns fee=1, url=null, and code=-110 for song 150430, so a complete replacement still requires a user-supplied licensed MP3/M4A file or authorized direct stream."
+    "Existing WeChat messages may retain their cached description; share the new versioned URL to request a fresh card."
   ],
   "sha256": {
-    "index.html": "f87e193eacab46da46bfbc8f1f67fe23fe59875f75e042e08f721972a277ebbc",
+    "index.html": "7e568dac52fb3475802d6d34e811bdc280da3f239b9d1f7617b80e997c3a839c",
     "app.js": "c6b512a004449d4be6ee0f9d72ab68afa71c4ebae0b451addcc336382522a9a9",
     "styles.css": "de7a02be027168247c557832174357a8608b3e14ef6c3fdc82279a464f87971e",
     "fonts.css": "3a47f40ebee80d72f1dd95c1073af1d47656882eb5a3361c97c1adbc6a868e3c",
@@ -51,8 +50,8 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "24499344264a454f3b0216bc42cf3ba47cb4a4447a7049e746e63682c222e686",
-    "service-worker.js": "49d691cf717cc795f9ad4dec9ebe38d2972091ad5701678824c9521236d26914",
+    "README.md": "c5fa2360d92351393d22e5de11397e7d48207fb9a2f86f92c029cbeb887b8a1b",
+    "service-worker.js": "af4da75236d596f4bd56d5901238ab5018506d53e3cd95654abd042d55d30e85",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
@@ -115,7 +114,7 @@
   },
   "share": {
     "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
-    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=original-share-20260925",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=share-copy-20260925",
     "open_graph_image": "assets/share-thumbnail-original-20260925.jpg",
     "open_graph_dimensions": [
       600,
@@ -135,7 +134,9 @@
       "height": 720
     },
     "generative_editing": false,
-    "color_modulation": false
+    "color_modulation": false,
+    "description": "2026年11月20日｜台州 In The Ark 在方舟礼堂",
+    "twitter_description": "2026年11月20日｜台州"
   },
   "performance": {
     "live_baseline_same_origin_known_bytes": 16901266,
@@ -144,7 +145,7 @@
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
     "optimized_cold_audio_requests": 1,
-    "cache_name": "wedding-invitation-20260925-v5"
+    "cache_name": "wedding-invitation-20260925-v6"
   },
   "release_verification": {
     "feature_commit": "0940f6ca9b600046daaff4df5a6f024078601089",

@@ -1,8 +1,8 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260925-v5';
+const CACHE = 'wedding-invitation-20260925-v6';
 const CORE = [
-  './?v=original-share-20260925',
+  './?v=share-copy-20260925',
   './fonts.css?v=thin-tagline-20260925',
   './styles.css?v=thin-tagline-20260925',
   './app.js?v=autoplay-20260925',
@@ -49,11 +49,11 @@ self.addEventListener('fetch', event => {
         .then(response => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE).then(cache => cache.put('./?v=original-share-20260925', copy));
+            caches.open(CACHE).then(cache => cache.put('./?v=share-copy-20260925', copy));
           }
           return response;
         })
-        .catch(() => caches.match('./?v=original-share-20260925')),
+        .catch(() => caches.match('./?v=share-copy-20260925')),
     );
     return;
   }
