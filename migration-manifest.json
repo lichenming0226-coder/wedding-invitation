@@ -111,7 +111,7 @@
     "web_format": "AAC-LC 160kbps 44.1kHz stereo M4A faststart",
     "duration_seconds": 261.906009,
     "size_bytes": 5382480,
-    "preload": "metadata",
+    "preload": "auto",
     "loop": true,
     "service_worker_precache": false,
     "service_worker_bypass": true,
@@ -224,6 +224,6 @@
     ],
     "measured_slow_critical_detach_ms": 2022,
     "reduced_motion": "static two-color hearts",
-    "no_javascript_fallback_ms": 2400
+    "no_javascript_fallback_ms": 2000
   }
 }
