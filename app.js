@@ -79,7 +79,7 @@
     } catch { /* The invitation remains usable without persistent storage. */ }
     later(() => siteLoader.remove(), 460);
   }
-  finishLoading();
+  const loadingFinished = finishLoading();
   const activateImage = image => {
     if (!image.src && image.dataset.src) {
       image.src = image.dataset.src;
@@ -104,9 +104,8 @@
     if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
     else later(callback, 700);
   };
-  const fullMediaReadyKey = 'wedding-invitation-full-media-ready-v1';
-  let fullMediaWarmupPromise;
-  let completeAudioWarmupPromise;
+  const imageWarmupReadyKey = 'wedding-invitation-images-ready-v1';
+  let imageWarmupPromise;
   const deferredImageUrls = () => [...new Set(
     [...document.querySelectorAll('img[data-src]')]
       .map(image => image.dataset.src)
@@ -125,30 +124,6 @@
     };
     await Promise.all(Array.from({ length: Math.min(3, queue.length) }, worker));
   }
-  async function warmCompleteAudio() {
-    if (completeAudioWarmupPromise) return completeAudioWarmupPromise;
-    const source = music.currentSrc || music.src || music.dataset.src;
-    if (!source) return false;
-    completeAudioWarmupPromise = new Promise(resolve => {
-      const prefetch = document.createElement('link');
-      const timeout = setTimeout(() => {
-        prefetch.remove();
-        resolve(false);
-      }, 30000);
-      const finish = success => {
-        clearTimeout(timeout);
-        prefetch.remove();
-        resolve(success);
-      };
-      prefetch.rel = 'prefetch';
-      prefetch.as = 'audio';
-      prefetch.href = source;
-      prefetch.addEventListener('load', () => finish(true), { once: true });
-      prefetch.addEventListener('error', () => finish(false), { once: true });
-      document.head.append(prefetch);
-    });
-    return completeAudioWarmupPromise;
-  }
   async function requestMediaWarmup(worker) {
     const result = await new Promise(resolve => {
       const channel = new MessageChannel();
@@ -165,16 +140,15 @@
     }
     return result.failed === 0 && result.total > 0;
   }
-  function markFullMediaReady() {
+  function markImagesReady() {
     try {
-      localStorage.setItem(fullMediaReadyKey, '1');
+      localStorage.setItem(imageWarmupReadyKey, '1');
     } catch { /* Cache Storage still works when localStorage is unavailable. */ }
   }
-  function warmAllMedia() {
-    if (fullMediaWarmupPromise) return fullMediaWarmupPromise;
-    fullMediaWarmupPromise = (async () => {
+  function warmAllImages() {
+    if (imageWarmupPromise) return imageWarmupPromise;
+    imageWarmupPromise = (async () => {
       const urls = deferredImageUrls();
-      const audioReady = warmCompleteAudio();
       let imagesReady = true;
       if (!('serviceWorker' in navigator) || !canUseServiceWorker) {
         await warmImagesWithoutServiceWorker(urls);
@@ -187,26 +161,25 @@
           imagesReady = await requestMediaWarmup(worker);
         }
       }
-      if (imagesReady && await audioReady) markFullMediaReady();
+      if (imagesReady) markImagesReady();
     })().catch(() => { /* On unsupported browsers the existing lazy-loading path remains active. */ });
-    return fullMediaWarmupPromise;
+    return imageWarmupPromise;
   }
-  function scheduleFullMediaWarmup() {
+  function scheduleImageWarmup() {
     let scheduled = false;
     const schedule = () => {
       if (scheduled) return;
       scheduled = true;
-      runWhenIdle(warmAllMedia);
+      loadingFinished.then(() => runWhenIdle(warmAllImages));
     };
     if ('serviceWorker' in navigator && canUseServiceWorker) {
       navigator.serviceWorker.addEventListener('controllerchange', () => {
-        fullMediaWarmupPromise = undefined;
-        runWhenIdle(warmAllMedia);
+        imageWarmupPromise = undefined;
+        scheduled = false;
+        schedule();
       }, { once: true });
     }
-    if (music.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) schedule();
-    else music.addEventListener('canplaythrough', schedule, { once: true });
-    later(schedule, 2500);
+    schedule();
   }
 
   function syncMusicButton() {
@@ -414,6 +387,6 @@
       navigator.serviceWorker.register('./service-worker.js')
         .catch(() => {});
     }
-    scheduleFullMediaWarmup();
+    scheduleImageWarmup();
   }, { once: true });
 })();
