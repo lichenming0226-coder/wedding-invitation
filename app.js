@@ -33,8 +33,13 @@
   const cancel = id => { clearTimeout(id); timers.delete(id); };
   const duration = ms => motion.matches ? 0 : ms;
   const loadingStarted = window.__invitationLoadingStarted || performance.now();
-  const loadingMinDuration = 2000;
-  const loadingMaxDuration = 2000;
+  const repeatVisitKey = 'wedding-invitation-ready-v1';
+  let repeatVisit = false;
+  try {
+    repeatVisit = localStorage.getItem(repeatVisitKey) === '1';
+  } catch { /* Some embedded browsers disable persistent storage. */ }
+  const loadingMinDuration = repeatVisit ? 400 : 2000;
+  const loadingMaxDuration = repeatVisit ? 1200 : 2000;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
   const waitForImage = image => {
     if (!image) return Promise.resolve();
@@ -68,6 +73,9 @@
     siteLoader.classList.add('is-leaving');
     document.body.classList.remove('is-loading');
     siteLoader.setAttribute('aria-hidden', 'true');
+    try {
+      localStorage.setItem(repeatVisitKey, '1');
+    } catch { /* The invitation remains usable without persistent storage. */ }
     later(() => siteLoader.remove(), 460);
   }
   finishLoading();

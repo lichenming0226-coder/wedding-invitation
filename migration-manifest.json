@@ -1,18 +1,22 @@
 {
   "date": "2026-09-27",
-  "base_revision": "cd297cfeb0f0a764dcef53726921ca3e55cbc055",
-  "rollback_commit": "cd297cfeb0f0a764dcef53726921ca3e55cbc055",
+  "base_revision": "027173df031478a6a61bfafbf76cdf01c3a23039",
+  "rollback_commit": "027173df031478a6a61bfafbf76cdf01c3a23039",
   "changes": [
     "Added a bounded first-load transition that waits only for critical above-the-fold images and fonts, never the complete BGM.",
     "Replaced the initial spinner, loading copy, and couple doodle with two offset overlapping hearts that swap ivory and wedding-gold colors over a 2-second cycle.",
     "Guaranteed one complete 2-second heart color cycle before fade-out, retained reduced-motion and no-JavaScript fallbacks, and bumped the service-worker cache to v11.",
     "Moved the complete BGM, gallery and noncritical illustrations to Tencent COS while retaining GitHub Pages as the permanent page and sharing origin.",
-    "Added per-resource GitHub fallbacks and reduced the service-worker precache to the roughly 295 KB lightweight shell."
+    "Added per-resource GitHub fallbacks and reduced the service-worker precache to the roughly 295 KB lightweight shell.",
+    "Added a separate cache-first Service Worker runtime cache for versioned Tencent COS WebP images while keeping the full M4A outside Cache Storage.",
+    "Kept the 2-second first-visit Loading transition and reduced repeat visits in the same browser to roughly 0.4 seconds, with a bounded 1.2-second resource wait."
   ],
-  "pending": [],
+  "pending": [
+    "GitHub Pages deployment and live readback verification after merge"
+  ],
   "sha256": {
-    "index.html": "319acbe5141ea6f5862d2e9bfbca8a790294dd63538044436edaa92439d9b8d2",
-    "app.js": "78926dc098ff9acf22de8d13622ac5c05d5c9cfb145b51dcf8416a695341f771",
+    "index.html": "5cc2bdfab6a74aaed228d976a8ac819b436dca43adb88c22e82b2e4eed6897cd",
+    "app.js": "dfcc063a3796e46a918b5dd7e28c09f5dc415c8865e18ce1909a950326583653",
     "styles.css": "edac630a5fcc536de5fe6dff99ce39e06e561468e432021125617157baa03291",
     "fonts.css": "3a47f40ebee80d72f1dd95c1073af1d47656882eb5a3361c97c1adbc6a868e3c",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
@@ -51,8 +55,8 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "42093984c3487b514f4032122fbe90e553cf0ac155681e7537b9cf276bab3f94",
-    "service-worker.js": "17c89c8aa6fab09ee8db712ff86d8007099f55076b872f72b273fad9739989af",
+    "README.md": "8c54548c0a4ac96a6d456cac26fd8d04b427047370ac144d8d11bf5efcffeab3",
+    "service-worker.js": "d065181d1f38759f9a5a406ed2e2ba6010c0e283c072db36bc651a573e90ef83",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
     "assets/envelope-photo-20260925.webp": "fdedb7277dee36e13ec5d1594ebcb58f3fc5da94082fe057a8dd09bd2d89d967",
@@ -113,7 +117,7 @@
     "web_format": "AAC-LC 160kbps 44.1kHz stereo M4A faststart",
     "duration_seconds": 261.906009,
     "size_bytes": 5382480,
-    "preload": "auto",
+    "preload": "metadata",
     "loop": true,
     "service_worker_precache": false,
     "service_worker_bypass": true,
@@ -137,7 +141,7 @@
   },
   "share": {
     "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
-    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=github-cos-v2-20260927",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=repeat-cache-v1-20260927",
     "open_graph_image": "assets/share-thumbnail-original-20260925.jpg",
     "open_graph_dimensions": [
       600,
@@ -170,13 +174,20 @@
     "optimized_cold_audio_requests": 1,
     "asset_delivery": "Tencent COS Shanghai with per-resource GitHub fallback",
     "precache_bytes": 301809,
-    "cache_name": "wedding-invitation-20260927-v14"
+    "cache_name": "wedding-invitation-20260927-v15",
+    "media_cache_name": "wedding-invitation-media-20260927-v15",
+    "media_cache_strategy": "cache-first for versioned Tencent COS WebP images",
+    "media_cache_verified_entries": 26,
+    "audio_cache_storage": false,
+    "local_first_loading_ms": 2009,
+    "local_repeat_loading_ms": 403,
+    "local_offline_repeat_loading_ms": 420
   },
   "release_verification": {
-    "feature_commit": "7e0dd6d31f139738ac0e5fe3d330570ed29cd923",
-    "final_commit": "7e0dd6d31f139738ac0e5fe3d330570ed29cd923",
-    "pages_run_id": 36297138682,
-    "pages_conclusion": "success",
+    "feature_commit": null,
+    "final_commit": null,
+    "pages_run_id": null,
+    "pages_conclusion": "pending",
     "live_share_image": "assets/share-thumbnail-original-20260925.jpg",
     "live_share_dimensions": [
       600,
@@ -205,7 +216,12 @@
       "horizontal_overflow_px": 0,
       "vertical_overflow_px": 0
     },
-    "service_worker_cache": "wedding-invitation-20260927-v14",
+    "service_worker_cache": "wedding-invitation-20260927-v15",
+    "service_worker_media_cache": "wedding-invitation-media-20260927-v15",
+    "local_first_loading_ms": 2009,
+    "local_repeat_loading_ms": 403,
+    "local_offline_repeat_loading_ms": 420,
+    "local_media_cache_entries": 26,
     "audio_cached_by_service_worker": false,
     "live_audio_duration_seconds": 261.906009
   },
@@ -221,6 +237,9 @@
   "loading": {
     "minimum_duration_ms": 2000,
     "maximum_resource_wait_ms": 2000,
+    "repeat_minimum_duration_ms": 400,
+    "repeat_maximum_resource_wait_ms": 1200,
+    "repeat_visit_marker": "wedding-invitation-ready-v1",
     "fade_duration_ms": 400,
     "animation_cycle_ms": 2000,
     "visual": "two offset overlapping hearts",
@@ -244,6 +263,9 @@
     ],
     "measured_slow_critical_fade_start_ms": 2002,
     "measured_slow_critical_detach_ms": 2464,
+    "measured_local_first_fade_start_ms": 2009,
+    "measured_local_repeat_fade_start_ms": 403,
+    "measured_local_offline_repeat_fade_start_ms": 420,
     "reduced_motion": "static two-color hearts",
     "no_javascript_fallback_ms": 2000
   }
