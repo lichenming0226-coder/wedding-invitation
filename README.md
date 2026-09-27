@@ -65,6 +65,11 @@
 - GitHub Pages 运行：[36112929671](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36112929671)，结论 `success`
 - 线上 320×568 与 390×844 均在约 2.002 秒开始淡出、约 2.463–2.465 秒移除；完整完成金/白到白/金再复原的一次换色，页面无溢出、无控制台错误
 - 线上 `index.html`、`app.js` 与 `service-worker.js` 的 SHA-256 均与提交一致；仅安装 `wedding-invitation-20260925-v11` 缓存，完整 BGM 未写入 Cache Storage
+- GitHub + COS 混合部署提交：`7e0dd6d31f139738ac0e5fe3d330570ed29cd923`
+- 混合部署 GitHub Pages 运行：[36297138682](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36297138682)，结论 `success`
+- 线上首屏 HTML、CSS、JavaScript、字体、分享图和信封兼容素材由 GitHub Pages 提供；完整 BGM、20 张相册、印章、情侣插画、喷泉和椭圆相框由上海 COS 提供，27 个 COS URL 均返回 200
+- 全新缓存环境中 Loading 正常结束、BGM `readyState=4` 且 `currentSrc` 指向 COS；开信封、诗页、喷泉和指南相册路径均通过，控制台无错误
+- `wedding-invitation-20260927-v14` 仅预缓存 10 个轻量核心条目，共 301,809 字节；COS 单资源失败时会回退同名 GitHub 副本
 
 ## 美术素材
 
