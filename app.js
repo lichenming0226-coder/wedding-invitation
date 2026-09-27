@@ -9,6 +9,7 @@
   const music = $('bgMusic');
   const musicToggle = $('musicToggle');
   const siteLoader = $('siteLoader');
+  const canUseServiceWorker = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
   const timers = new Set();
   let phase = 'intro', photoIndex = 0, panelIndex = 0;
   let paused = motion.matches, infoSelected = false, photoTimer, panelTimer, switchingPanel = false;
@@ -103,6 +104,110 @@
     if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
     else later(callback, 700);
   };
+  const fullMediaReadyKey = 'wedding-invitation-full-media-ready-v1';
+  let fullMediaWarmupPromise;
+  let completeAudioWarmupPromise;
+  const deferredImageUrls = () => [...new Set(
+    [...document.querySelectorAll('img[data-src]')]
+      .map(image => image.dataset.src)
+      .filter(Boolean),
+  )];
+  async function warmImagesWithoutServiceWorker(urls) {
+    const queue = [...urls];
+    let nextIndex = 0;
+    const worker = async () => {
+      while (nextIndex < queue.length) {
+        const url = queue[nextIndex++];
+        try {
+          await fetch(url, { mode: 'no-cors', credentials: 'omit', cache: 'force-cache' });
+        } catch { /* Individual images still retain their on-demand GitHub fallback. */ }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(3, queue.length) }, worker));
+  }
+  async function warmCompleteAudio() {
+    if (completeAudioWarmupPromise) return completeAudioWarmupPromise;
+    const source = music.currentSrc || music.src || music.dataset.src;
+    if (!source) return false;
+    completeAudioWarmupPromise = new Promise(resolve => {
+      const prefetch = document.createElement('link');
+      const timeout = setTimeout(() => {
+        prefetch.remove();
+        resolve(false);
+      }, 30000);
+      const finish = success => {
+        clearTimeout(timeout);
+        prefetch.remove();
+        resolve(success);
+      };
+      prefetch.rel = 'prefetch';
+      prefetch.as = 'audio';
+      prefetch.href = source;
+      prefetch.addEventListener('load', () => finish(true), { once: true });
+      prefetch.addEventListener('error', () => finish(false), { once: true });
+      document.head.append(prefetch);
+    });
+    return completeAudioWarmupPromise;
+  }
+  async function requestMediaWarmup(worker) {
+    const result = await new Promise(resolve => {
+      const channel = new MessageChannel();
+      const timeout = setTimeout(() => resolve(null), 30000);
+      channel.port1.onmessage = event => {
+        clearTimeout(timeout);
+        resolve(event.data);
+      };
+      worker.postMessage({ type: 'warm-media' }, [channel.port2]);
+    });
+    if (!result) {
+      await warmImagesWithoutServiceWorker(deferredImageUrls());
+      return true;
+    }
+    return result.failed === 0 && result.total > 0;
+  }
+  function markFullMediaReady() {
+    try {
+      localStorage.setItem(fullMediaReadyKey, '1');
+    } catch { /* Cache Storage still works when localStorage is unavailable. */ }
+  }
+  function warmAllMedia() {
+    if (fullMediaWarmupPromise) return fullMediaWarmupPromise;
+    fullMediaWarmupPromise = (async () => {
+      const urls = deferredImageUrls();
+      const audioReady = warmCompleteAudio();
+      let imagesReady = true;
+      if (!('serviceWorker' in navigator) || !canUseServiceWorker) {
+        await warmImagesWithoutServiceWorker(urls);
+      } else {
+        const registration = await navigator.serviceWorker.ready;
+        const worker = navigator.serviceWorker.controller || registration.active;
+        if (!worker || typeof MessageChannel === 'undefined') {
+          await warmImagesWithoutServiceWorker(urls);
+        } else {
+          imagesReady = await requestMediaWarmup(worker);
+        }
+      }
+      if (imagesReady && await audioReady) markFullMediaReady();
+    })().catch(() => { /* On unsupported browsers the existing lazy-loading path remains active. */ });
+    return fullMediaWarmupPromise;
+  }
+  function scheduleFullMediaWarmup() {
+    let scheduled = false;
+    const schedule = () => {
+      if (scheduled) return;
+      scheduled = true;
+      runWhenIdle(warmAllMedia);
+    };
+    if ('serviceWorker' in navigator && canUseServiceWorker) {
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        fullMediaWarmupPromise = undefined;
+        runWhenIdle(warmAllMedia);
+      }, { once: true });
+    }
+    if (music.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) schedule();
+    else music.addEventListener('canplaythrough', schedule, { once: true });
+    later(schedule, 2500);
+  }
 
   function syncMusicButton() {
     const playing = !music.paused;
@@ -304,8 +409,11 @@
   });
   document.addEventListener('visibilitychange', () => { cancel(photoTimer); cancel(panelTimer); if (!document.hidden && phase === 'guide') startRotation(); });
   motion.addEventListener('change', () => { paused = motion.matches; if (paused) { cancel(photoTimer); cancel(panelTimer); poemAnimations.forEach(animation => animation.cancel()); $('poemStage').classList.remove('poem-preparing'); } else if (phase === 'guide') startRotation(); });
-  const canUseServiceWorker = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
-  if ('serviceWorker' in navigator && canUseServiceWorker) {
-    window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}), { once: true });
-  }
+  window.addEventListener('load', () => {
+    if ('serviceWorker' in navigator && canUseServiceWorker) {
+      navigator.serviceWorker.register('./service-worker.js')
+        .catch(() => {});
+    }
+    scheduleFullMediaWarmup();
+  }, { once: true });
 })();
