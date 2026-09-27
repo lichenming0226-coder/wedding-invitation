@@ -8,7 +8,7 @@
 * { box-sizing:border-box }
 html { min-height:100%; background:var(--brown) }
 body { margin:0; color:var(--ivory); font-family:var(--chinese); font-weight:400; -webkit-font-smoothing:antialiased }
-body::before { content:""; position:fixed; inset:0; z-index:-1; background:linear-gradient(#291f2018,#291f2018),url("assets/lace-ornament-bg-20260925.webp") center/auto 100% repeat-x; pointer-events:none }
+body::before { content:""; position:fixed; inset:0; z-index:-1; background:linear-gradient(#291f2018,#291f2018),url("https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com/assets/assets/lace-ornament-bg-20260925.webp") center/auto 100% repeat-x; pointer-events:none }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation }
 button:disabled { cursor:default }
 button:focus-visible,a:focus-visible { outline:1px solid var(--ivory); outline-offset:5px }

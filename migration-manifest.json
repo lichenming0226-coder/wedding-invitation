@@ -1,17 +1,19 @@
 {
-  "date": "2026-09-25",
+  "date": "2026-09-27",
   "base_revision": "af07c775b686f871ae0896a1caa854fa043c6f79",
   "rollback_commit": "af07c775b686f871ae0896a1caa854fa043c6f79",
   "changes": [
     "Added a bounded first-load transition that waits only for critical above-the-fold images and fonts, never the complete BGM.",
     "Replaced the initial spinner, loading copy, and couple doodle with two offset overlapping hearts that swap ivory and wedding-gold colors over a 2-second cycle.",
-    "Guaranteed one complete 2-second heart color cycle before fade-out, retained reduced-motion and no-JavaScript fallbacks, and bumped the service-worker cache to v11."
+    "Guaranteed one complete 2-second heart color cycle before fade-out, retained reduced-motion and no-JavaScript fallbacks, and bumped the service-worker cache to v11.",
+    "Moved the complete BGM, gallery and noncritical illustrations to Tencent COS while retaining GitHub Pages as the permanent page and sharing origin.",
+    "Added per-resource GitHub fallbacks and reduced the service-worker precache to the roughly 295 KB lightweight shell."
   ],
   "pending": [],
   "sha256": {
-    "index.html": "bfaa187a1e3411e3a2f417f198b6bdedbbd91957653194723986ad3a30f2126b",
-    "app.js": "64813d5297bfe2e87c1e8b0312182f02d03f5677b9f6cfc1e08d9e233d195093",
-    "styles.css": "de7a02be027168247c557832174357a8608b3e14ef6c3fdc82279a464f87971e",
+    "index.html": "319acbe5141ea6f5862d2e9bfbca8a790294dd63538044436edaa92439d9b8d2",
+    "app.js": "78926dc098ff9acf22de8d13622ac5c05d5c9cfb145b51dcf8416a695341f771",
+    "styles.css": "edac630a5fcc536de5fe6dff99ce39e06e561468e432021125617157baa03291",
     "fonts.css": "3a47f40ebee80d72f1dd95c1073af1d47656882eb5a3361c97c1adbc6a868e3c",
     "assets/italianno-regular.ttf": "f6ae96dea0da46c73370eb0575848ab0eda190315bdfda3f5b252bba3dc9173c",
     "assets/italianno-OFL.txt": "bce79721f0203586872bbd7016922baf449980bdd1c44550a821112a3b547185",
@@ -135,7 +137,7 @@
   },
   "share": {
     "canonical_url": "https://lichenming0226-coder.github.io/wedding-invitation/",
-    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=loading-hearts-v2-20260925",
+    "share_url": "https://lichenming0226-coder.github.io/wedding-invitation/?v=github-cos-v2-20260927",
     "open_graph_image": "assets/share-thumbnail-original-20260925.jpg",
     "open_graph_dimensions": [
       600,
@@ -166,7 +168,9 @@
     "optimized_local_cold_known_bytes_upper_bound": 700000,
     "optimized_cold_gallery_requests": 0,
     "optimized_cold_audio_requests": 1,
-    "cache_name": "wedding-invitation-20260925-v11"
+    "asset_delivery": "Tencent COS Shanghai with per-resource GitHub fallback",
+    "precache_bytes": 301809,
+    "cache_name": "wedding-invitation-20260927-v14"
   },
   "release_verification": {
     "feature_commit": "c606c09a4dca365a3d26d9033f61410a59cf670a",
@@ -201,7 +205,7 @@
       "horizontal_overflow_px": 0,
       "vertical_overflow_px": 0
     },
-    "service_worker_cache": "wedding-invitation-20260925-v11",
+    "service_worker_cache": "wedding-invitation-20260927-v14",
     "audio_cached_by_service_worker": false,
     "live_audio_duration_seconds": 261.906009
   },

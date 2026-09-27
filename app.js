@@ -15,6 +15,20 @@
   let musicPreference = 'auto';
   let musicEverPlayed = false;
   let guideAssetsPromise;
+  document.querySelectorAll('img[data-fallback-src]').forEach(image => {
+    image.addEventListener('error', () => {
+      if (image.dataset.fallbackUsed) return;
+      image.dataset.fallbackUsed = 'true';
+      image.src = image.dataset.fallbackSrc;
+    });
+  });
+  music.addEventListener('error', () => {
+    if (music.dataset.fallbackUsed || !music.dataset.fallbackSrc) return;
+    music.dataset.fallbackUsed = 'true';
+    music.src = music.dataset.fallbackSrc;
+    music.load();
+    if (musicPreference !== 'off') playMusic();
+  });
   const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
   const cancel = id => { clearTimeout(id); timers.delete(id); };
   const duration = ms => motion.matches ? 0 : ms;
