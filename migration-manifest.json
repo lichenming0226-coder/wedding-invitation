@@ -11,9 +11,7 @@
     "Added a separate cache-first Service Worker runtime cache for versioned Tencent COS WebP images while keeping the full M4A outside Cache Storage.",
     "Kept the 2-second first-visit Loading transition and reduced repeat visits in the same browser to roughly 0.4 seconds, with a bounded 1.2-second resource wait."
   ],
-  "pending": [
-    "GitHub Pages deployment and live readback verification after merge"
-  ],
+  "pending": [],
   "sha256": {
     "index.html": "5cc2bdfab6a74aaed228d976a8ac819b436dca43adb88c22e82b2e4eed6897cd",
     "app.js": "dfcc063a3796e46a918b5dd7e28c09f5dc415c8865e18ce1909a950326583653",
@@ -55,7 +53,7 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "8c54548c0a4ac96a6d456cac26fd8d04b427047370ac144d8d11bf5efcffeab3",
+    "README.md": "6fa99545aafaa7e968ca6fdba00e34de2ac50fc1f1780e688f50482bc0b4a155",
     "service-worker.js": "d065181d1f38759f9a5a406ed2e2ba6010c0e283c072db36bc651a573e90ef83",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
@@ -184,10 +182,10 @@
     "local_offline_repeat_loading_ms": 420
   },
   "release_verification": {
-    "feature_commit": null,
-    "final_commit": null,
-    "pages_run_id": null,
-    "pages_conclusion": "pending",
+    "feature_commit": "b90598e5b95ff1ae00352b15139f8f1e86c7b39a",
+    "final_commit": "b90598e5b95ff1ae00352b15139f8f1e86c7b39a",
+    "pages_run_id": 36298294086,
+    "pages_conclusion": "success",
     "live_share_image": "assets/share-thumbnail-original-20260925.jpg",
     "live_share_dimensions": [
       600,
@@ -222,6 +220,11 @@
     "local_repeat_loading_ms": 403,
     "local_offline_repeat_loading_ms": 420,
     "local_media_cache_entries": 26,
+    "live_first_loading_ms": 2020,
+    "live_repeat_loading_ms": 417,
+    "live_offline_repeat_loading_ms": 408,
+    "live_media_cache_entries": 26,
+    "live_readback_matches_commit": true,
     "audio_cached_by_service_worker": false,
     "live_audio_duration_seconds": 261.906009
   },

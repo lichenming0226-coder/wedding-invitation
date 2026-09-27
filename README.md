@@ -72,6 +72,10 @@
 - 线上首屏 HTML、CSS、JavaScript、字体、分享图和信封兼容素材由 GitHub Pages 提供；完整 BGM、20 张相册、印章、情侣插画、喷泉和椭圆相框由上海 COS 提供，27 个 COS URL 均返回 200
 - 全新缓存环境中 Loading 正常结束、BGM `readyState=4` 且 `currentSrc` 指向 COS；开信封、诗页、喷泉和指南相册路径均通过，控制台无错误
 - `wedding-invitation-20260927-v14` 仅预缓存 10 个轻量核心条目，共 301,809 字节；COS 单资源失败时会回退同名 GitHub 副本
+- 重复访问缓存功能提交：`b90598e5b95ff1ae00352b15139f8f1e86c7b39a`
+- 重复访问缓存 GitHub Pages 运行：[36298294086](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36298294086)，结论 `success`
+- 线上全新浏览器首次 Loading 实测约 2.020 秒、第二次约 0.417 秒、断网重复打开约 0.408 秒；26 张 COS WebP 已写入独立运行时缓存，完整 BGM 未进入 Cache Storage且 `readyState=4`
+- 线上 `index.html`、`app.js`、`service-worker.js` 与提交内容逐字节一致；完整交互路径无横向溢出、无控制台警告或错误
 
 ## 美术素材
 
