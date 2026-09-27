@@ -13,9 +13,7 @@
     "Started a bounded three-way image warmup after the first screen so all 26 COS images are prepared without waiting for the visitor to reach later scenes; retained preload=auto and native HTTP Range buffering for the complete music so weak networks prioritize playback instead of a competing full-file download.",
     "Used Tencent COS imageMogr2 to serve all 20 gallery images at up to 600x900 and quality 80, reducing their aggregate transfer from 919,254 bytes to about 635,968 bytes while retaining the original repository images as fallbacks."
   ],
-  "pending": [
-    "GitHub Pages deployment and live first-load verification after merge"
-  ],
+  "pending": [],
   "sha256": {
     "index.html": "ba6c020035b9edf1a701142e273612856c6213a436152ddf40a8d12b268bb926",
     "app.js": "5bd07707b9c687317e9657c316328fbf7d376c8736662ae779d7b871cb4e86b6",
@@ -57,7 +55,7 @@
     "assets/seal-lg.png": "716950f9ef9e61ac0bec79cb6293ecd0d88468066b2e194c4e13337b576c6919",
     "assets/side-lace.png": "11558626626ad0bcde8112db8863a813402f134908f32d490ebc2b9fbc053382",
     "assets/zcoolxiaowei-OFL.txt": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
-    "README.md": "187cc6ade0c8cb3c5a2be20bc004a960d21ba8926ebb9a9177863f156fb6c533",
+    "README.md": "61ee7564d6e59b799e0e3f1674962a3d2f1efd001f87b048b2d8210aadf48c39",
     "service-worker.js": "293af7650ad483f3c3915ccfc3bce857ddb6d4c8cd12ba4c0700a171ffb71834",
     "scripts/optimize-assets.mjs": "c8e268b63310a5400f5a24767587bf34b8b5fe44a34c7ba044edaec88005874b",
     "assets/couple-comic-20260925.webp": "eeb265c6eadb28eb0cbc13233d1ba87eb724e41e07056fee335864cd5cd565d5",
@@ -198,10 +196,10 @@
     "audio_playing_4mbps_120ms_ms": 1651
   },
   "release_verification": {
-    "feature_commit": null,
-    "final_commit": null,
-    "pages_run_id": null,
-    "pages_conclusion": "pending",
+    "feature_commit": "411e4718b8f0f16479899fbd803c804d57601e3f",
+    "final_commit": "411e4718b8f0f16479899fbd803c804d57601e3f",
+    "pages_run_id": 36303314464,
+    "pages_conclusion": "success",
     "live_share_image": "assets/share-thumbnail-original-20260925.jpg",
     "live_share_dimensions": [
       600,
@@ -248,6 +246,15 @@
     "local_audio_playing_10mbps_80ms_ms": 967,
     "local_audio_playing_4mbps_120ms_ms": 1651,
     "local_transformed_gallery_entries": 20,
+    "live_audio_playing_normal_ms": 2376,
+    "live_first_screen_normal_ms": 3613,
+    "live_images_ready_normal_ms": 4912,
+    "live_audio_playing_4mbps_120ms_ms": 1749,
+    "live_first_screen_4mbps_120ms_ms": 2590,
+    "live_images_ready_4mbps_120ms_ms": 3806,
+    "live_image_cache_entries": 26,
+    "live_transformed_gallery_entries": 20,
+    "live_final_readback_matches_commit": true,
     "audio_cached_by_service_worker": false,
     "live_audio_duration_seconds": 261.906009
   },

@@ -79,6 +79,10 @@
 - 重复访问缓存 GitHub Pages 运行：[36298294086](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36298294086)，结论 `success`
 - 线上全新浏览器首次 Loading 实测约 2.020 秒、第二次约 0.417 秒、断网重复打开约 0.408 秒；26 张 COS WebP 已写入独立运行时缓存，完整 BGM 未进入 Cache Storage且 `readyState=4`
 - 线上 `index.html`、`app.js`、`service-worker.js` 与提交内容逐字节一致；完整交互路径无横向溢出、无控制台警告或错误
+- 首次全量视觉资源最终优化提交：`411e4718b8f0f16479899fbd803c804d57601e3f`
+- 最终 GitHub Pages 运行：[36303314464](https://github.com/lichenming0226-coder/wedding-invitation/actions/runs/36303314464)，结论 `success`
+- 线上 4 Mbps/120ms 冷测音乐约 1.749 秒开始、首屏约 2.590 秒、26 张图片约 3.806 秒全部缓存完成；当前网络冷测分别约 2.376、3.613、4.912 秒
+- 线上 20 张相册均使用 600×900 以内的 COS 动态 WebP，完整音乐仍为 261.906009 秒；`index.html`、`app.js`、`service-worker.js` 与最终提交逐字节一致，控制台无错误、页面无溢出
 
 ## 美术素材
 
