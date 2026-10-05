@@ -1,18 +1,17 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20261005-v23';
-const MEDIA_CACHE = 'wedding-invitation-media-20260927-v17';
+const CACHE = 'wedding-invitation-20261005-v24';
+const MEDIA_CACHE = 'wedding-invitation-media-20261005-v18';
 const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com';
-const GALLERY_TRANSFORM = 'imageMogr2/thumbnail/600x900/quality/80';
 const MEDIA_URLS = [
   `${COS_ORIGIN}/assets/assets/lace-ornament-bg-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/seal-20260925.webp`,
-  `${COS_ORIGIN}/assets/assets/envelope-photo-20260925.webp`,
+  new URL('./assets/envelope-photo-wide-20261005.webp', self.location).href,
   `${COS_ORIGIN}/assets/assets/fountain-birds-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/oval-lace-20260925.webp`,
   ...Array.from(
     { length: 20 },
-    (_, index) => `${COS_ORIGIN}/assets/assets/gallery-${String(index + 1).padStart(2, '0')}-20260925.webp?${GALLERY_TRANSFORM}`,
+    (_, index) => new URL(`./assets/gallery-${String(index + 1).padStart(2, '0')}-clear-20261005.webp`, self.location).href,
   ),
 ];
 const WARM_MEDIA = MEDIA_URLS.slice(0, 3);
@@ -20,8 +19,8 @@ const NAVIGATION_FALLBACK = './index.html?v=fast-first-v1-20260927';
 const CORE = [
   NAVIGATION_FALLBACK,
   './fonts.css?v=copy-font-motion-v1-20261005',
-  './styles.css?v=copy-font-motion-v1-20261005',
-  './app.js?v=fast-first-v1-20260927',
+  './styles.css?v=photo-polish-v1-20261005',
+  './app.js?v=photo-polish-v1-20261005',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-chinese-copy-20261005.woff2',
   './assets/hand-english-20260925.woff2',
@@ -35,15 +34,17 @@ const CORE = [
 
 const isCacheableMediaUrl = value => {
   try {
-    const url = new URL(value);
-    return url.origin === COS_ORIGIN && url.pathname.endsWith('.webp');
+    const url = new URL(value, self.location.origin);
+    return [COS_ORIGIN, self.location.origin].includes(url.origin) && url.pathname.endsWith('.webp');
   } catch {
     return false;
   }
 };
 
 async function warmMedia(urls, concurrency = 3) {
-  const queue = [...new Set(urls)].filter(isCacheableMediaUrl);
+  const queue = [...new Set(urls)]
+    .filter(isCacheableMediaUrl)
+    .map(value => new URL(value, self.location.origin).href);
   const cache = await caches.open(MEDIA_CACHE);
   const result = { total: queue.length, cached: 0, stored: 0, failed: 0 };
   let nextIndex = 0;
