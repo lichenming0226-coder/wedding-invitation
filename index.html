@@ -49,7 +49,7 @@
     @media(prefers-reduced-motion:reduce){.site-loader__heart{animation:none}}
   </style>
   <link rel="stylesheet" href="fonts.css?v=copy-font-motion-v1-20261005">
-  <link rel="stylesheet" href="styles.css?v=photo-polish-v1-20261005">
+  <link rel="stylesheet" href="styles.css?v=cold-load-fix-v1-20261005">
 </head>
 <body class="is-loading">
 <div class="site-loader" id="siteLoader" role="status" aria-live="polite" aria-label="婚礼邀请函加载中">
@@ -84,7 +84,7 @@
         <img class="envelope-back" src="assets/lace-envelope-20260925.webp" alt="" aria-hidden="true" width="760" height="760" fetchpriority="high">
         <div class="letter-slot">
           <figure class="letter-card" id="letterCard" aria-hidden="true">
-            <img data-src="assets/envelope-photo-wide-20261005.webp" width="900" height="1053" alt="我们在树下举着 Save the Date 婚礼日期牌的照片" decoding="async">
+            <img src="assets/envelope-photo-wide-20261005.webp" width="900" height="1053" alt="我们在树下举着 Save the Date 婚礼日期牌的照片" decoding="async" fetchpriority="high">
             <figcaption>Li &amp; Gao</figcaption>
           </figure>
         </div>
@@ -159,6 +159,6 @@
     <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel" lang="en">DATE</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1" lang="en">TIMELINE</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1" lang="en">ADDRESS</button></nav>
   </section>
 </main>
-  <script src="app.js?v=photo-polish-v1-20261005"></script>
+  <script src="app.js?v=cold-load-fix-v1-20261005"></script>
 </body>
 </html>

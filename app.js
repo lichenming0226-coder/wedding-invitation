@@ -42,12 +42,22 @@
   const loadingMinDuration = repeatVisit ? 400 : 2000;
   const loadingMaxDuration = repeatVisit ? 1200 : 2000;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
-  const waitForImage = image => {
+  const waitForImage = (image, timeoutMs = 8000) => {
     if (!image) return Promise.resolve();
     if (image.complete && image.naturalWidth) return Promise.resolve();
     return new Promise(resolve => {
-      image.addEventListener('load', resolve, { once: true });
-      image.addEventListener('error', resolve, { once: true });
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeout);
+        image.removeEventListener('load', finish);
+        image.removeEventListener('error', finish);
+        resolve();
+      };
+      const timeout = setTimeout(finish, timeoutMs);
+      image.addEventListener('load', finish, { once: true });
+      image.addEventListener('error', finish, { once: true });
     });
   };
   async function finishLoading() {
@@ -89,7 +99,13 @@
   };
   const decodeImage = async image => {
     activateImage(image);
-    try { await image.decode(); } catch { /* Keep the layout usable if a nonessential image fails. */ }
+    await waitForImage(image);
+    try {
+      await Promise.race([
+        image.decode(),
+        sleep(8000),
+      ]);
+    } catch { /* Keep the layout usable if a nonessential image fails. */ }
     return image;
   };
   const loadSceneImages = scene => Promise.all([...scene.querySelectorAll('img[data-src]')].map(decodeImage));
@@ -104,7 +120,7 @@
     if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
     else later(callback, 700);
   };
-  const imageWarmupReadyKey = 'wedding-invitation-images-clear-v1';
+  const imageWarmupReadyKey = 'wedding-invitation-images-clear-v2';
   let imageWarmupPromise;
   const deferredImageUrls = () => [...new Set(
     [...document.querySelectorAll('img[data-src]')]
@@ -170,7 +186,7 @@
     const schedule = () => {
       if (scheduled) return;
       scheduled = true;
-      loadingFinished.then(() => runWhenIdle(warmAllImages));
+      loadingFinished.then(() => later(() => runWhenIdle(warmAllImages), 8000));
     };
     if ('serviceWorker' in navigator && canUseServiceWorker) {
       navigator.serviceWorker.addEventListener('controllerchange', () => {
@@ -243,8 +259,6 @@
       playMusic();
     }
   });
-  runWhenIdle(() => decodeImage(document.querySelector('.letter-card img')));
-
   const poemLetters = [];
   document.querySelectorAll('.poem p').forEach(line => {
     const words = line.textContent;
@@ -323,10 +337,10 @@
   $('openEnvelope').addEventListener('click', openEnvelope);
   $('envelopeHint').addEventListener('click', openEnvelope);
   $('readInvitation').addEventListener('click', () => { if (phase === 'letter') showScene('poemStage'); });
-  $('openGuide').addEventListener('click', async () => {
+  $('openGuide').addEventListener('click', () => {
     if (phase !== 'poemStage') return;
-    await prepareGuideAssets();
-    if (phase === 'poemStage') showScene('guide');
+    prepareGuideAssets();
+    showScene('guide');
   });
 
   async function changePhoto() {
