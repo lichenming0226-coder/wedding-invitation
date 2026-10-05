@@ -1,13 +1,12 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20260927-v19';
+const CACHE = 'wedding-invitation-20261005-v20';
 const MEDIA_CACHE = 'wedding-invitation-media-20260927-v17';
 const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com';
 const GALLERY_TRANSFORM = 'imageMogr2/thumbnail/600x900/quality/80';
 const MEDIA_URLS = [
   `${COS_ORIGIN}/assets/assets/lace-ornament-bg-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/seal-20260925.webp`,
-  `${COS_ORIGIN}/assets/assets/couple-comic-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/envelope-photo-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/fountain-birds-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/oval-lace-20260925.webp`,
@@ -21,13 +20,14 @@ const NAVIGATION_FALLBACK = './index.html?v=fast-first-v1-20260927';
 const CORE = [
   NAVIGATION_FALLBACK,
   './fonts.css?v=github-cos-v2-20260927',
-  './styles.css?v=github-cos-v2-20260927',
+  './styles.css?v=first-hero-v2-20261005',
   './app.js?v=fast-first-v1-20260927',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-english-20260925.woff2',
   './assets/italianno-20260925.woff2',
   './assets/italianno-journey-20260925.woff2',
   './assets/lace-envelope-20260925.webp',
+  './assets/couple-dance-white-20261005.webp',
   './assets/share-thumbnail-original-20260925.jpg',
   './assets/favicon-20260925.png',
 ];
