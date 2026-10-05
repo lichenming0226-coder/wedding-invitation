@@ -15,6 +15,7 @@
   let paused = motion.matches, infoSelected = false, photoTimer, panelTimer, switchingPanel = false;
   let musicPreference = 'auto';
   let musicEverPlayed = false;
+  let firstScreenReady = false;
   let guideAssetsPromise;
   document.querySelectorAll('img[data-fallback-src]').forEach(image => {
     image.addEventListener('error', () => {
@@ -39,8 +40,8 @@
   try {
     repeatVisit = localStorage.getItem(repeatVisitKey) === '1';
   } catch { /* Some embedded browsers disable persistent storage. */ }
-  const loadingMinDuration = repeatVisit ? 400 : 2000;
-  const loadingMaxDuration = repeatVisit ? 1200 : 2000;
+  const loadingMinDuration = repeatVisit ? 200 : 700;
+  const loadingMaxDuration = repeatVisit ? 650 : 1200;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
   const waitForImage = (image, timeoutMs = 8000) => {
     if (!image) return Promise.resolve();
@@ -63,18 +64,9 @@
   async function finishLoading() {
     const criticalImages = [
       document.querySelector('.envelope-back'),
-      document.querySelector('.wax-seal'),
-      document.querySelector('.couple-doodle'),
     ];
-    const criticalFonts = document.fonts ? Promise.allSettled([
-      document.fonts.load('28px "Italianno"'),
-      document.fonts.load('20px "IM Fell English"'),
-      document.fonts.load('16px "ZCOOL XiaoWei"'),
-      document.fonts.load('16px "Italianno Journey"'),
-    ]) : Promise.resolve();
     const ready = Promise.allSettled([
       ...criticalImages.map(waitForImage),
-      criticalFonts,
     ]);
     await Promise.race([
       ready,
@@ -90,6 +82,7 @@
     later(() => siteLoader.remove(), 460);
   }
   const loadingFinished = finishLoading();
+  loadingFinished.then(() => { firstScreenReady = true; });
   const activateImage = image => {
     if (!image.src && image.dataset.src) {
       image.src = image.dataset.src;
@@ -97,13 +90,12 @@
     }
     return image;
   };
-  const decodeImage = async image => {
+  const decodeImage = async (image, timeoutMs = 8000) => {
     activateImage(image);
-    await waitForImage(image);
     try {
       await Promise.race([
         image.decode(),
-        sleep(8000),
+        sleep(timeoutMs),
       ]);
     } catch { /* Keep the layout usable if a nonessential image fails. */ }
     return image;
@@ -112,10 +104,15 @@
   const prepareGuideAssets = () => {
     if (!guideAssetsPromise) guideAssetsPromise = Promise.all([
       decodeImage(slides[0]),
+      decodeImage(slides[1]),
+      decodeImage(slides[2]),
       decodeImage(document.querySelector('.french-frame')),
     ]);
     return guideAssetsPromise;
   };
+  loadingFinished.then(() => {
+    decodeImage(document.querySelector('.letter-card img'), 5000);
+  });
   const runWhenIdle = callback => {
     if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
     else later(callback, 700);
@@ -151,7 +148,7 @@
       worker.postMessage({ type: 'warm-media', urls }, [channel.port2]);
     });
     if (!result) {
-      await warmImagesWithoutServiceWorker(deferredImageUrls());
+      await warmImagesWithoutServiceWorker(urls);
       return true;
     }
     return result.failed === 0 && result.total > 0;
@@ -181,12 +178,12 @@
     })().catch(() => { /* On unsupported browsers the existing lazy-loading path remains active. */ });
     return imageWarmupPromise;
   }
-  function scheduleImageWarmup() {
+  function scheduleImageWarmup(delayMs = 1200) {
     let scheduled = false;
     const schedule = () => {
       if (scheduled) return;
       scheduled = true;
-      loadingFinished.then(() => later(() => runWhenIdle(warmAllImages), 8000));
+      later(() => runWhenIdle(warmAllImages), delayMs);
     };
     if ('serviceWorker' in navigator && canUseServiceWorker) {
       navigator.serviceWorker.addEventListener('controllerchange', () => {
@@ -219,6 +216,13 @@
     } catch { /* Browsers may require the first user gesture. */ }
     syncMusicButton();
   }
+  const requestAutoMusic = (delayMs = 0) => {
+    if (firstScreenReady) {
+      later(playMusic, delayMs);
+      return;
+    }
+    loadingFinished.then(() => later(playMusic, Math.max(1200, delayMs)));
+  };
   musicToggle.addEventListener('click', () => {
     if (music.paused) { musicPreference = 'on'; playMusic(); }
     else { musicPreference = 'off'; music.pause(); }
@@ -231,6 +235,11 @@
   };
   function unlockMusic(event) {
     if (musicPreference !== 'auto' || !music.paused || musicToggle.contains(event.target)) return;
+    if (phase === 'intro') {
+      const photoReady = decodeImage(document.querySelector('.letter-card img'), 4000);
+      Promise.race([photoReady, sleep(800)]).then(playMusic);
+      return;
+    }
     playMusic();
   }
   unlockEvents.forEach(type => document.addEventListener(type, unlockMusic, { capture: true, passive: true }));
@@ -239,24 +248,28 @@
     removeMusicUnlockListeners();
     syncMusicButton();
   }, { once: true });
-  playMusic();
+  requestAutoMusic(1800);
   const playThroughWeixinBridge = () => {
     if (musicPreference !== 'auto' || !music.paused) return;
-    if (window.WeixinJSBridge?.invoke) {
-      window.WeixinJSBridge.invoke('getNetworkType', {}, playMusic);
-    } else {
-      playMusic();
-    }
+    const playThroughBridge = () => {
+      if (window.WeixinJSBridge?.invoke) {
+        window.WeixinJSBridge.invoke('getNetworkType', {}, playMusic);
+      } else {
+        playMusic();
+      }
+    };
+    if (firstScreenReady) playThroughBridge();
+    else loadingFinished.then(() => later(playThroughBridge, 1200));
   };
   document.addEventListener('WeixinJSBridgeReady', playThroughWeixinBridge, { once: true });
   if (window.WeixinJSBridge) playThroughWeixinBridge();
   music.addEventListener('loadedmetadata', () => {
-    if (musicPreference === 'auto' && music.paused) playMusic();
+    if (musicPreference === 'auto' && music.paused) requestAutoMusic();
   }, { once: true });
   window.addEventListener('pageshow', event => {
     if (musicPreference === 'auto' && music.paused) {
       if (event.persisted && musicEverPlayed) music.currentTime = 0;
-      playMusic();
+      requestAutoMusic();
     }
   });
   const poemLetters = [];
@@ -316,12 +329,19 @@
         animatePoem();
         $('openGuide').focus({ preventScroll: true });
       }
-      if (id === 'guide') { tabs[panelIndex].focus({ preventScroll: true }); startRotation(); }
+      if (id === 'guide') {
+        tabs[panelIndex].focus({ preventScroll: true });
+        scheduleImageWarmup();
+        startRotation();
+      }
     }, duration(240));
   }
   function openEnvelope() {
     if (phase !== 'intro') return;
-    if (musicPreference !== 'off' && music.paused) playMusic();
+    const photoReady = decodeImage(document.querySelector('.letter-card img'), 4000);
+    if (musicPreference !== 'off' && music.paused) {
+      Promise.race([photoReady, sleep(800)]).then(playMusic);
+    }
     phase = 'opening';
     $('intro').classList.add('opening');
     $('openEnvelope').disabled = true;
@@ -332,7 +352,7 @@
       phase = 'letter';
       $('readInvitation').hidden = false;
       $('readInvitation').focus({ preventScroll: true });
-    }, duration(3800));
+    }, duration(2700));
   }
   $('openEnvelope').addEventListener('click', openEnvelope);
   $('envelopeHint').addEventListener('click', openEnvelope);
@@ -347,7 +367,12 @@
     if (phase !== 'guide' || paused || document.hidden) return;
     const nextIndex = (photoIndex + 1) % slides.length;
     const next = slides[nextIndex];
-    await decodeImage(next);
+    activateImage(next);
+    if (!next.complete || !next.naturalWidth) {
+      decodeImage(next, 1800);
+      schedulePhoto(500);
+      return;
+    }
     if (phase !== 'guide' || paused || document.hidden) return;
     const old = slides[photoIndex];
     // Adjacent opaque slides move together, avoiding ghosted faces and blank frames.
@@ -359,13 +384,14 @@
     next.classList.remove('entering');
     next.classList.add('active');
     photoIndex = nextIndex;
+    decodeImage(slides[(photoIndex + 1) % slides.length], 2200);
+    schedulePhoto();
     later(() => {
       old.hidden = true;
       old.classList.remove('exiting');
-      schedulePhoto();
-    }, duration(950));
+    }, duration(760));
   }
-  function schedulePhoto() { cancel(photoTimer); if (!paused && phase === 'guide' && !document.hidden) photoTimer = later(changePhoto, 2050); }
+  function schedulePhoto(delayMs = 2400) { cancel(photoTimer); if (!paused && phase === 'guide' && !document.hidden) photoTimer = later(changePhoto, delayMs); }
   function schedulePanel() { cancel(panelTimer); if (!paused && !infoSelected && phase === 'guide' && !document.hidden) panelTimer = later(() => changePanel((panelIndex + 1) % panels.length), 7000); }
   function changePanel(index, manual = false) {
     if (manual) { infoSelected = true; cancel(panelTimer); }
@@ -382,7 +408,11 @@
       schedulePanel();
     }, duration(190));
   }
-  function startRotation() { schedulePhoto(); schedulePanel(); }
+  function startRotation() {
+    decodeImage(slides[(photoIndex + 1) % slides.length], 2200);
+    schedulePhoto(2200);
+    schedulePanel();
+  }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => changePanel(index, true));
     tab.addEventListener('keydown', event => {
@@ -397,10 +427,11 @@
   document.addEventListener('visibilitychange', () => { cancel(photoTimer); cancel(panelTimer); if (!document.hidden && phase === 'guide') startRotation(); });
   motion.addEventListener('change', () => { paused = motion.matches; if (paused) { cancel(photoTimer); cancel(panelTimer); poemAnimations.forEach(animation => animation.cancel()); $('poemStage').classList.remove('poem-preparing'); } else if (phase === 'guide') startRotation(); });
   window.addEventListener('load', () => {
-    if ('serviceWorker' in navigator && canUseServiceWorker) {
-      navigator.serviceWorker.register('./service-worker.js')
-        .catch(() => {});
-    }
-    scheduleImageWarmup();
+    loadingFinished.then(() => later(() => {
+      if ('serviceWorker' in navigator && canUseServiceWorker) {
+        navigator.serviceWorker.register('./service-worker.js')
+          .catch(() => {});
+      }
+    }, 12000));
   }, { once: true });
 })();

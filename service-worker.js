@@ -1,32 +1,31 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20261005-v25';
-const MEDIA_CACHE = 'wedding-invitation-media-20261005-v18';
+const CACHE = 'wedding-invitation-20261006-v26';
+const MEDIA_CACHE = 'wedding-invitation-media-20261006-v19';
 const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com';
 const MEDIA_URLS = [
   `${COS_ORIGIN}/assets/assets/lace-ornament-bg-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/seal-20260925.webp`,
-  new URL('./assets/envelope-photo-wide-20261005.webp', self.location).href,
+  new URL('./assets/envelope-photo-fast-20261006.webp', self.location).href,
   `${COS_ORIGIN}/assets/assets/fountain-birds-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/oval-lace-20260925.webp`,
   ...Array.from(
     { length: 20 },
-    (_, index) => new URL(`./assets/gallery-${String(index + 1).padStart(2, '0')}-clear-20261005.webp`, self.location).href,
+    (_, index) => `${COS_ORIGIN}/assets/assets/gallery-${String(index + 1).padStart(2, '0')}-20260925.webp`,
   ),
 ];
-const WARM_MEDIA = MEDIA_URLS.slice(0, 3);
 const NAVIGATION_FALLBACK = './index.html?v=fast-first-v1-20260927';
 const CORE = [
   NAVIGATION_FALLBACK,
   './fonts.css?v=copy-font-motion-v1-20261005',
-  './styles.css?v=cold-load-fix-v1-20261005',
-  './app.js?v=cold-load-fix-v1-20261005',
+  './styles.css?v=envelope-carousel-v1-20261005',
+  './app.js?v=envelope-carousel-v1-20261005',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-chinese-copy-20261005.woff2',
   './assets/hand-english-20260925.woff2',
   './assets/italianno-20260925.woff2',
   './assets/italianno-journey-20260925.woff2',
-  './assets/lace-envelope-20260925.webp',
+  './assets/lace-envelope-fast-20261006.webp',
   './assets/cat-toast-relaxed-white-20261005.webp',
   './assets/share-thumbnail-original-20260925.jpg',
   './assets/favicon-20260925.png',
@@ -86,7 +85,6 @@ self.addEventListener('activate', event => {
           .filter(key => key.startsWith('wedding-invitation-') && ![CACHE, MEDIA_CACHE].includes(key))
           .map(key => caches.delete(key)),
       )),
-      warmMedia(WARM_MEDIA),
       self.clients.claim(),
     ]),
   );

@@ -13,6 +13,18 @@ const output = name => path.join(assets, `${name}-${version}.webp`);
 
 await mkdir(assets, { recursive: true });
 
+await sharp(path.join(assets, 'lace-envelope-v2.png'))
+  .rotate()
+  .resize({ width: 520, height: 520, fit: 'inside', withoutEnlargement: true })
+  .webp({ quality: 82, alphaQuality: 92, effort: 6, smartSubsample: true })
+  .toFile(path.join(assets, 'lace-envelope-fast-20261006.webp'));
+
+await sharp(path.join(assets, 'envelope-photo-source-20261005.jpg'))
+  .rotate()
+  .resize({ width: 720, height: 900, fit: 'inside', withoutEnlargement: true })
+  .webp({ quality: 88, effort: 6, smartSubsample: true })
+  .toFile(path.join(assets, 'envelope-photo-fast-20261006.webp'));
+
 const conversions = [
   ['lace-envelope-v2.png', 'lace-envelope', { width: 760, height: 760, fit: 'inside' }, 84],
   ['seal-lg.png', 'seal', { width: 280, height: 280, fit: 'inside' }, 86],
