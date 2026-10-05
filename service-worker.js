@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20261005-v22';
+const CACHE = 'wedding-invitation-20261005-v23';
 const MEDIA_CACHE = 'wedding-invitation-media-20260927-v17';
 const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com';
 const GALLERY_TRANSFORM = 'imageMogr2/thumbnail/600x900/quality/80';
@@ -19,10 +19,11 @@ const WARM_MEDIA = MEDIA_URLS.slice(0, 3);
 const NAVIGATION_FALLBACK = './index.html?v=fast-first-v1-20260927';
 const CORE = [
   NAVIGATION_FALLBACK,
-  './fonts.css?v=github-cos-v2-20260927',
-  './styles.css?v=relaxed-cat-v1-20261005',
+  './fonts.css?v=copy-font-motion-v1-20261005',
+  './styles.css?v=copy-font-motion-v1-20261005',
   './app.js?v=fast-first-v1-20260927',
   './assets/hand-chinese-20260925.woff2',
+  './assets/hand-chinese-copy-20261005.woff2',
   './assets/hand-english-20260925.woff2',
   './assets/italianno-20260925.woff2',
   './assets/italianno-journey-20260925.woff2',
