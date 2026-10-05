@@ -104,7 +104,7 @@
     if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
     else later(callback, 700);
   };
-  const imageWarmupReadyKey = 'wedding-invitation-images-ready-v1';
+  const imageWarmupReadyKey = 'wedding-invitation-images-clear-v1';
   let imageWarmupPromise;
   const deferredImageUrls = () => [...new Set(
     [...document.querySelectorAll('img[data-src]')]
@@ -124,7 +124,7 @@
     };
     await Promise.all(Array.from({ length: Math.min(3, queue.length) }, worker));
   }
-  async function requestMediaWarmup(worker) {
+  async function requestMediaWarmup(worker, urls) {
     const result = await new Promise(resolve => {
       const channel = new MessageChannel();
       const timeout = setTimeout(() => resolve(null), 30000);
@@ -132,7 +132,7 @@
         clearTimeout(timeout);
         resolve(event.data);
       };
-      worker.postMessage({ type: 'warm-media' }, [channel.port2]);
+      worker.postMessage({ type: 'warm-media', urls }, [channel.port2]);
     });
     if (!result) {
       await warmImagesWithoutServiceWorker(deferredImageUrls());
@@ -158,7 +158,7 @@
         if (!worker || typeof MessageChannel === 'undefined') {
           await warmImagesWithoutServiceWorker(urls);
         } else {
-          imagesReady = await requestMediaWarmup(worker);
+          imagesReady = await requestMediaWarmup(worker, urls);
         }
       }
       if (imagesReady) markImagesReady();

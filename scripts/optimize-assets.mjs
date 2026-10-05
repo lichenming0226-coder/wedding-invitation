@@ -40,6 +40,21 @@ for (let index = 1; index <= 20; index += 1) {
     .toFile(output(`gallery-${number}`));
 }
 
+await sharp(path.join(assets, 'envelope-photo-source-20261005.jpg'))
+  .rotate()
+  .resize({ width: 900, height: 1100, fit: 'inside', withoutEnlargement: true })
+  .webp({ quality: 90, effort: 6, smartSubsample: true })
+  .toFile(path.join(assets, 'envelope-photo-wide-20261005.webp'));
+
+for (let index = 1; index <= 20; index += 1) {
+  const number = String(index).padStart(2, '0');
+  await sharp(path.join(assets, `gallery-${number}.jpg`))
+    .rotate()
+    .resize({ width: 720, height: 1080, fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 88, effort: 6, smartSubsample: true })
+    .toFile(path.join(assets, `gallery-${number}-clear-20261005.webp`));
+}
+
 const shareWidth = 1200;
 const shareHeight = 630;
 const sharePhotoWidth = 510;
