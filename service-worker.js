@@ -6,15 +6,14 @@ const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqclo
 const MEDIA_URLS = [
   `${COS_ORIGIN}/assets/assets/lace-ornament-bg-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/seal-20260925.webp`,
-  new URL('./assets/envelope-photo-wide-20261005.webp', self.location).href,
+  new URL('./assets/envelope-photo-fast-20261006.webp', self.location).href,
   `${COS_ORIGIN}/assets/assets/fountain-birds-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/oval-lace-20260925.webp`,
   ...Array.from(
     { length: 20 },
-    (_, index) => new URL(`./assets/gallery-${String(index + 1).padStart(2, '0')}-clear-20261005.webp`, self.location).href,
+    (_, index) => `${COS_ORIGIN}/assets/assets/gallery-${String(index + 1).padStart(2, '0')}-20260925.webp`,
   ),
 ];
-const WARM_MEDIA = MEDIA_URLS.slice(0, 3);
 const NAVIGATION_FALLBACK = './index.html?v=fast-first-v1-20260927';
 const CORE = [
   NAVIGATION_FALLBACK,
@@ -86,7 +85,6 @@ self.addEventListener('activate', event => {
           .filter(key => key.startsWith('wedding-invitation-') && ![CACHE, MEDIA_CACHE].includes(key))
           .map(key => caches.delete(key)),
       )),
-      warmMedia(WARM_MEDIA),
       self.clients.claim(),
     ]),
   );
