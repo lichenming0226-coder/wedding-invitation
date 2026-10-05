@@ -65,14 +65,8 @@
     const criticalImages = [
       document.querySelector('.envelope-back'),
     ];
-    const criticalFonts = document.fonts ? Promise.allSettled([
-      document.fonts.load('28px "Italianno"'),
-      document.fonts.load('20px "IM Fell English"'),
-      document.fonts.load('16px "Italianno Journey"'),
-    ]) : Promise.resolve();
     const ready = Promise.allSettled([
       ...criticalImages.map(waitForImage),
-      criticalFonts,
     ]);
     await Promise.race([
       ready,
@@ -358,7 +352,7 @@
       phase = 'letter';
       $('readInvitation').hidden = false;
       $('readInvitation').focus({ preventScroll: true });
-    }, duration(3800));
+    }, duration(2700));
   }
   $('openEnvelope').addEventListener('click', openEnvelope);
   $('envelopeHint').addEventListener('click', openEnvelope);

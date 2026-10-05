@@ -48,7 +48,7 @@ p,h1,figure { margin:0 }
 .couple-doodle { display:block; width:44%; max-width:138px; height:auto; margin:12px auto 0; transform-origin:50% 92%; animation:doodleSway 5.4s ease-in-out infinite alternate; transition:opacity .7s ease; opacity:.82; will-change:transform }
 @keyframes doodleSway { from { transform:rotate(-2deg) } to { transform:rotate(2deg) } }
 .letter-slot { position:absolute; z-index:2; left:1%; right:1%; bottom:10%; height:350%; overflow:hidden; pointer-events:none }
-.letter-card { position:absolute; left:50%; bottom:0; width:min(78%,252px); padding:8px 8px 11px; background:#fffaf0; box-shadow:0 4px 13px #10070830; transform:translate3d(-50%,105%,0); transition:transform 2.5s 1s cubic-bezier(.25,.55,.2,1) }
+.letter-card { position:absolute; left:50%; bottom:0; width:min(78%,252px); padding:8px 8px 11px; background:#fffaf0; box-shadow:0 4px 13px #10070830; transform:translate3d(-50%,105%,0); transition:transform 1.8s .55s cubic-bezier(.25,.55,.2,1) }
 .letter-card img { display:block; width:100%; height:auto; aspect-ratio:6/7; object-fit:cover; object-position:center 48% }
 .letter-continue { position:absolute; top:calc(var(--env-size)*.56 + var(--open-offset) + 16px); left:50%; transform:translateX(-50%); white-space:nowrap }
 .intro.opening .intro-heading { opacity:0; transform:translateY(-15px) }
