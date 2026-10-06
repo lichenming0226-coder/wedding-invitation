@@ -47,24 +47,33 @@
   let resolveMusicAtHundred;
   const musicAtHundred = new Promise(resolve => { resolveMusicAtHundred = resolve; });
   let loaderProgress = 0;
-  let loaderProgressTarget = 8;
+  let loaderResourcesReady = false;
   let loaderProgressTimer;
   const renderLoaderProgress = value => {
-    loaderProgress = Math.max(loaderProgress, Math.min(100, Math.round(value)));
-    if (siteLoaderPercent) siteLoaderPercent.textContent = `${loaderProgress}%`;
+    loaderProgress = Math.max(loaderProgress, Math.min(100, value));
+    const visibleProgress = Math.round(loaderProgress);
+    if (siteLoaderPercent) siteLoaderPercent.textContent = `${visibleProgress}%`;
     if (siteLoaderBar) siteLoaderBar.style.width = `${loaderProgress}%`;
-    siteLoader?.setAttribute('aria-label', `婚礼邀请函加载中 ${loaderProgress}%`);
+    siteLoader?.setAttribute('aria-label', `婚礼邀请函加载中 ${visibleProgress}%`);
   };
   const startLoaderProgress = () => {
     renderLoaderProgress(0);
+    const visualDuration = repeatVisit ? 720 : 1180;
     loaderProgressTimer = setInterval(() => {
-      if (loaderProgress >= 95) return;
+      if (loaderProgress >= 99) return;
       const elapsed = performance.now() - loadingStarted;
-      const timeTarget = Math.min(88, 8 + Math.sqrt(Math.max(0, elapsed)) * 2.1);
-      loaderProgressTarget = Math.min(95, Math.max(loaderProgressTarget, timeTarget));
-      const step = Math.max(1, Math.ceil((loaderProgressTarget - loaderProgress) * .18));
-      renderLoaderProgress(Math.min(loaderProgressTarget, loaderProgress + step));
-    }, 60);
+      let target;
+      if (elapsed <= visualDuration) {
+        target = Math.min(90, (elapsed / visualDuration) * 90);
+      } else {
+        target = Math.min(99, 90 + (elapsed - visualDuration) / 550);
+      }
+      if (loaderResourcesReady) target = 99;
+      const delta = target - loaderProgress;
+      if (delta <= 0) return;
+      const maxStep = loaderResourcesReady ? 4 : 2;
+      renderLoaderProgress(loaderProgress + Math.min(maxStep, Math.max(.45, delta * .22)));
+    }, 50);
   };
   startLoaderProgress();
   const waitForImage = image => {
@@ -95,29 +104,27 @@
       document.querySelector('.envelope-flap'),
       document.querySelector('.wax-seal'),
     ];
-    const completedCriticalImages = new Set();
     let ready = false;
     while (!ready) {
       try {
-        await Promise.all(criticalImages.map(async image => {
-          await decodeCriticalImage(image);
-          completedCriticalImages.add(image);
-          loaderProgressTarget = Math.max(loaderProgressTarget, 20 + (completedCriticalImages.size / criticalImages.length) * 75);
-        }));
+        await Promise.all(criticalImages.map(decodeCriticalImage));
         ready = true;
       } catch {
-        siteLoader?.setAttribute('aria-label', `婚礼邀请函加载中 ${loaderProgress}%，正在重试`);
+        siteLoader?.setAttribute('aria-label', `婚礼邀请函加载中 ${Math.round(loaderProgress)}%，正在重试`);
         await sleep(700);
         criticalImages.forEach(image => {
           if (!image?.naturalWidth) image.src = new URL(image.getAttribute('src'), location.href).href;
         });
       }
     }
+    loaderResourcesReady = true;
     await sleep(loadingMinDuration - (performance.now() - loadingStarted));
-    loaderProgressTarget = 95;
-    while (loaderProgress < 95) await sleep(30);
+    while (loaderProgress < 99) await sleep(30);
     clearInterval(loaderProgressTimer);
-    renderLoaderProgress(100);
+    while (loaderProgress < 100) {
+      renderLoaderProgress(Math.min(100, loaderProgress + 1));
+      if (loaderProgress < 100) await sleep(38);
+    }
     resolveMusicAtHundred();
     await sleep(180);
     siteLoader.classList.add('is-leaving');
