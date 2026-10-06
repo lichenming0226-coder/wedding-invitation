@@ -117,7 +117,7 @@
     if ('requestIdleCallback' in window) requestIdleCallback(callback, { timeout: 1800 });
     else later(callback, 700);
   };
-  const imageWarmupReadyKey = 'wedding-invitation-images-clear-v2';
+  const imageWarmupReadyKey = 'wedding-invitation-images-order-v1';
   let imageWarmupPromise;
   const deferredImageUrls = () => [...new Set(
     [...document.querySelectorAll('img[data-src]')]

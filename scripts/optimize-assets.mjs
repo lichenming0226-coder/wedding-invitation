@@ -67,6 +67,14 @@ for (let index = 1; index <= 20; index += 1) {
     .toFile(path.join(assets, `gallery-${number}-clear-20261005.webp`));
 }
 
+for (const name of ['color', 'bw']) {
+  await sharp(path.join(assets, `gallery-new-${name}-source-20261006.jpg`))
+    .rotate()
+    .resize({ width: 720, height: 1080, fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 88, effort: 6, smartSubsample: true })
+    .toFile(path.join(assets, `gallery-new-${name}-20261006.webp`));
+}
+
 const shareWidth = 1200;
 const shareHeight = 630;
 const sharePhotoWidth = 510;
