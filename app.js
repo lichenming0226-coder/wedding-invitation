@@ -9,6 +9,8 @@
   const music = $('bgMusic');
   const musicToggle = $('musicToggle');
   const siteLoader = $('siteLoader');
+  const siteLoaderPercent = $('siteLoaderPercent');
+  const siteLoaderBar = $('siteLoaderBar');
   const canUseServiceWorker = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
   const timers = new Set();
   let phase = 'intro', photoIndex = 0, panelIndex = 0;
@@ -42,6 +44,27 @@
   } catch { /* Some embedded browsers disable persistent storage. */ }
   const loadingMinDuration = repeatVisit ? 200 : 700;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
+  let loaderProgress = 0;
+  let loaderProgressTarget = 8;
+  let loaderProgressTimer;
+  const renderLoaderProgress = value => {
+    loaderProgress = Math.max(loaderProgress, Math.min(100, Math.round(value)));
+    if (siteLoaderPercent) siteLoaderPercent.textContent = `${loaderProgress}%`;
+    if (siteLoaderBar) siteLoaderBar.style.width = `${loaderProgress}%`;
+    siteLoader?.setAttribute('aria-label', `婚礼邀请函加载中 ${loaderProgress}%`);
+  };
+  const startLoaderProgress = () => {
+    renderLoaderProgress(0);
+    loaderProgressTimer = setInterval(() => {
+      if (loaderProgress >= 95) return;
+      const elapsed = performance.now() - loadingStarted;
+      const timeTarget = Math.min(88, 8 + Math.sqrt(Math.max(0, elapsed)) * 2.1);
+      loaderProgressTarget = Math.min(95, Math.max(loaderProgressTarget, timeTarget));
+      const step = Math.max(1, Math.ceil((loaderProgressTarget - loaderProgress) * .18));
+      renderLoaderProgress(Math.min(loaderProgressTarget, loaderProgress + step));
+    }, 60);
+  };
+  startLoaderProgress();
   const waitForImage = image => {
     if (!image) return Promise.resolve();
     if (image.complete && image.naturalWidth) return Promise.resolve();
@@ -60,7 +83,7 @@
   };
   const decodeCriticalImage = async image => {
     await waitForImage(image);
-    if (!image?.naturalWidth) return;
+    if (!image?.naturalWidth) throw new Error(`Critical envelope layer failed: ${image?.className || 'unknown'}`);
     try { await image.decode(); } catch { /* A loaded image can still render if decode() is unsupported. */ }
   };
   async function finishLoading() {
@@ -70,8 +93,30 @@
       document.querySelector('.envelope-flap'),
       document.querySelector('.wax-seal'),
     ];
-    await Promise.allSettled(criticalImages.map(decodeCriticalImage));
+    const completedCriticalImages = new Set();
+    let ready = false;
+    while (!ready) {
+      try {
+        await Promise.all(criticalImages.map(async image => {
+          await decodeCriticalImage(image);
+          completedCriticalImages.add(image);
+          loaderProgressTarget = Math.max(loaderProgressTarget, 20 + (completedCriticalImages.size / criticalImages.length) * 75);
+        }));
+        ready = true;
+      } catch {
+        siteLoader?.setAttribute('aria-label', `婚礼邀请函加载中 ${loaderProgress}%，正在重试`);
+        await sleep(700);
+        criticalImages.forEach(image => {
+          if (!image?.naturalWidth) image.src = new URL(image.getAttribute('src'), location.href).href;
+        });
+      }
+    }
     await sleep(loadingMinDuration - (performance.now() - loadingStarted));
+    loaderProgressTarget = 95;
+    while (loaderProgress < 95) await sleep(30);
+    clearInterval(loaderProgressTimer);
+    renderLoaderProgress(100);
+    await sleep(180);
     siteLoader.classList.add('is-leaving');
     document.body.classList.remove('is-loading');
     siteLoader.setAttribute('aria-hidden', 'true');

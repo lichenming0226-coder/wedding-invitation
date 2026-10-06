@@ -35,11 +35,16 @@
   <title>李晨鸣 &amp; 高雅婷｜婚礼邀请函</title>
   <style>
     .site-loader{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;background:#291f20;transition:opacity .4s ease,visibility .4s ease}
-    .site-loader__hearts{position:relative;width:76px;height:60px;transform:translateY(-1.5vh)}
+    .site-loader__content{display:grid;justify-items:center;gap:22px;transform:translateY(-1.5vh)}
+    .site-loader__hearts{position:relative;width:76px;height:60px}
     .site-loader__heart{position:absolute;display:block;filter:drop-shadow(0 5px 14px rgba(12,7,8,.16));animation:siteLoaderHeartFront 2s ease-in-out infinite}
     .site-loader__heart svg{display:block;width:100%;height:100%;fill:currentColor}
     .site-loader__heart--back{top:2px;left:4px;width:48px;height:44px;color:#d8c49d;animation-name:siteLoaderHeartBack}
     .site-loader__heart--front{right:2px;bottom:0;width:43px;height:40px;color:#fff}
+    .site-loader__progress{display:grid;justify-items:center;gap:9px;width:116px}
+    .site-loader__percent{font:400 12px/1 Georgia,serif;letter-spacing:.18em;color:#d8c49d;font-variant-numeric:tabular-nums}
+    .site-loader__track{width:100%;height:1px;background:#fff8ed24;overflow:hidden}
+    .site-loader__bar{display:block;width:0;height:100%;background:#d8c49d;transition:width .18s ease-out}
     .site-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
     body.is-loading{overflow:hidden}
     body.is-loading>.invitation{visibility:hidden}
@@ -48,13 +53,19 @@
     @media(prefers-reduced-motion:reduce){.site-loader__heart{animation:none}}
   </style>
   <link rel="stylesheet" href="fonts.css?v=poem-tabs-v1-20261006">
-  <link rel="stylesheet" href="styles.css?v=envelope-ready-v1-20261006">
+  <link rel="stylesheet" href="styles.css?v=loader-progress-v1-20261006">
 </head>
 <body class="is-loading">
 <div class="site-loader" id="siteLoader" role="status" aria-live="polite" aria-label="婚礼邀请函加载中">
-  <div class="site-loader__hearts" aria-hidden="true">
-    <span class="site-loader__heart site-loader__heart--back"><svg viewBox="0 0 48 44"><path d="M24 42C20.4 37.8 4 27.2 4 15.2 4 7.9 9.1 3 15.8 3c3.8 0 6.6 1.9 8.2 4.5C25.6 4.9 28.4 3 32.2 3 38.9 3 44 7.9 44 15.2 44 27.2 27.6 37.8 24 42Z"/></svg></span>
-    <span class="site-loader__heart site-loader__heart--front"><svg viewBox="0 0 48 44"><path d="M24 42C20.4 37.8 4 27.2 4 15.2 4 7.9 9.1 3 15.8 3c3.8 0 6.6 1.9 8.2 4.5C25.6 4.9 28.4 3 32.2 3 38.9 3 44 7.9 44 15.2 44 27.2 27.6 37.8 24 42Z"/></svg></span>
+  <div class="site-loader__content">
+    <div class="site-loader__hearts" aria-hidden="true">
+      <span class="site-loader__heart site-loader__heart--back"><svg viewBox="0 0 48 44"><path d="M24 42C20.4 37.8 4 27.2 4 15.2 4 7.9 9.1 3 15.8 3c3.8 0 6.6 1.9 8.2 4.5C25.6 4.9 28.4 3 32.2 3 38.9 3 44 7.9 44 15.2 44 27.2 27.6 37.8 24 42Z"/></svg></span>
+      <span class="site-loader__heart site-loader__heart--front"><svg viewBox="0 0 48 44"><path d="M24 42C20.4 37.8 4 27.2 4 15.2 4 7.9 9.1 3 15.8 3c3.8 0 6.6 1.9 8.2 4.5C25.6 4.9 28.4 3 32.2 3 38.9 3 44 7.9 44 15.2 44 27.2 27.6 37.8 24 42Z"/></svg></span>
+    </div>
+    <div class="site-loader__progress" aria-hidden="true">
+      <span class="site-loader__percent" id="siteLoaderPercent">0%</span>
+      <span class="site-loader__track"><i class="site-loader__bar" id="siteLoaderBar"></i></span>
+    </div>
   </div>
 </div>
 <script>
@@ -158,6 +169,6 @@
     <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel" lang="en">DATE</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1" lang="en">TIMELINE</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1" lang="en">ADDRESS</button></nav>
   </section>
 </main>
-  <script src="app.js?v=envelope-ready-v1-20261006"></script>
+  <script src="app.js?v=loader-progress-v1-20261006"></script>
 </body>
 </html>
