@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20261006-v26';
+const CACHE = 'wedding-invitation-20261006-v27';
 const MEDIA_CACHE = 'wedding-invitation-media-20261006-v19';
 const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com';
 const MEDIA_URLS = [
@@ -17,11 +17,11 @@ const MEDIA_URLS = [
 const NAVIGATION_FALLBACK = './index.html?v=fast-first-v1-20260927';
 const CORE = [
   NAVIGATION_FALLBACK,
-  './fonts.css?v=copy-font-motion-v1-20261005',
-  './styles.css?v=envelope-carousel-v1-20261005',
+  './fonts.css?v=poem-tabs-v1-20261006',
+  './styles.css?v=poem-tabs-v1-20261006',
   './app.js?v=envelope-carousel-v1-20261005',
   './assets/hand-chinese-20260925.woff2',
-  './assets/hand-chinese-copy-20261005.woff2',
+  './assets/hand-chinese-copy-20261006.woff2',
   './assets/hand-english-20260925.woff2',
   './assets/italianno-20260925.woff2',
   './assets/italianno-journey-20260925.woff2',
