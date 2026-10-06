@@ -113,7 +113,7 @@ p,h1,figure { margin:0 }
 .venue { font-family:"ZCOOL XiaoWei Copy",var(--chinese); font-size:1.12rem; line-height:1.5; letter-spacing:.02em; margin-bottom:2px }
 .venue span { display:inline-block; vertical-align:baseline; margin-right:3px; font:400 1.05rem/1.6 var(--serif); letter-spacing:.025em }
 .location-region { font-size:.7rem; line-height:1.5; color:var(--muted); letter-spacing:.12em }
-.map-link { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; color:var(--yellow); font:400 .78rem/1.5 var(--chinese); letter-spacing:.08em; text-decoration:none; touch-action:manipulation }
+.map-link { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; color:var(--yellow); font:400 .78rem/1.5 "ZCOOL XiaoWei Copy",var(--chinese); letter-spacing:.08em; text-decoration:none; touch-action:manipulation }
 .map-link svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round }
 .info-tabs { display:flex; align-items:center; justify-content:center; gap:6px; border-top:1px solid #fff8e931; width:min(100%,252px); height:45px }
 .info-tabs button { position:relative; min-height:44px; min-width:0; flex:1; border:0; background:transparent; color:var(--yellow); font:400 .71rem/1.2 var(--numerals); letter-spacing:.035em; padding:8px 4px }
