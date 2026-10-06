@@ -44,6 +44,8 @@
   } catch { /* Some embedded browsers disable persistent storage. */ }
   const loadingMinDuration = repeatVisit ? 200 : 700;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
+  let resolveMusicAtHundred;
+  const musicAtHundred = new Promise(resolve => { resolveMusicAtHundred = resolve; });
   let loaderProgress = 0;
   let loaderProgressTarget = 8;
   let loaderProgressTimer;
@@ -116,6 +118,7 @@
     while (loaderProgress < 95) await sleep(30);
     clearInterval(loaderProgressTimer);
     renderLoaderProgress(100);
+    resolveMusicAtHundred();
     await sleep(180);
     siteLoader.classList.add('is-leaving');
     document.body.classList.remove('is-loading');
@@ -260,12 +263,12 @@
     } catch { /* Browsers may require the first user gesture. */ }
     syncMusicButton();
   }
-  const requestAutoMusic = (delayMs = 0) => {
+  const requestAutoMusic = () => {
     if (firstScreenReady) {
-      later(playMusic, delayMs);
+      playMusic();
       return;
     }
-    loadingFinished.then(() => later(playMusic, Math.max(1200, delayMs)));
+    musicAtHundred.then(playMusic);
   };
   musicToggle.addEventListener('click', () => {
     if (music.paused) { musicPreference = 'on'; playMusic(); }
@@ -279,12 +282,10 @@
   };
   function unlockMusic(event) {
     if (musicPreference !== 'auto' || !music.paused || musicToggle.contains(event.target)) return;
-    if (phase === 'intro') {
-      const photoReady = decodeImage(document.querySelector('.letter-card img'), 4000);
-      Promise.race([photoReady, sleep(800)]).then(playMusic);
-      return;
-    }
     playMusic();
+    if (phase === 'intro') {
+      decodeImage(document.querySelector('.letter-card img'), 4000);
+    }
   }
   unlockEvents.forEach(type => document.addEventListener(type, unlockMusic, { capture: true, passive: true }));
   music.addEventListener('playing', () => {
@@ -292,7 +293,7 @@
     removeMusicUnlockListeners();
     syncMusicButton();
   }, { once: true });
-  requestAutoMusic(1800);
+  musicAtHundred.then(playMusic);
   const playThroughWeixinBridge = () => {
     if (musicPreference !== 'auto' || !music.paused) return;
     const playThroughBridge = () => {
@@ -303,7 +304,7 @@
       }
     };
     if (firstScreenReady) playThroughBridge();
-    else loadingFinished.then(() => later(playThroughBridge, 1200));
+    else musicAtHundred.then(playThroughBridge);
   };
   document.addEventListener('WeixinJSBridgeReady', playThroughWeixinBridge, { once: true });
   if (window.WeixinJSBridge) playThroughWeixinBridge();
@@ -382,10 +383,8 @@
   }
   function openEnvelope() {
     if (phase !== 'intro') return;
-    const photoReady = decodeImage(document.querySelector('.letter-card img'), 4000);
-    if (musicPreference !== 'off' && music.paused) {
-      Promise.race([photoReady, sleep(800)]).then(playMusic);
-    }
+    if (musicPreference !== 'off' && music.paused) playMusic();
+    decodeImage(document.querySelector('.letter-card img'), 4000);
     phase = 'opening';
     $('intro').classList.add('opening');
     $('openEnvelope').disabled = true;
