@@ -31,6 +31,7 @@
   <link rel="dns-prefetch" href="//wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com">
   <link rel="preconnect" href="https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com">
   <link rel="preload" href="assets/lace-envelope-fast-20261006.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/seal-20260925.webp" as="image" type="image/webp">
   <title>李晨鸣 &amp; 高雅婷｜婚礼邀请函</title>
   <style>
     .site-loader{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;background:#291f20;transition:opacity .4s ease,visibility .4s ease}
@@ -47,7 +48,7 @@
     @media(prefers-reduced-motion:reduce){.site-loader__heart{animation:none}}
   </style>
   <link rel="stylesheet" href="fonts.css?v=poem-tabs-v1-20261006">
-  <link rel="stylesheet" href="styles.css?v=poem-tabs-v1-20261006">
+  <link rel="stylesheet" href="styles.css?v=envelope-ready-v1-20261006">
 </head>
 <body class="is-loading">
 <div class="site-loader" id="siteLoader" role="status" aria-live="polite" aria-label="婚礼邀请函加载中">
@@ -88,7 +89,7 @@
         </div>
         <img class="envelope-pocket" src="assets/lace-envelope-fast-20261006.webp" alt="" aria-hidden="true" width="520" height="520">
         <img class="envelope-flap" src="assets/lace-envelope-fast-20261006.webp" alt="" aria-hidden="true" width="520" height="520">
-        <img class="wax-seal" src="https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com/assets/assets/seal-20260925.webp" data-fallback-src="assets/seal-20260925.webp" alt="" aria-hidden="true" width="280" height="280">
+        <img class="wax-seal" src="assets/seal-20260925.webp" alt="" aria-hidden="true" width="280" height="280" fetchpriority="high">
         <button class="envelope-trigger" id="openEnvelope" type="button" aria-label="轻触信封，打开婚礼邀请信" aria-expanded="false" aria-controls="letterCard"></button>
       </div>
       <button class="envelope-hint tap-prompt" id="envelopeHint" type="button" aria-controls="letterCard"><span class="tap-dot" aria-hidden="true"></span>轻触信封</button>
@@ -157,6 +158,6 @@
     <nav class="info-tabs" role="tablist" aria-label="婚礼信息"><button type="button" id="dateTab" role="tab" aria-selected="true" aria-controls="datePanel" data-panel="datePanel" lang="en">DATE</button><button type="button" id="scheduleTab" role="tab" aria-selected="false" aria-controls="schedulePanel" data-panel="schedulePanel" tabindex="-1" lang="en">TIMELINE</button><button type="button" id="locationTab" role="tab" aria-selected="false" aria-controls="locationPanel" data-panel="locationPanel" tabindex="-1" lang="en">ADDRESS</button></nav>
   </section>
 </main>
-  <script src="app.js?v=gallery-order-v1-20261006"></script>
+  <script src="app.js?v=envelope-ready-v1-20261006"></script>
 </body>
 </html>

@@ -41,9 +41,8 @@
     repeatVisit = localStorage.getItem(repeatVisitKey) === '1';
   } catch { /* Some embedded browsers disable persistent storage. */ }
   const loadingMinDuration = repeatVisit ? 200 : 700;
-  const loadingMaxDuration = repeatVisit ? 650 : 1200;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, Math.max(0, ms)));
-  const waitForImage = (image, timeoutMs = 8000) => {
+  const waitForImage = image => {
     if (!image) return Promise.resolve();
     if (image.complete && image.naturalWidth) return Promise.resolve();
     return new Promise(resolve => {
@@ -51,27 +50,27 @@
       const finish = () => {
         if (settled) return;
         settled = true;
-        clearTimeout(timeout);
         image.removeEventListener('load', finish);
         image.removeEventListener('error', finish);
         resolve();
       };
-      const timeout = setTimeout(finish, timeoutMs);
       image.addEventListener('load', finish, { once: true });
       image.addEventListener('error', finish, { once: true });
     });
   };
+  const decodeCriticalImage = async image => {
+    await waitForImage(image);
+    if (!image?.naturalWidth) return;
+    try { await image.decode(); } catch { /* A loaded image can still render if decode() is unsupported. */ }
+  };
   async function finishLoading() {
     const criticalImages = [
       document.querySelector('.envelope-back'),
+      document.querySelector('.envelope-pocket'),
+      document.querySelector('.envelope-flap'),
+      document.querySelector('.wax-seal'),
     ];
-    const ready = Promise.allSettled([
-      ...criticalImages.map(waitForImage),
-    ]);
-    await Promise.race([
-      ready,
-      sleep(loadingMaxDuration - (performance.now() - loadingStarted)),
-    ]);
+    await Promise.allSettled(criticalImages.map(decodeCriticalImage));
     await sleep(loadingMinDuration - (performance.now() - loadingStarted));
     siteLoader.classList.add('is-leaving');
     document.body.classList.remove('is-loading');
