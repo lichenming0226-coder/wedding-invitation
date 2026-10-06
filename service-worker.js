@@ -1,7 +1,7 @@
 'use strict';
 
-const CACHE = 'wedding-invitation-20261006-v27';
-const MEDIA_CACHE = 'wedding-invitation-media-20261006-v19';
+const CACHE = 'wedding-invitation-20261006-v28';
+const MEDIA_CACHE = 'wedding-invitation-media-20261006-v20';
 const COS_ORIGIN = 'https://wedding-invitation-1452764663.cos.ap-shanghai.myqcloud.com';
 const MEDIA_URLS = [
   `${COS_ORIGIN}/assets/assets/lace-ornament-bg-20260925.webp`,
@@ -9,6 +9,8 @@ const MEDIA_URLS = [
   new URL('./assets/envelope-photo-fast-20261006.webp', self.location).href,
   `${COS_ORIGIN}/assets/assets/fountain-birds-20260925.webp`,
   `${COS_ORIGIN}/assets/assets/oval-lace-20260925.webp`,
+  new URL('./assets/gallery-new-color-20261006.webp', self.location).href,
+  new URL('./assets/gallery-new-bw-20261006.webp', self.location).href,
   ...Array.from(
     { length: 20 },
     (_, index) => `${COS_ORIGIN}/assets/assets/gallery-${String(index + 1).padStart(2, '0')}-20260925.webp`,
@@ -19,7 +21,7 @@ const CORE = [
   NAVIGATION_FALLBACK,
   './fonts.css?v=poem-tabs-v1-20261006',
   './styles.css?v=poem-tabs-v1-20261006',
-  './app.js?v=envelope-carousel-v1-20261005',
+  './app.js?v=gallery-order-v1-20261006',
   './assets/hand-chinese-20260925.woff2',
   './assets/hand-chinese-copy-20261006.woff2',
   './assets/hand-english-20260925.woff2',
